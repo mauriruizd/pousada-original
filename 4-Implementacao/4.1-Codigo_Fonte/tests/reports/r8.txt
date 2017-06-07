@@ -1,0 +1,196 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+EEEEEEEE.......F.F....F                                           23 / 23 (100%)
+
+Time: 21.74 seconds, Memory: 38.00MB
+
+There were 8 errors:
+
+1) ClientesTest::testClienteCanBeCreated
+InvalidArgumentException: Could not find a form that has submit button [Cadastrar Cliente].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:624
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:604
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:35
+
+2) ClientesTest::testListAllClientes
+InvalidArgumentException: The current node list is empty.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/PageConstraint.php:20
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/HasSource.php:35
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:275
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:291
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:63
+
+3) ClientesTest::testFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:75
+
+4) ClientesTest::testNotFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:90
+
+5) ClientesTest::testSeeClienteDetails
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:104
+
+6) ClientesTest::testEditCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:120
+
+7) ClientesTest::testCancelDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:137
+
+8) ClientesTest::testDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:153
+
+--
+
+There were 3 failures:
+
+1) UsuariosTest::testShowUsuarioDetailsNotFound
+A request to [http://localhost/usuarios/100] failed. Received status code [404].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:222
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:92
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:61
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:101
+
+Caused by
+Symfony\Component\HttpKernel\Exception\NotFoundHttpException in /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:914
+Stack trace:
+#0 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(31): Illuminate\Foundation\Application->abort(404, '', Array)
+#1 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/app/Http/Controllers/UsuariosController.php(72): abort(404)
+#2 [internal function]: App\Http\Controllers\UsuariosController->show('100')
+#3 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(55): call_user_func_array(Array, Array)
+#4 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('show', Array)
+#5 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\UsuariosController), 'show')
+#6 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Route.php(144): Illuminate\Routing\Route->runController()
+#7 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php(653): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#10 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#11 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(43): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#13 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Auth\Middleware\Authenticate->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(65): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#16 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#19 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#22 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#25 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#28 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#31 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php(655): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#32 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php(629): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#33 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php(607): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#34 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(268): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#35 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#36 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#37 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#40 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(150): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#41 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#42 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php(582): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#43 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php(90): Illuminate\Foundation\Testing\TestCase->call('GET', 'http://localhos...', Array, Array, Array)
+#44 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php(61): Illuminate\Foundation\Testing\TestCase->makeRequest('GET', 'http://localhos...')
+#45 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php(101): Illuminate\Foundation\Testing\TestCase->visit('usuarios/100')
+#46 [internal function]: UsuariosTest->testShowUsuarioDetailsNotFound()
+#47 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php(1054): ReflectionMethod->invokeArgs(Object(UsuariosTest), Array)
+#48 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php(905): PHPUnit_Framework_TestCase->runTest()
+#49 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestResult.php(686): PHPUnit_Framework_TestCase->runBare()
+#50 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php(860): PHPUnit_Framework_TestResult->run(Object(UsuariosTest))
+#51 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestSuite.php(722): PHPUnit_Framework_TestCase->run(Object(PHPUnit_Framework_TestResult))
+#52 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestSuite.php(722): PHPUnit_Framework_TestSuite->run(Object(PHPUnit_Framework_TestResult))
+#53 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/TestRunner.php(517): PHPUnit_Framework_TestSuite->run(Object(PHPUnit_Framework_TestResult))
+#54 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/Command.php(186): PHPUnit_TextUI_TestRunner->doRun(Object(PHPUnit_Framework_TestSuite), Array, true)
+#55 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/Command.php(116): PHPUnit_TextUI_Command->run(Array, true)
+#56 /Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/phpunit(52): PHPUnit_TextUI_Command::main()
+#57 {main}
+2) UsuariosTest::testEditUsuarioEmptyFields
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:128
+
+3) UsuariosTest::testDeleteAuthenticatedUsuarioForbidden
+Expected status code 403, got 200.
+Failed asserting that 200 matches expected '403'.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:192
+
+ERRORS!
+Tests: 23, Assertions: 33, Errors: 8, Failures: 3.

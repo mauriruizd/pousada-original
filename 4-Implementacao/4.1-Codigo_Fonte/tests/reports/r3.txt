@@ -1,0 +1,350 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+EEEEEEEE..FF.FEFEEEEEEE                                           23 / 23 (100%)
+
+Time: 18.51 seconds, Memory: 34.00MB
+
+There were 16 errors:
+
+1) ClientesTest::testClienteCanBeCreated
+InvalidArgumentException: Could not find a form that has submit button [Cadastrar Cliente].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:624
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:604
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:35
+
+2) ClientesTest::testListAllClientes
+InvalidArgumentException: The current node list is empty.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/PageConstraint.php:20
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/HasSource.php:35
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:275
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:291
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:63
+
+3) ClientesTest::testFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:75
+
+4) ClientesTest::testNotFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:90
+
+5) ClientesTest::testSeeClienteDetails
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:104
+
+6) ClientesTest::testEditCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:120
+
+7) ClientesTest::testCancelDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:137
+
+8) ClientesTest::testDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:153
+
+9) UsuariosTest::testShowUsuarioDetails
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:91
+
+10) UsuariosTest::testsEditUsuario
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:107
+
+11) UsuariosTest::testEditUsuarioEmptyFields
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:121
+
+12) UsuariosTest::testCreateUsuario
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:135
+
+13) UsuariosTest::testCreateUsuarioPasswordConfirmationMismatch
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:151
+
+14) UsuariosTest::testCreateUsuarioForbiddenUser
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:165
+
+15) UsuariosTest::testDeleteUsuario
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:180
+
+16) UsuariosTest::testDeleteAuthenticatedUsuarioForbidden
+Doctrine\Common\Persistence\Mapping\MappingException: Class 'Usuario' does not exist
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php:41
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:311
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:78
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php:216
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/DefaultRepositoryFactory.php:44
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:698
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:190
+
+--
+
+There were 4 failures:
+
+1) UsuariosTest::testLoginFailPasswordIncorrect
+Session missing error: login
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:158
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:52
+
+2) UsuariosTest::testResetPasswordByEmail
+Expected status code 200, got 302.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:61
+
+3) UsuariosTest::testShowAllUsuarios
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSRF Token --><meta name="csrf-token" content="CWp08egllg6C2YifFvoftuiozFpaMUgHTdbHRMbn">
+<title>Laravel</title>
+<!-- Styles --><link href="/css/app.css" rel="stylesheet">
+<!-- Scripts --><script>
+        window.Laravel = {"csrfToken":"CWp08egllg6C2YifFvoftuiozFpaMUgHTdbHRMbn"}    </script>
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top"><div class="container">
+                <div class="navbar-header">
+
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="http://localhost">
+                        Laravel
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                         
+                    </ul>
+<!-- Right Side Of Navbar --><ul class="nav navbar-nav navbar-right">
+<!-- Authentication Links --><li><a href="http://localhost/login">Login</a></li>
+                            <li><a href="http://localhost/register">Register</a></li>
+                                            </ul>
+</div>
+            </div>
+        </nav><div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Email</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="http://localhost/login">
+                        <input type="hidden" name="_token" value="CWp08egllg6C2YifFvoftuiozFpaMUgHTdbHRMbn"><div class="form-group">
+                            <label for="email" class="col-md-4 control-label">E-mail</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control" name="email" value="" required autofocus>
+</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+</div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Email
+                                </button>
+
+                                <a class="btn btn-link" href="http://localhost/password/reset">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+</body>
+
+
+Failed asserting that the page contains the HTML [Total de 20 usuários]. Please check the content above.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/PageConstraint.php:90
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:275
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:291
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:85
+
+4) UsuariosTest::testShowUsuarioDetailsNotFound
+Expected status code 404, got 200.
+Failed asserting that 200 matches expected 404.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:100
+
+ERRORS!
+Tests: 23, Assertions: 21, Errors: 16, Failures: 4.

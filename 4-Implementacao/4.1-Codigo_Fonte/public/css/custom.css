@@ -1,0 +1,24 @@
+.floating-menu {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999999;
+}
+
+.floating-menu button, .floating-menu form, .floating-menu a {
+    margin: 6px 0;
+    display: block;
+}
+
+.floating-menu .submenu {
+    width: 37px;
+    margin: 15px auto;
+    opacity: 0;
+    transition: all 0.3s ease;
+    height: 0;
+}
+
+.floating-menu:hover .submenu {
+    opacity: 1;
+    height: 100%;
+}

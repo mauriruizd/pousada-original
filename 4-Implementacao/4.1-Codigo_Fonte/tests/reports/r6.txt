@@ -1,0 +1,163 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+EEEEEEEE..FF...F.F.FF.F                                           23 / 23 (100%)
+
+Time: 21.73 seconds, Memory: 38.00MB
+
+There were 8 errors:
+
+1) ClientesTest::testClienteCanBeCreated
+InvalidArgumentException: Could not find a form that has submit button [Cadastrar Cliente].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:624
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:604
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:35
+
+2) ClientesTest::testListAllClientes
+InvalidArgumentException: The current node list is empty.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:584
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/PageConstraint.php:20
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/HasSource.php:35
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:275
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:291
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:63
+
+3) ClientesTest::testFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:75
+
+4) ClientesTest::testNotFindCliente
+InvalidArgumentException: Nothing matched the filter [#dni] CSS query provided for [http://localhost/clientes].
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:661
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:639
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:512
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:90
+
+5) ClientesTest::testSeeClienteDetails
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:104
+
+6) ClientesTest::testEditCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:120
+
+7) ClientesTest::testCancelDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:137
+
+8) ClientesTest::testDeleteCliente
+Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <delimiter "#" at 1> found.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:283
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:142
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:118
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/Parser/Parser.php:53
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:296
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/XPath/Translator.php:122
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/css-selector/CssSelectorConverter.php:63
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/symfony/dom-crawler/Crawler.php:674
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:688
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:489
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:153
+
+--
+
+There were 7 failures:
+
+1) UsuariosTest::testLoginFailPasswordIncorrect
+Session missing error: login
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:158
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:50
+
+2) UsuariosTest::testResetPasswordByEmail
+Expected status code 200, got 302.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:59
+
+3) UsuariosTest::testShowUsuarioDetailsNotFound
+Expected status code 404, got 200.
+Failed asserting that 200 matches expected 404.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:101
+
+4) UsuariosTest::testEditUsuarioEmptyFields
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:126
+
+5) UsuariosTest::testCreateUsuarioPasswordConfirmationMismatch
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:156
+
+6) UsuariosTest::testCreateUsuarioForbiddenUser
+Expected status code 403, got 302.
+Failed asserting that 302 matches expected '403'.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:171
+
+7) UsuariosTest::testDeleteAuthenticatedUsuarioForbidden
+Expected status code 403, got 302.
+Failed asserting that 302 matches expected '403'.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/UsuariosTest.php:189
+
+ERRORS!
+Tests: 23, Assertions: 29, Errors: 8, Failures: 7.
