@@ -24,7 +24,7 @@ class Estado
     protected $nome;
 
     /**
-     * @ORM\OneToMany(targetEntity="Pais", mappedBy="estados")
+     * @ORM\ManyToOne(targetEntity="Pais", inversedBy="estados")
      * @ORM\JoinColumn(name="id_pais", referencedColumnName="id")
      */
     protected $pais;

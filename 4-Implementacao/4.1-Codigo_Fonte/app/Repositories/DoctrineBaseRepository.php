@@ -20,11 +20,22 @@ class DoctrineBaseRepository extends EntityRepository {
         return $this->prepare($entity, $data);
     }
 
-    public function save($object)
+    public function save($object, $flush = true)
     {
         $this->_em->persist($object);
-        $this->_em->flush($object);
+        if ($flush) {
+            $this->_em->flush($object);
+        }
         return $object;
+    }
+
+    public function saveMany($array)
+    {
+        foreach ($array as $object) {
+            $this->save($object, false);
+        }
+        $this->_em->flush();
+        return $array;
     }
 
     public function delete($object)

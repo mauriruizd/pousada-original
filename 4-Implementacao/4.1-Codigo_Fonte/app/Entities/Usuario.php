@@ -3,6 +3,7 @@ namespace App\Entities;
 
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
+use App\Entities\Interfaces\SaveableEntity;
 use App\Entities\Interfaces\SearchableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Hash;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
- * @ORM\Table(name="usuarios")
+ * @ORM\Table(name="usuarios",
+ *     indexes={
+ *     @ORM\Index(name="nome_idx", columns={"nome"}),
+ *     @ORM\Index(name="email_idx", columns={"email"})
+ * })
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
-class Usuario implements Authenticatable, CanResetPassword, EntityValidation, SearchableEntity
+class Usuario implements Authenticatable, CanResetPassword, EntityValidation, SearchableEntity, SaveableEntity
 {
     use \LaravelDoctrine\ORM\Auth\Authenticatable;
     use \Illuminate\Auth\Passwords\CanResetPassword;
@@ -50,7 +55,7 @@ class Usuario implements Authenticatable, CanResetPassword, EntityValidation, Se
     protected $tipo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Acesso", mappedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Acesso", mappedBy="usuario", cascade={"remove"})
      */
     protected $acessos;
 
@@ -175,7 +180,7 @@ class Usuario implements Authenticatable, CanResetPassword, EntityValidation, Se
         ];
     }
 
-    public static function validationRules()
+    public static function validationRules(Request $request)
     {
         return [
             'nome' => 'required',

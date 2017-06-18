@@ -13,7 +13,14 @@
 <div class="form-group">
     <label class="col-md-12">Senha</label>
     <div class="col-md-12">
-        {!! Form::text('password', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Mínimo de 6 caracteres']) !!}
+        {!! Form::password('password', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Mínimo de 6 caracteres']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12">Confirmar Senha</label>
+    <div class="col-md-12">
+        {!! Form::password('password_confirmation', ['class' => 'form-control form-control-line', 'placeholder' => 'Mínimo de 6 caracteres']) !!}
     </div>
 </div>
 <div class="form-group">

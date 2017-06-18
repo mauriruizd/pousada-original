@@ -24,6 +24,6 @@ class UsuariosRequest extends FormRequest
      */
     public function rules()
     {
-        return Usuario::validationRules();
+        return Usuario::validationRules($this);
     }
 }

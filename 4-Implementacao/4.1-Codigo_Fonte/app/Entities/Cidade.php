@@ -23,7 +23,7 @@ class Cidade
     protected $nome;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Estado")
+     * @ORM\ManyToOne(targetEntity="Estado", cascade="detach")
      * @ORM\JoinColumn(name="id_estado", referencedColumnName="id")
      */
     protected $estado;

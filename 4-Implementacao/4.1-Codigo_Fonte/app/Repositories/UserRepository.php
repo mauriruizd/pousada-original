@@ -8,4 +8,5 @@ interface UserRepository {
     public function update($id, $data);
     public function save($object);
     public function delete($object);
+    public function searchAndPaginate($queryString, $perPage = 15, $pageName = 'page');
 }

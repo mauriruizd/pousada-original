@@ -12,7 +12,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     /**
      * Creates the application.
      *
-     * @return \Illuminate\Foundation\Application
+     * @return App\Foundation\Application
      */
     public function createApplication()
     {

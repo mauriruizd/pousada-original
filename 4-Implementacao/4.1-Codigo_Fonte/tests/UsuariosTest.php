@@ -20,7 +20,6 @@ class UsuariosTest extends TestCase
         $this->usuarios = resolve('App\Repositories\UserRepository');
     }
 
-
     public function testCanDoLogin()
     {
         $this->seed('AdminUsersSeeder');

@@ -11,6 +11,9 @@
 |
 */
 
+/** @var \Doctrine\ORM\EntityManagerInterface $em */
+$em = resolve(\Doctrine\ORM\EntityManagerInterface::class);
+
 /** @var \LaravelDoctrine\ORM\Testing\Factory $factory */
 $factory->define(App\Entities\Usuario::class, function (Faker\Generator $faker) {
     $tipos = [
@@ -24,4 +27,32 @@ $factory->define(App\Entities\Usuario::class, function (Faker\Generator $faker) 
         'password' => bcrypt('minhasenha'),
         'tipo' => $tipos[array_rand($tipos)]
      ];
+});
+
+$factory->define(\App\Entities\Cidade::class, function(Faker\Generator $faker) {
+    return [
+        'nome' => $faker->city,
+    ];
+});
+
+$factory->define(\App\Entities\Cliente::class, function(Faker\Generator $faker) use($em) {
+    $generos = [
+        \App\Entities\Enumeration\Genero::$MASCULINO,
+        \App\Entities\Enumeration\Genero::$FEMININO
+    ];
+    return [
+        'nome' => $faker->name,
+        'email' => $faker->safeEmail,
+        'telefone' => $faker->phoneNumber,
+        'celular' => $faker->phoneNumber,
+        'profissao' => $faker->jobTitle,
+        'nacionalidade' => $em->getRepository(\App\Entities\Pais::class)->find(rand(1, 246)),
+        'dataNascimento' => $faker->dateTimeAD,
+        'dni' => $faker->bankAccountNumber,
+        'cpf' => $faker->bankAccountNumber,
+        'genero' => $generos[array_rand($generos)],
+        'endereco' => $faker->address,
+        'cidade' => $em->getRepository(\App\Entities\Cidade::class)->find(rand(1, 48314)),
+        'observacoes' => $faker->text(200)
+    ];
 });

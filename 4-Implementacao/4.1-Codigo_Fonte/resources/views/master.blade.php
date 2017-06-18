@@ -33,12 +33,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ url('css/colors/blue-dark.css') }}" id="theme" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url('css/custom.css') }}">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @yield('css')
 </head>
 
 <body>
@@ -76,12 +79,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuários</span></a>
                 </li>
                 <li>
-                    <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Clientes</span></a>
+                    <a href="{{ route('clientes.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Clientes</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('tipos-quartos.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Tipos de Quartos</span></a>
                 </li>
             </ul>
-            <div class="center p-20">
-                <span class="hide-menu"><a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger btn-block btn-rounded waves-effect waves-light">Upgrade to Pro</a></span>
-            </div>
         </div>
     </div>
     <!-- Left navbar-header end -->
@@ -119,6 +122,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- /#wrapper -->
 <!-- jQuery -->
 <script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ url('js/bootstrap.min.js') }}"></script>
 <!-- Menu Plugin JavaScript -->
@@ -129,6 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ url('js/waves.js') }}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{ url('js/custom.min.js') }}"></script>
+@yield('js')
 </body>
 
 </html>

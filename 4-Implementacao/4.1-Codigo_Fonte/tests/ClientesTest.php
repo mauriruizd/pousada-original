@@ -12,14 +12,31 @@ class ClientesTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * Metodo para mockar login
+     * @var App\Repositories\UserRepository
+     */
+    protected $usuarios;
+
+    /**
+     * @var App\Repositories\ClientesRepository
+     */
+    protected $clientes;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->clientes = resolve('App\Repositories\ClientesRepository');
+        $this->usuarios = resolve('App\Repositories\UserRepository');
+    }
+
+    /**
+     * Metodo para mockar login de administrador
      *
      * @return void
      */
-    protected function loginWithFakeUser()
+    protected function logAdminIn()
     {
-        $user = new Usuario('Admin', 'admin');
-        $this->be($user);
+        $this->seed();
+        $this->be($this->usuarios->find(1));
     }
 
     /**
@@ -29,26 +46,53 @@ class ClientesTest extends TestCase
      */
     public function testClienteCanBeCreated()
     {
-        $this->loginWithFakeUser();
-        $this->visit('clientes/create')
-            ->submitForm('Cadastrar Cliente', [
-                'nome' => 'João Silva',
-                'email' => 'joao@teste.com',
-                'telefone' => '5544123456',
-                'celular' => '5544123456',
-                'profissao' => 'Detetive',
-                'nacionalidade' => 'br',
-                'data_nascimento' => '10/02/1980',
-                'dni' => '41447479F',
-                'cpf' => '41447479F',
-                'genero' => 'm',
-                'pais' => 'BR',
-                'estado' => 'PR',
-                'cidade' => 'FOZ',
-                'observacoes' => 'Nenhuma observação'
-            ])
-            ->seePageIs('clientes')
-            ->see('Cliente cadastrado com sucesso!');
+        $this->logAdminIn();
+        $this->post('clientes', [
+            'nome' => 'João Silva',
+            'email' => 'joao@teste.com',
+            'telefone' => '5544123456',
+            'celular' => '5544123456',
+            'profissao' => 'Detetive',
+            'nacionalidade' => '30',
+            'dataNascimento' => '10/02/1980',
+            'dni' => '41447479F',
+            'cpf' => '41447479F',
+            'genero' => 'm',
+            'endereco' => 'Av. Brasil 123',
+            'cidade' => '9379',
+            'observacoes' => 'Nenhuma observação'
+        ])
+            ->followRedirects()
+            ->assertResponseOk();
+        $this->assertNotNull($this->clientes->findOneBy([
+            'email' => 'joao@teste.com'
+        ]));
+    }
+
+    public function testErrorCreatingClienteWithoutFields()
+    {
+        $this->logAdminIn();
+        $this->post('clientes', [
+            'nome' => 'João Silva',
+            'email' => 'joao@teste.com',
+            'telefone' => '5544123456',
+            'celular' => '5544123456',
+            'profissao' => 'Detetive',
+            'nacionalidade' => '30',
+            'dataNascimento' => '',
+            'dni' => '',
+            'genero' => '',
+            'endereco' => '',
+            'cidade' => ''
+        ])
+            ->assertSessionHasErrors([
+                'dataNascimento',
+                'dni',
+                'cpf',
+                'genero',
+                'endereco',
+                'cidade',
+            ]);
     }
 
     /**
@@ -58,9 +102,11 @@ class ClientesTest extends TestCase
      */
     public function testListAllClientes()
     {
-        $this->loginWithFakeUser();
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $cliente = $this->clientes->find(1);
         $this->visit('clientes')
-            ->see('João Silva');
+            ->see($cliente->getNome());
     }
 
     /**
@@ -70,12 +116,11 @@ class ClientesTest extends TestCase
      */
     public function testFindCliente()
     {
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->type('41447479F', '#dni')
-            ->press('Pesquisar')
-            ->see('Clientes encontrados com dni "41447479F"')
-            ->see('João Silva');
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $cliente = $this->clientes->find(1);
+        $this->get('clientes?search=' . $cliente->getEmail())
+            ->see($cliente->getNome());
     }
 
     /**
@@ -83,13 +128,12 @@ class ClientesTest extends TestCase
      *
      * @return void
      */
-    public function testNotFindCliente()
+    public function testClienteNotFound()
     {
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->type('123', '#dni')
-            ->press('Pesquisar')
-            ->notSee('João Silva');
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->get('clientes?search=' . str_random(50))
+            ->see('Total de 0 clientes');
     }
 
     /**
@@ -99,12 +143,19 @@ class ClientesTest extends TestCase
      */
     public function testSeeClienteDetails()
     {
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->click('<i class="fa fa-eye"></i>')
-            ->seePageIs('clientes/1')
-            ->see('João Silva')
-            ->see('joao@teste.com');
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $cliente = $this->clientes->find(1);
+        $this->get('clientes/1')
+            ->see($cliente->getNome());
+    }
+
+    public function testShowClienteDetailsNotFound()
+    {
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->get('clientes/100')
+            ->assertResponseStatus(404);
     }
 
     /**
@@ -114,31 +165,28 @@ class ClientesTest extends TestCase
      */
     public function testEditCliente()
     {
-        $this->loginWithFakeUser();
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->click('<i class="fa fa-pencil"></i>')
-            ->seePageIs('clientes/1/edit')
-            ->type('Claudia Leitte', '#nome')
-            ->press('Editar Cliente')
-            ->seePageIs('clientes')
-            ->see('Cliente editado com sucesso!');
-    }
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $nomeCliente = $this->clientes->find(1)->getNome();
+        $this->put('clientes/1', [
+            'nome' => 'João Silva',
+            'email' => 'joao@teste.com',
+            'telefone' => '5544123456',
+            'celular' => '5544123456',
+            'profissao' => 'Detetive',
+            'nacionalidade' => '30',
+            'dataNascimento' => '10/02/1980',
+            'dni' => '41447479F',
+            'cpf' => '41447479F',
+            'genero' => 'm',
+            'endereco' => 'Av. Brasil 123',
+            'cidade' => '2',
+            'observacoes' => 'Nenhuma observação'
+        ])
+            ->followRedirects()
+            ->assertResponseOk();
+        $this->assertNotEquals($nomeCliente, $this->clientes->find(1)->getNome());
 
-    /**
-     * Teste de cancelacão de eliminação de cliente
-     *
-     * @return void
-     */
-    public function testCancelDeleteCliente()
-    {
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->click('<i class="fa fa-trash"></i>')
-            ->see('Confirma que deseja eliminar o cliente "Claudia Leitte"?')
-            ->click('Não')
-            ->seePageIs('clientes')
-            ->see('Claudia Leitte');
     }
 
     /**
@@ -148,14 +196,51 @@ class ClientesTest extends TestCase
      */
     public function testDeleteCliente()
     {
-        $this->loginWithFakeUser();
-        $this->visit('clientes')
-            ->click('<i class="fa fa-trash"></i>')
-            ->see('Confirma que deseja eliminar o cliente "Claudia Leitte"?')
-            ->click('Sim')
-            ->seePageIs('clientes')
-            ->see('Cliente eliminado com sucesso!')
-            ->notSee('Claudia Leitte');
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->delete('clientes/1')
+            ->notSeeInDatabase('clientes', [
+                'id' => 1
+            ]);
+    }
+
+    /**
+     * Teste de eliminação de cliente não encontrado
+     *
+     * @return void
+     */
+    public function testDeleteClienteNotFound()
+    {
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->delete('clientes/21')
+            ->assertResponseStatus(404);
+    }
+
+    /**
+     * Teste de impresão de ficha de cliente
+     *
+     * @return void
+     */
+    public function testPrintFicha()
+    {
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->get('clientes/1/ficha')
+            ->seeHeader('Content-Type', 'application/pdf');
+    }
+
+    /**
+     * Teste de ficha de cliente não encontrado
+     *
+     * @return void
+     */
+    public function testErrorFichaClienteNotFound()
+    {
+        $this->logAdminIn();
+        $this->seed('ClientesSeeder');
+        $this->get('clientes/21/ficha')
+            ->assertResponseStatus(404);
     }
 
     public function runDatabaseMigrations()

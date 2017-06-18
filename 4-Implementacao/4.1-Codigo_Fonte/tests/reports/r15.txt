@@ -1,0 +1,43 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+FF.....F.F.F                                                      12 / 12 (100%)
+
+Time: 2.41 minutes, Memory: 1132.05MB
+
+There were 5 failures:
+
+1) ClientesTest::testClienteCanBeCreated
+Unable to find row in database table [clientes] that matched attributes [{"email":"joao@teste.com"}].
+Failed asserting that 0 is greater than 0.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithDatabase.php:24
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:68
+
+2) ClientesTest::testErrorCreatingClienteWithoutFields
+Session missing error: genero
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:158
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:87
+
+3) ClientesTest::testEditCliente
+Failed asserting that 'Dr. Grant Trantow' is not equal to <string:Dr. Grant Trantow>.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:185
+
+4) ClientesTest::testDeleteClienteNotFound
+Expected status code 404, got 302.
+Failed asserting that 302 matches expected 404.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:214
+
+5) ClientesTest::testErrorFichaClienteNotFound
+Expected status code 404, got 200.
+Failed asserting that 200 matches expected 404.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:240
+
+FAILURES!
+Tests: 12, Assertions: 20, Failures: 5.

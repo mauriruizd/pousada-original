@@ -1,0 +1,36 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+FF.....F...F                                                      12 / 12 (100%)
+
+Time: 2.51 minutes, Memory: 1132.05MB
+
+There were 4 failures:
+
+1) ClientesTest::testClienteCanBeCreated
+Unable to find row in database table [clientes] that matched attributes [{"email":"joao@teste.com"}].
+Failed asserting that 0 is greater than 0.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithDatabase.php:24
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:68
+
+2) ClientesTest::testErrorCreatingClienteWithoutFields
+Session missing error: pais
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:158
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:87
+
+3) ClientesTest::testEditCliente
+Failed asserting that 'Tressa Lubowitz' is not equal to <string:Tressa Lubowitz>.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:185
+
+4) ClientesTest::testErrorFichaClienteNotFound
+Expected status code 404, got 500.
+Failed asserting that 500 matches expected 404.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:240
+
+FAILURES!
+Tests: 12, Assertions: 21, Failures: 4.
