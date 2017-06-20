@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App\Entities\Cliente;
+use App\Entities\Quarto;
 use App\Entities\TipoQuarto;
 use App\Entities\Usuario;
 use App\Repositories\ClientesRepository;
 use App\Repositories\DoctrineClientesRepository;
+use App\Repositories\DoctrineQuartosRepository;
 use App\Repositories\DoctrineTiposQuartosRepository;
 use App\Repositories\DoctrineUserRepository;
+use App\Repositories\QuartosRepository;
 use App\Repositories\TiposQuartosRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -53,6 +56,14 @@ class RepositoryProvider extends ServiceProvider
             return new DoctrineTiposQuartosRepository(
                 $app['em'],
                 $app['em']->getClassMetaData(TipoQuarto::class)
+            );
+        });
+
+        // Quartos Repo
+        $this->app->bind(QuartosRepository::class, function($app) {
+            return new DoctrineQuartosRepository(
+                $app['em'],
+                $app['em']->getClassMetaData(Quarto::class)
             );
         });
     }

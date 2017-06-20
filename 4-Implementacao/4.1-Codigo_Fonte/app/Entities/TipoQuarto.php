@@ -16,7 +16,10 @@ use App\Entities\Enumeration\TipoUsuario;
 /**
  * Class TipoQuarto
  * @ORM\Entity
- * @ORM\Table(name="tipo_quarto")
+ * @ORM\Table(name="tipo_quarto",
+ *      indexes={
+ *      @ORM\Index(name="nome_idx", columns={"nome"})
+ * })
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @package App\Entities
  */
@@ -53,6 +56,11 @@ class TipoQuarto implements EntityValidation, SearchableEntity, SaveableEntity
      * @ORM\OneToMany(targetEntity="PrecoDiaria", mappedBy="tipoQuarto", cascade={"all"})
      */
     protected $tarifas;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Quarto", mappedBy="tipoQuarto")
+     */
+    protected $quartos;
 
     public function __construct()
     {
@@ -205,6 +213,22 @@ class TipoQuarto implements EntityValidation, SearchableEntity, SaveableEntity
         $tarifa->setTipoQuarto($this);
         $this->tarifas->add($tarifa);
         return $tarifa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuartos()
+    {
+        return $this->quartos;
+    }
+
+    /**
+     * @param mixed $quartos
+     */
+    public function setQuartos($quartos)
+    {
+        $this->quartos = $quartos;
     }
 
     public function whitelist()

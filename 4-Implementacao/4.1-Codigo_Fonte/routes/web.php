@@ -72,6 +72,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('tipos-quartos/{id}/promocao/alterar', ['as' => 'tipos-quartos.promocao.edit', 'uses' => 'TiposQuartosController@editPromocao']);
     Route::put('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.update', 'uses' => 'TiposQuartosController@updatePromocao']);
     Route::delete('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.delete', 'uses' => 'TiposQuartosController@deletePromocao']);
+
+    Route::resource('quartos', 'QuartosController', ['except' => ['destroy']]);
+    Route::get('quartos/{id}/promocao', ['as' => 'quartos.promocao.create', 'uses' => 'QuartosController@createPromocao']);
+    Route::post('quartos/{id}/promocao', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@storePromocao']);
+    Route::get('quartos/{id}/promocao/edit', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@editPromocao']);
+    Route::put('quartos/{id}/promocao', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@updatePromocao']);
+    Route::delete('quartos/{id}/promocao', ['as' => 'quartos.promocao.destroy', 'uses' => 'QuartosController@deletePromocao']);
+
+    Route::get('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.create', 'uses' => 'QuartosController@createManutencao']);
+    Route::post('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.store', 'uses' => 'QuartosController@storeManutencao']);
+    Route::delete('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.destroy', 'uses' => 'QuartosController@deleteManutencao']);
 });
 
 Route::get('/home', 'HomeController@index');

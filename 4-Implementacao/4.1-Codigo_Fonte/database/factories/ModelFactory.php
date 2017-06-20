@@ -56,3 +56,12 @@ $factory->define(\App\Entities\Cliente::class, function(Faker\Generator $faker) 
         'observacoes' => $faker->text(200)
     ];
 });
+
+$factory->define(\App\Entities\Quarto::class, function(Faker\Generator $faker) use($em) {
+    $tiposQuartos = $em->getRepository(\App\Entities\TipoQuarto::class)->findAll();
+    return [
+        'numero' => $faker->numberBetween(1,12),
+        'andar' => $faker->numberBetween(1,3),
+        'tipoQuarto' => $tiposQuartos[array_rand($tiposQuartos)]
+    ];
+});

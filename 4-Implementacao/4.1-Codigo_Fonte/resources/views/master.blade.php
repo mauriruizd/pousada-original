@@ -84,6 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <a href="{{ route('tipos-quartos.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Tipos de Quartos</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('quartos.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Quartos</span></a>
+                </li>
             </ul>
         </div>
     </div>

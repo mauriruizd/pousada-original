@@ -3,7 +3,7 @@ namespace App\Repositories;
 
 use LaravelDoctrine\ORM\Pagination\PaginatesFromRequest;
 
-class DoctrineUserRepository extends DoctrineBaseRepository implements UserRepository
+class DoctrineQuartosRepository extends DoctrineBaseRepository implements QuartosRepository
 {
     use PaginatesFromRequest;
 }

@@ -1,0 +1,52 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+..F..F.FF..FF                                                     13 / 13 (100%)
+
+Time: 16.29 seconds, Memory: 36.00MB
+
+There were 6 failures:
+
+1) EntidadeQuartosTest::testCreateQuarto
+Expected status code 200, got 500.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:104
+
+2) EntidadeQuartosTest::testQuartoDetails
+Expected status code 200, got 500.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:151
+
+3) EntidadeQuartosTest::testEditQuarto
+Expected status code 200, got 500.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:180
+
+4) EntidadeQuartosTest::testStartManutencao
+Expected status code 200, got 500.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:195
+
+5) EntidadeQuartosTest::testEndManutencao
+Expected status code 200, got 403.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:241
+
+6) EntidadeQuartosTest::testEndManutencaoNotStarted
+Expected status code 403, got 500.
+Failed asserting that 500 matches expected 403.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:253
+
+FAILURES!
+Tests: 13, Assertions: 16, Failures: 6.
