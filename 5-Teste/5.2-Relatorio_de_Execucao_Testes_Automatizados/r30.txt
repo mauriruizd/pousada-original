@@ -1,0 +1,18 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+..F......                                                           9 / 9 (100%)
+
+Time: 9.51 seconds, Memory: 30.00MB
+
+There was 1 failure:
+
+1) TiposQuartosTest::testUpdateTarifasInvalidValue
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:117
+
+FAILURES!
+Tests: 9, Assertions: 21, Failures: 1.

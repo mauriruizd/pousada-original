@@ -1,0 +1,118 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+FFFFFEFFFF                                                        10 / 10 (100%)
+
+Time: 10.03 seconds, Memory: 26.00MB
+
+There was 1 error:
+
+1) TiposQuartosTest::testStartPromocionMinorPreco
+Doctrine\DBAL\Exception\NotNullConstraintViolationException: An exception occurred while executing 'INSERT INTO preco_diaria (mes, preco, deleted_at, id_tipo) VALUES (?, ?, ?, ?)' with params [null, 20, null, 1]:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'mes' cannot be null
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:112
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php:128
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Statement.php:177
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:1014
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:378
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:356
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/app/Repositories/DoctrineBaseRepository.php:27
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:159
+
+Caused by
+Doctrine\DBAL\Driver\PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'mes' cannot be null
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Statement.php:168
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:1014
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:378
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:356
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/app/Repositories/DoctrineBaseRepository.php:27
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:159
+
+Caused by
+PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'mes' cannot be null
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/dbal/lib/Doctrine/DBAL/Statement.php:168
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php:281
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:1014
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php:378
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:356
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/app/Repositories/DoctrineBaseRepository.php:27
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:159
+
+--
+
+There were 9 failures:
+
+1) TiposQuartosTest::testListAllTiposQuartos
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:62
+
+2) TiposQuartosTest::testUpdateTarifas
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:90
+
+3) TiposQuartosTest::testUpdateTarifasInvalidValue
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:115
+
+4) TiposQuartosTest::testUpdateTarifasDefaultValue
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:129
+
+5) TiposQuartosTest::testStartPromocion
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:144
+
+6) TiposQuartosTest::testUpdatePromocao
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:178
+
+7) TiposQuartosTest::testUpdatePromocaoMinorPreco
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:200
+
+8) TiposQuartosTest::testStopPromocao
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:214
+
+9) TiposQuartosTest::testStopPromocaoNotStarted
+Expected status code 403, got 404.
+Failed asserting that 404 matches expected 403.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/TiposQuartosTest.php:225
+
+ERRORS!
+Tests: 10, Assertions: 9, Errors: 1, Failures: 9.

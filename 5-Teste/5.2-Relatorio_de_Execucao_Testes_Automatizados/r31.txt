@@ -1,0 +1,201 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+FFFFFF.FF.FFF                                                     13 / 13 (100%)
+
+Time: 15.54 seconds, Memory: 34.00MB
+
+There were 11 failures:
+
+1) EntidadeQuartosTest::testAllQuartos
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <style>
+            /* Copyright (c) 2010, Yahoo! Inc. All rights reserved. Code licensed under the BSD License: http://developer.yahoo.com/yui/license.html */
+            html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+            html { background: #eee; padding: 10px }
+            img { border: 0; }
+            #sf-resetcontent { width:970px; margin:0 auto; }
+                        .sf-reset { font: 11px Verdana, Arial, sans-serif; color: #333 }
+            .sf-reset .clear { clear:both; height:0; font-size:0; line-height:0; }
+            .sf-reset .clear_fix:after { display:block; height:0; clear:both; visibility:hidden; }
+            .sf-reset .clear_fix { display:inline-block; }
+            .sf-reset * html .clear_fix { height:1%; }
+            .sf-reset .clear_fix { display:block; }
+            .sf-reset, .sf-reset .block { margin: auto }
+            .sf-reset abbr { border-bottom: 1px dotted #000; cursor: help; }
+            .sf-reset p { font-size:14px; line-height:20px; color:#868686; padding-bottom:20px }
+            .sf-reset strong { font-weight:bold; }
+            .sf-reset a { color:#6c6159; cursor: default; }
+            .sf-reset a img { border:none; }
+            .sf-reset a:hover { text-decoration:underline; }
+            .sf-reset em { font-style:italic; }
+            .sf-reset h1, .sf-reset h2 { font: 20px Georgia, "Times New Roman", Times, serif }
+            .sf-reset .exception_counter { background-color: #fff; color: #333; padding: 6px; float: left; margin-right: 10px; float: left; display: block; }
+            .sf-reset .exception_title { margin-left: 3em; margin-bottom: 0.7em; display: block; }
+            .sf-reset .exception_message { margin-left: 3em; display: block; }
+            .sf-reset .traces li { font-size:12px; padding: 2px 4px; list-style-type:decimal; margin-left:20px; }
+            .sf-reset .block { background-color:#FFFFFF; padding:10px 28px; margin-bottom:20px;
+                -webkit-border-bottom-right-radius: 16px;
+                -webkit-border-bottom-left-radius: 16px;
+                -moz-border-radius-bottomright: 16px;
+                -moz-border-radius-bottomleft: 16px;
+                border-bottom-right-radius: 16px;
+                border-bottom-left-radius: 16px;
+                border-bottom:1px solid #ccc;
+                border-right:1px solid #ccc;
+                border-left:1px solid #ccc;
+                word-wrap: break-word;
+            }
+            .sf-reset .block_exception { background-color:#ddd; color: #333; padding:20px;
+                -webkit-border-top-left-radius: 16px;
+                -webkit-border-top-right-radius: 16px;
+                -moz-border-radius-topleft: 16px;
+                -moz-border-radius-topright: 16px;
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+                border-top:1px solid #ccc;
+                border-right:1px solid #ccc;
+                border-left:1px solid #ccc;
+                overflow: hidden;
+                word-wrap: break-word;
+            }
+            .sf-reset a { background:none; color:#868686; text-decoration:none; }
+            .sf-reset a:hover { background:none; color:#313131; text-decoration:underline; }
+            .sf-reset ol { padding: 10px 0; }
+            .sf-reset h1 { background-color:#FFFFFF; padding: 15px 28px; margin-bottom: 20px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+                    <div id="sf-resetcontent" class="sf-reset">
+                <h1>Sorry, the page you are looking for could not be found.</h1>
+                                        <h2 class="block_exception clear_fix">
+                            <span class="exception_counter">1/1</span>
+                            <span class="exception_title"><abbr title="Symfony\Component\HttpKernel\Exception\NotFoundHttpException">NotFoundHttpException</abbr> in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php line 161" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">RouteCollection.php line 161</a>:</span>
+                            <span class="exception_message"></span>
+                        </h2>
+                        <div class="block">
+                            <ol class="traces list_exception">
+       <li> in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php line 161" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">RouteCollection.php line 161</a></li>
+       <li>at <abbr title="Illuminate\Routing\RouteCollection">RouteCollection</abbr>->match(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php line 766" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Router.php line 766</a></li>
+       <li>at <abbr title="Illuminate\Routing\Router">Router</abbr>->findRoute(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php line 621" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Router.php line 621</a></li>
+       <li>at <abbr title="Illuminate\Routing\Router">Router</abbr>->dispatchToRoute(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Router.php line 607" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Router.php line 607</a></li>
+       <li>at <abbr title="Illuminate\Routing\Router">Router</abbr>->dispatch(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php line 268" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Kernel.php line 268</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Http\Kernel">Kernel</abbr>->Illuminate\Foundation\Http\{closure}(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php line 53" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Pipeline.php line 53</a></li>
+       <li>at <abbr title="Illuminate\Routing\Pipeline">Pipeline</abbr>->Illuminate\Routing\{closure}(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php line 46" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">CheckForMaintenanceMode.php line 46</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode">CheckForMaintenanceMode</abbr>->handle(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>), <em>object</em>(<abbr title="Closure">Closure</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php line 137" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Pipeline.php line 137</a></li>
+       <li>at <abbr title="Illuminate\Pipeline\Pipeline">Pipeline</abbr>->Illuminate\Pipeline\{closure}(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php line 33" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Pipeline.php line 33</a></li>
+       <li>at <abbr title="Illuminate\Routing\Pipeline">Pipeline</abbr>->Illuminate\Routing\{closure}(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php line 104" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Pipeline.php line 104</a></li>
+       <li>at <abbr title="Illuminate\Pipeline\Pipeline">Pipeline</abbr>->then(<em>object</em>(<abbr title="Closure">Closure</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php line 150" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Kernel.php line 150</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Http\Kernel">Kernel</abbr>->sendRequestThroughRouter(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php line 117" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Kernel.php line 117</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Http\Kernel">Kernel</abbr>->handle(<em>object</em>(<abbr title="Illuminate\Http\Request">Request</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php line 582" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">MakesHttpRequests.php line 582</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Testing\TestCase">TestCase</abbr>->call('GET', 'quartos', <em>array</em>(), <em>array</em>(), <em>array</em>(), <em>array</em>()) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php line 113" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">MakesHttpRequests.php line 113</a></li>
+       <li>at <abbr title="Illuminate\Foundation\Testing\TestCase">TestCase</abbr>->get('quartos') in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php line 74" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">EntidadeQuartosTest.php line 74</a></li>
+       <li>at <abbr title="EntidadeQuartosTest">EntidadeQuartosTest</abbr>->testAllQuartos()</li>
+       <li>at <abbr title="ReflectionMethod">ReflectionMethod</abbr>->invokeArgs(<em>object</em>(<abbr title="EntidadeQuartosTest">EntidadeQuartosTest</abbr>), <em>array</em>()) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php line 1054" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestCase.php line 1054</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestCase">PHPUnit_Framework_TestCase</abbr>->runTest() in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php line 905" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestCase.php line 905</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestCase">PHPUnit_Framework_TestCase</abbr>->runBare() in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestResult.php line 686" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestResult.php line 686</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>->run(<em>object</em>(<abbr title="EntidadeQuartosTest">EntidadeQuartosTest</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestCase.php line 860" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestCase.php line 860</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestCase">PHPUnit_Framework_TestCase</abbr>->run(<em>object</em>(<abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestSuite.php line 722" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestSuite.php line 722</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestSuite">PHPUnit_Framework_TestSuite</abbr>->run(<em>object</em>(<abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/Framework/TestSuite.php line 722" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestSuite.php line 722</a></li>
+       <li>at <abbr title="PHPUnit_Framework_TestSuite">PHPUnit_Framework_TestSuite</abbr>->run(<em>object</em>(<abbr title="PHPUnit_Framework_TestResult">PHPUnit_Framework_TestResult</abbr>)) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/TestRunner.php line 517" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">TestRunner.php line 517</a></li>
+       <li>at <abbr title="PHPUnit_TextUI_TestRunner">PHPUnit_TextUI_TestRunner</abbr>->doRun(<em>object</em>(<abbr title="PHPUnit_Framework_TestSuite">PHPUnit_Framework_TestSuite</abbr>), <em>array</em>('listGroups' => <em>false</em>, 'listSuites' => <em>false</em>, 'loader' => <em>null</em>, 'useDefaultConfiguration' => <em>true</em>, 'loadedExtensions' => <em>array</em>(), 'notLoadedExtensions' => <em>array</em>(), 'filter' => 'EntidadeQuartosTest', 'testSuffixes' => <em>array</em>('Test.php', '.phpt'), 'configuration' => <em>object</em>(<abbr title="PHPUnit_Util_Configuration">PHPUnit_Util_Configuration</abbr>), 'debug' => <em>false</em>, 'listeners' => <em>array</em>(), 'backupGlobals' => <em>false</em>, 'backupStaticAttributes' => <em>false</em>, 'bootstrap' => '/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/bootstrap/autoload.php', 'colors' => 'auto', 'convertErrorsToExceptions' => <em>true</em>, 'convertNoticesToExceptions' => <em>true</em>, 'convertWarningsToExceptions' => <em>true</em>, 'processIsolation' => <em>false</em>, 'stopOnFailure' => <em>false</em>, 'testdoxGroups' => <em>array</em>(), 'testdoxExcludeGroups' => <em>array</em>(), 'addUncoveredFilesFromWhitelist' => <em>true</em>, 'processUncoveredFilesFromWhitelist' => <em>false</em>, 'beStrictAboutChangesToGlobalState' => <em>null</em>, 'cacheTokens' => <em>false</em>, 'columns' => '80', 'excludeGroups' => <em>array</em>(), 'groups' => <em>array</em>(), 'logIncompleteSkipped' => <em>false</em>, 'repeat' => <em>false</em>, 'reportHighLowerBound' => '90', 'reportLowUpperBound' => '50', 'crap4jThreshold' => '30', 'stopOnError' => <em>false</em>, 'stopOnWarning' => <em>false</em>, 'stopOnIncomplete' => <em>false</em>, 'stopOnRisky' => <em>false</em>, 'stopOnSkipped' => <em>false</em>, 'failOnWarning' => <em>false</em>, 'failOnRisky' => <em>false</em>, 'timeoutForSmallTests' => '1', 'timeoutForMediumTests' => '10', 'timeoutForLargeTests' => '60', 'reportUselessTests' => <em>false</em>, 'strictCoverage' => <em>false</em>, 'disallowTestOutput' => <em>false</em>, 'enforceTimeLimit' => <em>false</em>, 'disallowTodoAnnotatedTests' => <em>false</em>, 'beStrictAboutResourceUsageDuringSmallTests' => <em>false</em>, 'reverseList' => <em>false</em>, 'registerMockObjectsFromTestArgumentsRecursively' => <em>false</em>, 'verbose' => <em>false</em>), <em>true</em>) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/Command.php line 186" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Command.php line 186</a></li>
+       <li>at <abbr title="PHPUnit_TextUI_Command">PHPUnit_TextUI_Command</abbr>->run(<em>array</em>('vendor/bin/phpunit', '--filter', 'EntidadeQuartosTest'), <em>true</em>) in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/src/TextUI/Command.php line 116" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">Command.php line 116</a></li>
+       <li>at <abbr title="PHPUnit_TextUI_Command">PHPUnit_TextUI_Command</abbr>::main() in <a title="/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/phpunit/phpunit/phpunit line 52" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">phpunit line 52</a></li>
+    </ol>
+</div>
+
+            </div>
+    </body>
+</html>
+
+
+Failed asserting that the page contains the HTML [Total de 30 quartos.]. Please check the content above.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/PageConstraint.php:90
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:275
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithPages.php:291
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:75
+
+2) EntidadeQuartosTest::testSearchQuarto
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:88
+
+3) EntidadeQuartosTest::testCreateQuarto
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:104
+
+4) EntidadeQuartosTest::testCreateQuartoWithoutNumero
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:121
+
+5) EntidadeQuartosTest::testCreateQuartoNotAndarNotExistent
+Session missing key: errors
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:95
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:150
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:138
+
+6) EntidadeQuartosTest::testQuartoDetails
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:151
+
+7) EntidadeQuartosTest::testEditQuarto
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:180
+
+8) EntidadeQuartosTest::testStartManutencao
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:195
+
+9) EntidadeQuartosTest::testStartManutencaoAlreadyStarted
+Expected status code 403, got 404.
+Failed asserting that 404 matches expected 403.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:226
+
+10) EntidadeQuartosTest::testEndManutencao
+Expected status code 200, got 404.
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:729
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:241
+
+11) EntidadeQuartosTest::testEndManutencaoNotStarted
+Expected status code 403, got 404.
+Failed asserting that 404 matches expected 403.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:744
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/EntidadeQuartosTest.php:253
+
+FAILURES!
+Tests: 13, Assertions: 13, Failures: 11.

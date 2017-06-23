@@ -1,0 +1,27 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+FF.....F....                                                      12 / 12 (100%)
+
+Time: 3.03 minutes, Memory: 1132.05MB
+
+There were 3 failures:
+
+1) ClientesTest::testClienteCanBeCreated
+Failed asserting that null is not null.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:68
+
+2) ClientesTest::testErrorCreatingClienteWithoutFields
+Session missing error: observacoes
+Failed asserting that false is true.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php:158
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:87
+
+3) ClientesTest::testEditCliente
+Failed asserting that 'Tyra Deckow IV' is not equal to <string:Tyra Deckow IV>.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:185
+
+FAILURES!
+Tests: 12, Assertions: 24, Failures: 3.

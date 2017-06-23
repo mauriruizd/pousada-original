@@ -1,0 +1,15 @@
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+
+.......F....                                                      12 / 12 (100%)
+
+Time: 2.47 minutes, Memory: 1132.05MB
+
+There was 1 failure:
+
+1) ClientesTest::testEditCliente
+Failed asserting that 'João Silva' is not equal to <string:João Silva>.
+
+/Users/mauricio/Documents/facu/2017/1S/pp_i/pousada-original/4-Implementacao/4.1-Codigo_Fonte/tests/ClientesTest.php:188
+
+FAILURES!
+Tests: 12, Assertions: 24, Failures: 1.

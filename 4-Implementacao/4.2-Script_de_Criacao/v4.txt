@@ -1,0 +1,14 @@
+CREATE TABLE preco_quarto (id INT AUTO_INCREMENT NOT NULL, id_tipo INT DEFAULT NULL, mes SMALLINT NOT NULL, preco DOUBLE PRECISION NOT NULL, deleted_at DATETIME DEFAULT NULL, INDEX IDX_C45AA80DFB0D0145 (id_tipo), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+CREATE TABLE tipo_quarto (id INT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, capacidade INT NOT NULL, deleted_at DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;
+ALTER TABLE preco_quarto ADD CONSTRAINT FK_C45AA80DFB0D0145 FOREIGN KEY (id_tipo) REFERENCES tipo_quarto (id);
+ALTER TABLE clientes ADD deleted_at DATETIME DEFAULT NULL, CHANGE nacionalidade nacionalidade INT DEFAULT NULL;
+ALTER TABLE clientes ADD CONSTRAINT FK_50FE07D7ED24F40F FOREIGN KEY (nacionalidade) REFERENCES paises (id);
+CREATE INDEX IDX_50FE07D7ED24F40F ON clientes (nacionalidade);
+CREATE INDEX nome_idx ON clientes (nome);
+CREATE INDEX email_idx ON clientes (email);
+CREATE INDEX telefone_idx ON clientes (telefone);
+CREATE INDEX celular_idx ON clientes (celular);
+CREATE INDEX dni_idx ON clientes (dni);
+CREATE INDEX cpf_idx ON clientes (cpf);
+CREATE INDEX nome_idx ON usuarios (nome);
+CREATE INDEX email_idx ON usuarios (email);
