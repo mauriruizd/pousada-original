@@ -33,7 +33,7 @@ class Quarto implements EntityValidation, SearchableEntity, SaveableEntity
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=3, unique=true)
      */
     protected $numero;
 
@@ -309,7 +309,7 @@ class Quarto implements EntityValidation, SearchableEntity, SaveableEntity
                     return [];
                 }
                 return [
-                    'numero' => 'required',
+                    'numero' => 'required|unique:App\Entities\Quarto|max:3',
                     'andar' => 'required|numeric|max:3'
                 ];
             }

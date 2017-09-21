@@ -376,18 +376,18 @@ class Cliente implements SearchableEntity, EntityValidation, SaveableEntity
     public static function validationRules(Request $request)
     {
         return [
-            'nome' => 'required',
-            'email' => 'required',
-            'telefone' => 'required',
-            'celular' => 'required',
-            'profissao' => 'required',
+            'nome' => 'required|max:254',
+            'email' => 'required|max:254',
+            'telefone' => 'required|max:254',
+            'celular' => 'required|max:254',
+            'profissao' => 'required|max:254',
             'nacionalidade' => 'required|exists:App\Entities\Pais,id',
             'dataNascimento' => 'required|date_format:"d/m/Y"',
-            'dni' => 'required',
-            'cpf' => 'required',
+            'dni' => 'required|max:254',
+            'cpf' => 'required|size:11',
             'genero' => 'required|in:' . Genero::$MASCULINO, ',' . Genero::$FEMININO,
             'cidade' => 'required',
-            'endereco' => 'required',
+            'endereco' => 'required|max:254',
         ];
     }
 

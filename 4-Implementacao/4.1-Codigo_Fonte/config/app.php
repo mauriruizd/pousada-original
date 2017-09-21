@@ -180,7 +180,7 @@ return [
 
         \App\Providers\RepositoryProvider::class,
 
-        \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
+        LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
         LaravelDoctrine\Extensions\GedmoExtensionsServiceProvider::class,
         LaravelDoctrine\Extensions\BeberleiExtensionsServiceProvider::class,

@@ -136,3 +136,9 @@ body:before {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
+
+.logoimg {
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 2px 15px #aaa;
+}

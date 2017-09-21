@@ -5,12 +5,14 @@ use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SaveableEntity;
 use App\Entities\Interfaces\SearchableEntity;
+use App\ResetPassword;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use \Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
@@ -26,6 +28,7 @@ class Usuario implements Authenticatable, CanResetPassword, EntityValidation, Se
 {
     use \LaravelDoctrine\ORM\Auth\Authenticatable;
     use \Illuminate\Auth\Passwords\CanResetPassword;
+    use Notifiable;
 
     /**
     * @ORM\Id
@@ -183,9 +186,9 @@ class Usuario implements Authenticatable, CanResetPassword, EntityValidation, Se
     public static function validationRules(Request $request)
     {
         return [
-            'nome' => 'required',
-            'email' => 'required|email',
-            'password' => 'min:6|confirmed'
+            'nome' => 'required|max:254',
+            'email' => 'required|email|max:254',
+            'password' => 'min:6|confirmed|max:254'
         ];
     }
 
@@ -204,6 +207,17 @@ class Usuario implements Authenticatable, CanResetPassword, EntityValidation, Se
             'nome',
             'email'
         ];
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 
 }

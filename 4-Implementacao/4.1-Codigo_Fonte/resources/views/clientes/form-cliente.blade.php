@@ -4,31 +4,31 @@
 <div class="form-group">
     <label class="col-md-12">Nome</label>
     <div class="col-md-12">
-        {!! Form::text('nome', isset($cliente) ? $cliente->getNome() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu nome']) !!}
+        {!! Form::text('nome', isset($cliente) ? $cliente->getNome() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu nome', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">E-mail</label>
     <div class="col-md-12">
-        {!! Form::text('email', isset($cliente) ? $cliente->getEmail() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu e-mail']) !!}
+        {!! Form::email('email', isset($cliente) ? $cliente->getEmail() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu e-mail', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">Telefone</label>
     <div class="col-md-12">
-        {!! Form::text('telefone', isset($cliente) ? $cliente->getTelefone() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu telefone']) !!}
+        {!! Form::text('telefone', isset($cliente) ? $cliente->getTelefone() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu telefone', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">Celular</label>
     <div class="col-md-12">
-        {!! Form::text('celular', isset($cliente) ? $cliente->getCelular() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu celular']) !!}
+        {!! Form::text('celular', isset($cliente) ? $cliente->getCelular() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu celular', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">Profissão</label>
     <div class="col-md-12">
-        {!! Form::text('profissao', isset($cliente) ? $cliente->getProfissao() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua profissão']) !!}
+        {!! Form::text('profissao', isset($cliente) ? $cliente->getProfissao() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua profissão', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
@@ -40,19 +40,19 @@
 <div class="form-group">
     <label class="col-md-12">Data de Nascimento</label>
     <div class="col-md-12">
-        {!! Form::text('dataNascimento', isset($cliente) ? $cliente->getDataNascimento()->format('d/m/Y') : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua data de Nascimento', 'id' => 'data-nascimento']) !!}
+        {!! Form::text('dataNascimento', isset($cliente) ? $cliente->getDataNascimento()->format('d/m/Y') : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua data de Nascimento', 'id' => 'data-nascimento', 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">Documento de Identidade</label>
     <div class="col-md-12">
-        {!! Form::text('dni', isset($cliente) ? $cliente->getDni() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu documento de identidade']) !!}
+        {!! Form::text('dni', isset($cliente) ? $cliente->getDni() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu documento de identidade', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
     <label class="col-md-12">CPF</label>
     <div class="col-md-12">
-        {!! Form::text('cpf', isset($cliente) ? $cliente->getCpf() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu CPF']) !!}
+        {!! Form::text('cpf', isset($cliente) ? $cliente->getCpf() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu CPF', 'maxlength' => 12, 'required']) !!}
     </div>
 </div>
 <div class="form-group">
@@ -71,7 +71,7 @@
 <div class="form-group">
     <label class="col-md-12">Endereco</label>
     <div class="col-md-12">
-        {!! Form::text('endereco', isset($cliente) ? $cliente->getEndereco() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu endereço']) !!}
+        {!! Form::text('endereco', isset($cliente) ? $cliente->getEndereco() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu endereço', 'maxlength' => 254, 'required']) !!}
     </div>
 </div>
 <div class="form-group">

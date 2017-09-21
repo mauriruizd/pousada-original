@@ -26,4 +26,13 @@ class ClientesRequest extends FormRequest
     {
         return Cliente::validationRules($this);
     }
+
+    protected function prepareForValidation()
+    {
+        $data = $this->all();
+        $data['cpf'] = str_replace("-", "", $data['cpf']);
+        $this->replace($data);
+    }
+
+
 }

@@ -24,7 +24,7 @@
             <tbody>
             @foreach($usuarios as $usuario)
                 <tr>
-                    <td>{{ $usuario->getNome() }}</td>
+                    <td>{{ strlen($usuario->getNome()) > 40 ? (substr($usuario->getNome(), 0, 40) . '...') : $usuario->getNome() }}</td>
                     <td>
                         <a href="{{ route('usuarios.historico', [$usuario->getId()]) }}" class="btn btn-primary">
                             <i class="fa fa-table"></i>

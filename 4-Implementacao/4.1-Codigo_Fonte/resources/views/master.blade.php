@@ -53,11 +53,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top m-b-0">
         <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
-            <div class="top-left-part"><a class="logo" href="{{ route('dashboard') }}"><b><img src="../plugins/images/pixeladmin-logo.png" alt="home" /></b><span class="hidden-xs"><img src="../plugins/images/pixeladmin-text.png" alt="home" /></span></a></div>
+            <div class="top-left-part">
+                <a class="logo" href="{{ route('dashboard') }}">
+                    <b>
+                        <img class="img-responsive" src="{{ url('img/logo_pousada.png') }}" alt="home" />
+                    </b>
+                </a>
+            </div>
             <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
                 <li>
                     <form role="search" class="app-search hidden-xs" method="get" action="@yield('search-url')">
-                        <input type="text" name="search" id="search" placeholder="Buscar..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
+                        <input type="text" name="search" id="search" placeholder="Buscar..." class="form-control" required maxlength="254">
+                        <a href=""><i class="fa fa-search"></i></a>
                     </form>
                 </li>
             </ul>
