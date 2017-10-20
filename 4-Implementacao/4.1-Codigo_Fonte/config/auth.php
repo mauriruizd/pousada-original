@@ -66,7 +66,7 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'doctrine',
+            'driver' => 'eloquent',
             'model' => App\Entities\Usuario::class,
         ],
 

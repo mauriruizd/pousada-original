@@ -14,11 +14,9 @@ class FormSelectCreator {
         $params = []
     )
     {
-        $idGetter = 'get' . $idField;
-        $valueGetter = 'get' . $valueField;
         $select = [];
         foreach ($entityCollection as $entity) {
-            $select[$entity->$idGetter()] = $entity->$valueGetter();
+            $select[$entity->$idField] = $entity->$valueField;
         }
         return Form::select($fieldName, $select, $selectedValue, $params);
     }

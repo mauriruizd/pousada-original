@@ -1,63 +1,20 @@
 <?php
+
 namespace App\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
+use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Pais
- * @ORM\Entity
- * @ORM\Table(name="paises")
- * @package App\Entities
- */
-class Pais
+class Pais extends Model
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id")
-     * @var integer
-     */
-    protected $id;
+    protected $table = 'paises';
 
-    /**
-     * @ORM\Column(type="string", name="nome")
-     * @var string
-     */
-    protected $nome;
+    protected $fillable = [
+        'id',
+        'nome'
+    ];
 
-    /**
-     * @ORM\OneToMany(targetEntity="Estado", mappedBy="pais")
-     */
-    protected $estados;
-
-    /**
-     * @return int
-     */
-    public function getId()
+    public function estados()
     {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * @param string $nome
-     */
-    public function setNome($nome)
-    {
-        $this->nome = $nome;
+        return $this->hasMany(Estado::class, 'id_pais', 'id');
     }
 }

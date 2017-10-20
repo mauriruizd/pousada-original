@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <form role="search" class="app-search hidden-xs" method="get" action="@yield('search-url')">
                         <input type="text" name="search" id="search" placeholder="Buscar..." class="form-control" required maxlength="254">
-                        <a href=""><i class="fa fa-search"></i></a>
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </li>
             </ul>

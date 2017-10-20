@@ -1,376 +1,60 @@
 <?php
+
 namespace App\Entities;
 
-use App\Entities\Interfaces\EntityValidation;
-use App\Entities\Interfaces\SaveableEntity;
-use App\Entities\Interfaces\SearchableEntity;
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Illuminate\Http\Request;
+use App\Entities\Cidade;
 use App\Entities\Enumeration\Genero;
+use App\Entities\Interfaces\EntityValidation;
+use App\Entities\Interfaces\SearchableEntity;
+use App\Entities\Pais;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-/**
- * Class Cliente
- * @package App\Entities
- * @ORM\Entity
- * @ORM\Table(name="clientes",
- *     indexes={
- *     @ORM\Index(name="nome_idx", columns={"nome"}),
- *     @ORM\Index(name="email_idx", columns={"email"}),
- *     @ORM\Index(name="telefone_idx", columns={"telefone"}),
- *     @ORM\Index(name="celular_idx", columns={"celular"}),
- *     @ORM\Index(name="dni_idx", columns={"dni"}),
- *     @ORM\Index(name="cpf_idx", columns={"cpf"})
- * })
- * @Gedmo\Softdeleteable(fieldName="deletedAt", timeAware=false)
- */
-class Cliente implements SearchableEntity, EntityValidation, SaveableEntity
+class Cliente extends Model implements SearchableEntity, EntityValidation
 {
-    /**
-     * @ORM\GeneratedValue
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
+    use DefaultSearchTrait;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $nome;
+    protected $dates = [
+        'data_nascimento'
+    ];
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $email;
+    protected $fillable = [
+        'id',
+        'nome',
+        'email',
+        'telefone',
+        'celular',
+        'profissao',
+        'id_nacionalidade',
+        'data_nascimento',
+        'rg',
+        'cpf',
+        'sexo',
+        'endereco',
+        'id_cidade',
+        'observacoes',
+        'id_usuario',
+        'deleted_at'
+    ];
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $telefone;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $celular;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $profissao;
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Pais", cascade={"detach"})
-     * @ORM\JoinColumn(name="nacionalidade", referencedColumnName="id")
-     */
-    protected $nacionalidade;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $dataNascimento;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $dni;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $cpf;
-
-    /**
-     * @ORM\Column(type="string", length=1, options={"fixed" = true})
-     */
-    protected $genero;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $endereco;
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Cidade", cascade={"detach"})
-     * @ORM\JoinColumn(name="id_cidade", referencedColumnName="id")
-     */
-    protected $cidade;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $observacoes;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
-     */
-    protected $usuario;
-
-    /**
-     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
-     */
-    protected $deletedAt;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function setDataNascimentoAttribute($dateString)
     {
-        return $this->id;
+        $this->attributes['data_nascimento'] = implode('-', array_reverse(explode('/', $dateString))) . ' 00:00:00';
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
+    public function nacionalidade()
     {
-        $this->id = $id;
+        return $this->belongsTo(Pais::class, 'id_nacionalidade', 'id');
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNome()
+    public function cidade()
     {
-        return $this->nome;
+        return $this->belongsTo(Cidade::class, 'id_cidade', 'id');
     }
 
-    /**
-     * @param mixed $nome
-     */
-    public function setNome($nome)
+    public function usuario()
     {
-        $this->nome = $nome;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTelefone()
-    {
-        return $this->telefone;
-    }
-
-    /**
-     * @param mixed $telefone
-     */
-    public function setTelefone($telefone)
-    {
-        $this->telefone = $telefone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCelular()
-    {
-        return $this->celular;
-    }
-
-    /**
-     * @param mixed $celular
-     */
-    public function setCelular($celular)
-    {
-        $this->celular = $celular;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProfissao()
-    {
-        return $this->profissao;
-    }
-
-    /**
-     * @param mixed $profissao
-     */
-    public function setProfissao($profissao)
-    {
-        $this->profissao = $profissao;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNacionalidade()
-    {
-        return $this->nacionalidade;
-    }
-
-    /**
-     * @param mixed $nacionalidade
-     */
-    public function setNacionalidade($nacionalidade)
-    {
-        $this->nacionalidade = $nacionalidade;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataNascimento()
-    {
-        return $this->dataNascimento;
-    }
-
-    /**
-     * @param mixed $dataNascimento
-     */
-    public function setDataNascimento($dataNascimento)
-    {
-        $this->dataNascimento = $dataNascimento;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDni()
-    {
-        return $this->dni;
-    }
-
-    /**
-     * @param mixed $dni
-     */
-    public function setDni($dni)
-    {
-        $this->dni = $dni;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCpf()
-    {
-        return $this->cpf;
-    }
-
-    /**
-     * @param mixed $cpf
-     */
-    public function setCpf($cpf)
-    {
-        $this->cpf = $cpf;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGenero()
-    {
-        return $this->genero;
-    }
-
-    /**
-     * @param mixed $genero
-     */
-    public function setGenero($genero)
-    {
-        $this->genero = $genero;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndereco()
-    {
-        return $this->endereco;
-    }
-
-    /**
-     * @param mixed $endereco
-     */
-    public function setEndereco($endereco)
-    {
-        $this->endereco = $endereco;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCidade()
-    {
-        return $this->cidade;
-    }
-
-    /**
-     * @param mixed $cidade
-     */
-    public function setCidade($cidade)
-    {
-        $this->cidade = $cidade;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObservacoes()
-    {
-        return $this->observacoes;
-    }
-
-    /**
-     * @param mixed $observacoes
-     */
-    public function setObservacoes($observacoes)
-    {
-        $this->observacoes = $observacoes;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
-     * @param mixed $usuario
-     */
-    public function setUsuario($usuario)
-    {
-        $this->usuario = $usuario;
-    }
-
-    public function whitelist()
-    {
-        return [
-            'nome',
-            'email',
-            'telefone',
-            'celular',
-            'profissao',
-            'nacionalidade',
-            'dataNascimento',
-            'dni',
-            'cpf',
-            'cidade',
-            'genero',
-            'endereco',
-            'usuario',
-            'observacoes'
-        ];
+        return $this->belongsTo(Usuario::class, 'id_usuario', 'id');
     }
 
     public static function validationRules(Request $request)
@@ -381,12 +65,12 @@ class Cliente implements SearchableEntity, EntityValidation, SaveableEntity
             'telefone' => 'required|max:254',
             'celular' => 'required|max:254',
             'profissao' => 'required|max:254',
-            'nacionalidade' => 'required|exists:App\Entities\Pais,id',
-            'dataNascimento' => 'required|date_format:"d/m/Y"',
-            'dni' => 'required|max:254',
+            'id_nacionalidade' => 'required|exists:paises,id',
+            'data_nascimento' => 'required|date_format:"d/m/Y"',
+            'rg' => 'required|max:254',
             'cpf' => 'required|size:11',
-            'genero' => 'required|in:' . Genero::$MASCULINO, ',' . Genero::$FEMININO,
-            'cidade' => 'required',
+            'sexo' => 'required|in:' . Genero::$MASCULINO, ',' . Genero::$FEMININO,
+            'id_cidade' => 'required',
             'endereco' => 'required|max:254',
         ];
     }
@@ -404,8 +88,10 @@ class Cliente implements SearchableEntity, EntityValidation, SaveableEntity
             'email',
             'telefone',
             'celular',
-            'dni',
+            'rg',
             'cpf',
         ];
     }
+
+
 }

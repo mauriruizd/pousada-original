@@ -1,8 +1,9 @@
 <?php
+namespace Database\Seeds\Doctrine;
 
 use Illuminate\Database\Seeder;
 
-class QuartosSeeder extends Seeder
+class ClientesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class QuartosSeeder extends Seeder
      */
     public function run()
     {
-        entity(\App\Entities\Quarto::class, 30)->create();
+        entity(\App\Entities\Cliente::class, 20)->create();
     }
 }

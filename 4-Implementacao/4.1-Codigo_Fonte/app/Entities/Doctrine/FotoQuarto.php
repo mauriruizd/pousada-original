@@ -1,15 +1,15 @@
 <?php
-namespace App\Entities;
+namespace App\Entities\Doctrine;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Manutencao
+ * Class FotoQuarto
  * @package App\Entities
  * @ORM\Entity
- * @ORM\Table(name="manutencao")
+ * @ORM\Table(name="fotos_quartos")
  */
-class Manutencao
+class FotoQuarto
 {
     /**
      * @ORM\Id
@@ -19,17 +19,12 @@ class Manutencao
     protected $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
-    protected $motivo;
+    protected $url;
 
     /**
-     * @ORM\Column(name="data_hora", type="datetime")
-     */
-    protected $dataHora;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Quarto", inversedBy="manutencoes")
+     * @ORM\ManyToOne(targetEntity="Quarto", inversedBy="fotos")
      * @ORM\JoinColumn(name="id_quarto", referencedColumnName="id")
      */
     protected $quarto;
@@ -53,17 +48,17 @@ class Manutencao
     /**
      * @return mixed
      */
-    public function getMotivo()
+    public function getUrl()
     {
-        return $this->motivo;
+        return $this->url;
     }
 
     /**
-     * @param mixed $motivo
+     * @param mixed $url
      */
-    public function setMotivo($motivo)
+    public function setUrl($url)
     {
-        $this->motivo = $motivo;
+        $this->url = $url;
     }
 
     /**
@@ -80,21 +75,5 @@ class Manutencao
     public function setQuarto($quarto)
     {
         $this->quarto = $quarto;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataHora()
-    {
-        return $this->dataHora;
-    }
-
-    /**
-     * @param mixed $dataHora
-     */
-    public function setDataHora($dataHora)
-    {
-        $this->dataHora = $dataHora;
     }
 }

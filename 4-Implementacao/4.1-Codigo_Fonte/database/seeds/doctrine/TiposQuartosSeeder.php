@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeds\Doctrine;
 
 use Illuminate\Database\Seeder;
 use App\Repositories\TiposQuartosRepository;

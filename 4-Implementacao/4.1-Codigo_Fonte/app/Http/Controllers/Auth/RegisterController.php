@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Usuario;
-use App\User;
 use App\Http\Controllers\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\Facades\Validator;
@@ -74,11 +73,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = new Usuario($data['name'], $data['login']);
-        $user->setPassword(bcrypt($data['password']));
-        $user->setTipo(TipoUsuario::$ADMINISTRADOR);
-        $this->em->persist($user);
-        $this->em->flush();
-        return $user;
+        return Usuario::create([
+            'nome' => $data['nome'],
+            'password' => $data['password'],
+            'tipo' => TipoUsuario::$ADMINISTRADOR
+        ]);
     }
 }

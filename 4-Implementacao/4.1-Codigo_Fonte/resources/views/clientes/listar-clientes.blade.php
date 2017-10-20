@@ -10,7 +10,7 @@
         @if(!is_null($search))
             <h4>Clientes encontrados para "{{ $search }}".</h4>
         @endif
-        <h4>Total de {{ $clientes->total() }} clientes.</h4>
+        <h4>Total de {{ $clientes->count() }} clientes.</h4>
         <table class="table">
             <thead>
             <tr>
@@ -25,25 +25,25 @@
             <tbody>
             @foreach($clientes as $cliente)
                 <tr>
-                    <td>{{ $cliente->getNome() }}</td>
-                    <td>{{ $cliente->getDni() }}</td>
+                    <td>{{ $cliente->nome }}</td>
+                    <td>{{ $cliente->rg }}</td>
                     <td>
-                        <a href="{{ route('clientes.ficha', [$cliente->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('clientes.ficha', [$cliente->id]) }}" class="btn btn-primary">
                             <i class="fa fa-print"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('clientes.show', [$cliente->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('clientes.show', [$cliente->id]) }}" class="btn btn-primary">
                             <i class="fa fa-eye"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('clientes.edit', [$cliente->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('clientes.edit', [$cliente->id]) }}" class="btn btn-primary">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </td>
                     <td>
-                        {!! Form::open(['route' => ['clientes.destroy', $cliente->getId()], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['clientes.destroy', $cliente->id], 'method' => 'delete']) !!}
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-trash"></i>
                             </button>

@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeds\Doctrine;
 
 use App\WithEntityManagerInterface;
 use Illuminate\Database\Seeder;

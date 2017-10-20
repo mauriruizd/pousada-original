@@ -1,5 +1,5 @@
 <?php
-namespace App\Entities;
+namespace App\Entities\Doctrine;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

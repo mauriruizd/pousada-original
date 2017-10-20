@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\Acesso;
 use App\Http\Controllers\Controller;
-use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -31,19 +30,11 @@ class LoginController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
-
-    /**
      * Create a new controller instance.
      *
-     * @param EntityManagerInterface
-     * @return void
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct()
     {
-        $this->em = $em;
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -59,11 +50,9 @@ class LoginController extends Controller
 
         $this->clearLoginAttempts($request);
 
-        $acesso = new Acesso();
-        $acesso->setUsuario($this->guard()->user());
-        $acesso->setIp($request->ip());
-        $this->em->persist($acesso);
-        $this->em->flush();
+        Acesso::create([
+            'id_usuario' => $this->guard()->user()->id
+        ]);
 
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath());

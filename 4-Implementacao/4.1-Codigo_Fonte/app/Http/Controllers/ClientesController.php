@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Cidade;
+use App\Entities\Cliente;
+use App\Entities\Estado;
+use App\Entities\Pais;
 use App\Helpers\FormSelectCreator;
 use App\Http\Requests\ClientesDeleteRequest;
 use App\Http\Requests\ClientesRequest;
-use App\Repositories\ClientesRepository;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,20 +16,7 @@ use Illuminate\Http\Response;
 
 class ClientesController extends Controller
 {
-    protected $em;
-    protected $clientes;
-    protected $paises;
-    protected $estados;
-    protected $cidades;
 
-    public function __construct(EntityManagerInterface $em, ClientesRepository $clientes)
-    {
-        $this->em = $em;
-        $this->clientes = $clientes;
-        $this->paises = $this->em->getRepository('App\Entities\Pais');
-        $this->estados = $this->em->getRepository('App\Entities\Estado');
-        $this->cidades = $this->em->getRepository('App\Entities\Cidade');
-    }
 
     /**
      * Display a listing of the resource.
@@ -36,7 +26,7 @@ class ClientesController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $clientes = $this->clientes->searchAndPaginate($search);
+        $clientes = Cliente::search($search)->paginate(10);
         return view('clientes.listar-clientes', [
             'clientes' => $clientes,
             'search' => $search
@@ -50,14 +40,14 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        $firstEstado = $this->estados->findOneBy([
-            'pais' => 1
-        ]);
+        $firstEstado = Estado::where([
+            'id_pais' => 1
+        ])->first();
         return view('clientes.criar-cliente', [
-            'nacionalidade' => $this->getPaises(null, 'nacionalidade'),
+            'nacionalidade' => $this->getPaises(null, 'id_nacionalidade'),
             'paises' => $this->getPaises(null, 'paises'),
             'estados' => $this->getEstados(1, null),
-            'cidades' => $this->getCidades($firstEstado->getId(), null)
+            'cidades' => $this->getCidades($firstEstado->id, null)
         ]);
     }
 
@@ -69,12 +59,7 @@ class ClientesController extends Controller
      */
     public function store(ClientesRequest $request)
     {
-        $data = $request->all();
-        $data['nacionalidade'] = $this->paises->find($request->nacionalidade);
-        $data['cidade'] = $this->cidades->find($data['cidade']);
-        $data['dataNascimento'] = new \DateTime($this->formatDate($data['dataNascimento']));
-        $cliente = $this->clientes->create($data);
-        $this->clientes->save($cliente);
+        Cliente::create(array_merge($request->all(), $this->getActiveUserArray()));
         return redirect()->route('clientes.index')->with(['msg' => 'Cliente criado com sucesso!']);
     }
 
@@ -199,29 +184,30 @@ class ClientesController extends Controller
 
     public function getPaises($selected, $elementNameId)
     {
-        $paises = $this->em->getRepository('App\Entities\Pais')->findAll();
-        return FormSelectCreator::fromEntity('Id', 'Nome', $paises, $elementNameId, $selected, ['id' => $elementNameId]);
+        $paises = Pais::all();
+        return FormSelectCreator::fromEntity('id', 'nome', $paises, $elementNameId, $selected, ['id' => $elementNameId]);
     }
 
     public function getEstados($idPais, $selected)
     {
-        $estados = $this->em->getRepository('App\Entities\Estado')->findBy([
-            'pais' => $idPais
-        ]);
-        return FormSelectCreator::fromEntity('Id', 'Nome', $estados, 'estado', $selected, ['id' => 'estados']);
+        $estados = Estado::where([
+            'id_pais' => $idPais
+        ])->get();
+        return FormSelectCreator::fromEntity('id', 'nome', $estados, 'estado', $selected, ['id' => 'estados']);
     }
 
     public function getCidades($idEstado, $selected)
     {
-        $cidades = $this->em->getRepository('App\Entities\Cidade')->findBy([
-            'estado' => $idEstado
-        ]);
-        return FormSelectCreator::fromEntity('Id', 'Nome', $cidades, 'cidade', $selected, ['id' => 'cidades']);
+        $cidades = Cidade::where([
+            'id_estado' => $idEstado
+        ])->get();
+        return FormSelectCreator::fromEntity('id', 'nome', $cidades, 'id_cidade', $selected, ['id' => 'cidades']);
     }
 
-    private function formatDate($dateString)
+    private function getActiveUserArray()
     {
-        $parts = explode('/', $dateString);
-        return implode('-', [$parts[2], $parts[1], $parts[0]]);
+        return [
+            'id_usuario' => auth()->user()->id
+        ];
     }
 }

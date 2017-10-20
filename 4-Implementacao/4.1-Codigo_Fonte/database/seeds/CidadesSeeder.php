@@ -1,13 +1,19 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Entities\Cidade;
 
-use App\WithEntityManagerInterface;
-
-class CidadesSeeder extends Seeder
+class CidadesSeeder extends GeographicDataSeeder
 {
-    use WithEntityManagerInterface;
+    /**
+     * Chaves para inserção desde metodo fill.
+     *
+     * @var array
+     */
+    protected $keys = [
+        'id',
+        'nome',
+        'id_estado'
+    ];
 
     /**
      * Run the database seeds.
@@ -16,15 +22,6 @@ class CidadesSeeder extends Seeder
      */
     public function run()
     {
-        $cidades = file_get_contents('database/seeds/cidades.txt');
-        foreach (explode("\n", $cidades) as $registro) {
-            $partes = explode(",", $registro);
-            $cidade = new Cidade();
-            $cidade->setId($partes[0]);
-            $cidade->setNome($partes[1]);
-            $cidade->setEstado($this->em->getRepository('App\Entities\Estado')->find($partes[2]));
-            $this->em->persist($cidade);
-        }
-        $this->em->flush();
+        $this->fill('cidades', file_get_contents('database/seeds/txtdumps/cidades.txt'));
     }
 }

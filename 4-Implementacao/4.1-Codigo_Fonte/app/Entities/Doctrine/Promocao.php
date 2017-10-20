@@ -1,5 +1,5 @@
 <?php
-namespace App\Entities;
+namespace App\Entities\Doctrine;
 
 use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;

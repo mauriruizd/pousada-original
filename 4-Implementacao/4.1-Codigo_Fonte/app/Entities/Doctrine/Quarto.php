@@ -1,5 +1,5 @@
 <?php
-namespace App\Entities;
+namespace App\Entities\Doctrine;
 
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SaveableEntity;
