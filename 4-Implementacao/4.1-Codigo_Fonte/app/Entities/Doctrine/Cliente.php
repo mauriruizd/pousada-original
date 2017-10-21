@@ -7,7 +7,7 @@ use App\Entities\Interfaces\SearchableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Illuminate\Http\Request;
-use App\Entities\Enumeration\Genero;
+use App\Entities\Enumeration\Sexo;
 
 /**
  * Class Cliente
@@ -385,7 +385,7 @@ class Cliente implements SearchableEntity, EntityValidation, SaveableEntity
             'dataNascimento' => 'required|date_format:"d/m/Y"',
             'dni' => 'required|max:254',
             'cpf' => 'required|size:11',
-            'genero' => 'required|in:' . Genero::$MASCULINO, ',' . Genero::$FEMININO,
+            'genero' => 'required|in:' . Sexo::$MASCULINO, ',' . Sexo::$FEMININO,
             'cidade' => 'required',
             'endereco' => 'required|max:254',
         ];

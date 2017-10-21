@@ -6,21 +6,12 @@ use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Usuario;
 use App\Http\Requests\UsuariosDeleteRequest;
 use App\Http\Requests\UsuariosRequest;
-use App\Repositories\UserRepository;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Helpers\EnumExtractor;
 
 class UsuariosController extends Controller
 {
-    /**
-     * @var UserRepository
-     */
-    private $usuarios;
-
-    public function __construct(UserRepository $usuarios)
-    {
-        $this->usuarios = $usuarios;
-    }
 
     /**
      * Display a listing of the resource.
@@ -30,8 +21,26 @@ class UsuariosController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $usuarios = $this->usuarios->searchAndPaginate($search);
+        $usuarios = Usuario::search($search)
+            ->paginate(10);
         return view('usuarios.listar-usuarios', [
+            'usuarios' => $usuarios,
+            'search' => $search
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function arquivados(Request $request)
+    {
+        $search = $request->search;
+        $usuarios = Usuario::search($search)
+            ->onlyTrashed()
+            ->paginate(10);
+        return view('usuarios.listar-usuarios-arquivados', [
             'usuarios' => $usuarios,
             'search' => $search
         ]);
@@ -57,8 +66,7 @@ class UsuariosController extends Controller
      */
     public function store(UsuariosRequest $request)
     {
-        $usuario = $this->usuarios->create($request->all());
-        $this->usuarios->save($usuario);
+        Usuario::create($request->all());
         return redirect()->route('usuarios.index')->with(['msg' => 'Usuário criado com sucesso!']);
     }
 
@@ -70,7 +78,7 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        $usuario = $this->usuarios->find($id);
+        $usuario = Usuario::find($id);
         if (is_null($usuario)) {
             abort(404);
         }
@@ -87,7 +95,7 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        $usuario = $this->usuarios->find($id);
+        $usuario = Usuario::find($id);
         if (is_null($usuario)) {
             abort(404);
         }
@@ -106,9 +114,35 @@ class UsuariosController extends Controller
      */
     public function update(UsuariosRequest $request, $id)
     {
-        $usario = $this->usuarios->update($id, $request->all());
-        $this->usuarios->save($usario);
+        try {
+            $usuario = Usuario::where('id', '=', $id)->firstOrFail();
+            $usuario->fill($request->all())->save();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
         return redirect()->back()->with(['msg' => 'Usuário atualizado com sucesso!']);
+    }
+
+    public function alterarSenhaForm($id)
+    {
+        $usuario = Usuario::find($id);
+        if (is_null($usuario)) {
+            abort(404);
+        }
+        return view('usuarios.alterar-senha', [
+            'usuario' => $usuario
+        ]);
+    }
+
+    public function alterarSenha($id, UsuariosRequest $request)
+    {
+        try {
+            $usuario = Usuario::findOrFail($id);
+            $usuario->fill($request->all())->save();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+        return redirect()->route('usuarios.index')->with(['msg' => 'Senha do Usuário alterada com sucesso!']);
     }
 
     /**
@@ -119,9 +153,22 @@ class UsuariosController extends Controller
      */
     public function destroy($id, UsuariosDeleteRequest $request)
     {
-        $usuario = $this->usuarios->find($id);
-        $this->usuarios->delete($usuario);
-        return redirect()->route('usuarios.index')->with(['msg' => 'Usuário eliminado com sucesso!']);
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+        return redirect()->route('usuarios.index')->with(['msg' => 'Usuário arquivado com sucesso!']);
+    }
+
+    public function recuperar($id)
+    {
+        try {
+            $usuario = Usuario::onlyTrashed()
+                ->where('id', $id)
+                ->firstOrFail();
+            $usuario->restore();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+        return redirect()->back()->with(['msg' => 'Usuario recuperado com sucesso!']);
     }
 
     /**
@@ -132,7 +179,8 @@ class UsuariosController extends Controller
      */
     public function historico($id)
     {
-        $usuario = $this->usuarios->find($id);
+        $usuario = Usuario::with('acessos')
+            ->find($id);
         return view('usuarios.historico-acessos', [
             'usuario' => $usuario
         ]);

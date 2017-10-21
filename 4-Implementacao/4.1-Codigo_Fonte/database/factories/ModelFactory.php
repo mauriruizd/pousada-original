@@ -37,8 +37,8 @@ $factory->define(\App\Entities\Cidade::class, function(Faker\Generator $faker) {
 
 $factory->define(\App\Entities\Cliente::class, function(Faker\Generator $faker) use($em) {
     $generos = [
-        \App\Entities\Enumeration\Genero::$MASCULINO,
-        \App\Entities\Enumeration\Genero::$FEMININO
+        \App\Entities\Enumeration\Sexo::$MASCULINO,
+        \App\Entities\Enumeration\Sexo::$FEMININO
     ];
     return [
         'nome' => $faker->name,

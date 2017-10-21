@@ -10,13 +10,12 @@ use App\Helpers\FormSelectCreator;
 use App\Http\Requests\ClientesDeleteRequest;
 use App\Http\Requests\ClientesRequest;
 use Dompdf\Dompdf;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Http\Response;
 
 class ClientesController extends Controller
 {
-
 
     /**
      * Display a listing of the resource.
@@ -28,6 +27,23 @@ class ClientesController extends Controller
         $search = $request->search;
         $clientes = Cliente::search($search)->paginate(10);
         return view('clientes.listar-clientes', [
+            'clientes' => $clientes,
+            'search' => $search
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function arquivados(Request $request)
+    {
+        $search = $request->search;
+        $clientes = Cliente::search($search)
+            ->onlyTrashed()
+            ->paginate(10);
+        return view('clientes.listar-clientes-arquivados', [
             'clientes' => $clientes,
             'search' => $search
         ]);
@@ -71,9 +87,11 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        $cliente = $this->clientes->find($id);
-        if (is_null($cliente)) {
+        try {
+            $cliente = Cliente::find($id);
+        } catch (ModelNotFoundException $e) {
             abort(404);
+            return null;
         }
         return view('clientes.detalhe-cliente', [
             'cliente' => $cliente
@@ -89,7 +107,7 @@ class ClientesController extends Controller
      */
     public function ficha($id, Request $request)
     {
-        $cliente = $this->clientes->find($id);
+        $cliente = Cliente::find($id);
         if (is_null($cliente)) {
             abort(404);
         }
@@ -113,7 +131,7 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $cliente = $this->clientes->find($id);
+        $cliente = Cliente::find($id);
         if (is_null($cliente)) {
             abort(404);
         }
@@ -122,7 +140,7 @@ class ClientesController extends Controller
         $pais = $estado->getPais();
         return view('clientes.editar-cliente', [
             'cliente' => $cliente,
-            'nacionalidade' => $this->getPaises($cliente->getNacionalidade()->getId(), 'nacionalidade'),
+            'nacionalidade' => $this->getPaises($cliente->getNacionalidade()->getId(), 'id_nacionalidade'),
             'paises' => $this->getPaises($pais->getId(), 'paises'),
             'estados' => $this->getEstados($pais->getId(), $estado->getId()),
             'cidades' => $this->getCidades($estado->getId(), $cidade->getId())
@@ -138,12 +156,8 @@ class ClientesController extends Controller
      */
     public function update(ClientesRequest $request, $id)
     {
-        $data = $request->all();
-        $data['nacionalidade'] = $this->paises->find($request->nacionalidade);
-        $data['cidade'] = $this->cidades->find($data['cidade']);
-        $data['dataNascimento'] = new \DateTime($this->formatDate($data['dataNascimento']));
-        $usario = $this->clientes->update($id, $data);
-        $this->clientes->save($usario);
+        $cliente = Cliente::find($id);
+        $cliente->fill($request->all())->save();
         return redirect()->back()->with(['msg' => 'Cliente atualizado com sucesso!']);
     }
 
@@ -155,12 +169,25 @@ class ClientesController extends Controller
      */
     public function destroy($id, ClientesDeleteRequest $request)
     {
-        $cliente = $this->clientes->find($id);
+        $cliente = Cliente::find($id);
         if (is_null($cliente)) {
             abort(404);
         }
-        $this->clientes->delete($cliente);
-        return redirect()->route('clientes.index')->with(['msg' => 'Cliente eliminado com sucesso!']);
+        $cliente->delete();
+        return redirect()->route('clientes.index')->with(['msg' => 'Cliente arquivado com sucesso!']);
+    }
+
+    public function recuperar($id)
+    {
+        try {
+            $cliente = Cliente::onlyTrashed()
+                ->where('id', $id)
+                ->firstOrFail();
+            $cliente->restore();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+        return redirect()->back()->with(['msg' => 'Cliente recuperado com sucesso!']);
     }
 
     /**

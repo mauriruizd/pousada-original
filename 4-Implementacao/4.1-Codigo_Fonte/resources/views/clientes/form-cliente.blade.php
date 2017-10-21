@@ -59,12 +59,12 @@
     <label class="col-md-12">Sexo</label>
     <div class="col-md-3">
         <label>
-            {!! Form::radio('sexo', \App\Entities\Enumeration\Genero::$MASCULINO, isset($cliente) ? $cliente->sexo === \App\Entities\Enumeration\Genero::$MASCULINO : true) !!} Masculino
+            {!! Form::radio('sexo', \App\Entities\Enumeration\Sexo::$MASCULINO, isset($cliente) ? $cliente->sexo === \App\Entities\Enumeration\Sexo::$MASCULINO : true) !!} Masculino
         </label>
     </div>
     <div class="col-md-3">
         <label>
-            {!! Form::radio('sexo', \App\Entities\Enumeration\Genero::$FEMININO, isset($cliente) ? $cliente->sexo === \App\Entities\Enumeration\Genero::$FEMININO : null) !!} Feminino
+            {!! Form::radio('sexo', \App\Entities\Enumeration\Sexo::$FEMININO, isset($cliente) ? $cliente->sexo === \App\Entities\Enumeration\Sexo::$FEMININO : null) !!} Feminino
         </label>
     </div>
 </div>

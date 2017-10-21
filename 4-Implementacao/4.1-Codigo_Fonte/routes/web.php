@@ -57,11 +57,17 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', ['as' => 'dashboard', 'uses' => 'ClientesController@index']);
 
+    Route::get('usuarios/arquivados', ['as' => 'usuarios.arquivados', 'uses' => 'UsuariosController@arquivados']);
     Route::resource('usuarios', 'UsuariosController');
     Route::get('usuarios/{usuario}/acessos', ['as' => 'usuarios.historico', 'uses' => 'UsuariosController@historico']);
+    Route::get('usuarios/{id}/recuperar', ['as' => 'usuarios.recuperar', 'uses' => 'UsuariosController@recuperar']);
+    Route::get('usuarios/{id}/alterar-senha', ['as' => 'usuarios.form-alterar-senha', 'uses' => 'UsuariosController@alterarSenhaForm']);
+    Route::put('usuarios/{id}/alterar-senha', ['as' => 'usuarios.alterar-senha', 'uses' => 'UsuariosController@alterarSenha']);
 
+    Route::get('clientes/arquivados', ['as' => 'clientes.arquivados', 'uses' => 'ClientesController@arquivados']);
     Route::resource('clientes', 'ClientesController');
     Route::get('clientes/{id}/ficha', ['as' => 'clientes.ficha', 'uses' => 'ClientesController@ficha']);
+    Route::get('clientes/{id}/recuperar', ['as' => 'clientes.recuperar', 'uses' => 'ClientesController@recuperar']);
     Route::get('clientes/select/{endpoint}/{id}', 'ClientesController@selectEndpoint');
 
     Route::get('tipos-quartos', ['as' => 'tipos-quartos.index', 'uses' => 'TiposQuartosController@index']);

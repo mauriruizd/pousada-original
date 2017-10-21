@@ -57,7 +57,7 @@
         </td>
         <td colspan="1">RG</td>
         <td colspan="3" class="underline">
-            {{ $cliente->getDni() }}
+            {{ $cliente->getRg() }}
         </td>
         <td colspan="1">CPF</td>
         <td colspan="3" class="underline">

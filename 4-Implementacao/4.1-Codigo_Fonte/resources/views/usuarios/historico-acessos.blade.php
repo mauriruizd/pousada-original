@@ -19,7 +19,7 @@
             <tbody>
             @foreach($usuario->getAcessos() as $acesso)
                 <tr>
-                    <td>{{ $acesso->getTimestamp()->format('d/m/Y H:i:s') }}</td>
+                    <td>{{ $acesso->getTimestamp() }}</td>
                     <td>{{ $acesso->getIp() }}</td>
                 </tr>
             @endforeach

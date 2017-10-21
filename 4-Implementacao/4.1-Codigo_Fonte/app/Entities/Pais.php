@@ -13,6 +13,27 @@ class Pais extends Model
         'nome'
     ];
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function getEstados()
+    {
+        return $this->estados;
+    }
+
     public function estados()
     {
         return $this->hasMany(Estado::class, 'id_pais', 'id');

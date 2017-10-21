@@ -40,19 +40,19 @@
     <div class="row">
         <label class="col-md-12">Nacionalidae</label>
         <p class="col-md-12">
-            {{ $cliente->getNacionalidade()->getNome() }}
+            {{ $cliente->nacionalidade->getNome() }}
         </p>
     </div>
     <div class="row">
         <label class="col-md-12">Data de Nascimento</label>
         <p class="col-md-12">
-            {{ $cliente->getDataNascimento()->format('d/m/Y') }}
+            {{ $cliente->getDataNascimento() }}
         </p>
     </div>
     <div class="row">
-        <label class="col-md-12">Documento de Identidade</label>
+        <label class="col-md-12">RG</label>
         <p class="col-md-12">
-            {{ $cliente->getDni() }}
+            {{ $cliente->getRg() }}
         </p>
     </div>
     <div class="row">
@@ -62,9 +62,9 @@
         </p>
     </div>
     <div class="row">
-        <label class="col-md-12">Gênero</label>
+        <label class="col-md-12">Sexo</label>
         <p class="col-md-12">
-            @if($cliente->getGenero() === \App\Entities\Enumeration\Genero::$FEMININO)
+            @if($cliente->getSexo() === \App\Entities\Enumeration\Sexo::$FEMININO)
                 Feminino
             @else
                 Masculino
@@ -114,7 +114,7 @@
             </a>
             {!! Form::open(['route' => ['clientes.destroy', $cliente->getId()], 'method' => 'delete']) !!}
                 <button type="submit" class="btn btn-primary btn-rounded">
-                    <i class="fa fa-times"></i>
+                    <i class="fa fa-archive"></i>
                 </button>
             {!! Form::close() !!}
             <a href="{{ route('clientes.edit', [$cliente->getId()]) }}" class="btn btn-primary btn-rounded">

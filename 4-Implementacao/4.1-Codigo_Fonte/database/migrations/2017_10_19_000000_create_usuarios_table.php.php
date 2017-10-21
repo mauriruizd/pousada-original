@@ -24,6 +24,7 @@ class CreateUsuariosTable extends Migration
                 TipoUsuario::$ADMINISTRADOR
             ]);
             $table->timestamps();
+            $table->softDeletes();
             $table->rememberToken();
         });
     }

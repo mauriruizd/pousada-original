@@ -18,7 +18,8 @@
                 <th>Histórico de Acessos</th>
                 <th>Detalhes</th>
                 <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Alterar Senha</th>
+                <th>Arquivar</th>
             </tr>
             </thead>
             <tbody>
@@ -41,9 +42,14 @@
                         </a>
                     </td>
                     <td>
+                        <a href="{{ route('usuarios.form-alterar-senha', [$usuario->getId()]) }}" class="btn btn-primary">
+                            <i class="fa fa-key"></i>
+                        </a>
+                    </td>
+                    <td>
                         {!! Form::open(['route' => ['usuarios.destroy', $usuario->getId()], 'method' => 'delete']) !!}
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-trash"></i>
+                                <i class="fa fa-archive"></i>
                             </button>
                         {!! Form::close() !!}
                     </td>
@@ -54,8 +60,16 @@
         {!! $usuarios->render() !!}
     </div>
     <div class="floating-menu">
-        <a href="{{ route('usuarios.create') }}" class="btn btn-rounded btn-lg btn-primary">
-            <i class="fa fa-plus"></i>
-        </a>
+        <div class="submenu">
+            <a href="{{ route('usuarios.arquivados') }}" class="btn btn-primary btn-rounded" title="Listar usuarios arquivados">
+                <i class="fa fa-archive"></i>
+            </a>
+            <a href="{{ route('usuarios.create') }}" class="btn btn-rounded btn-primary" title="Criar novo registro de usuario">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <button class="btn btn-primary btn-rounded btn-lg menu-main">
+            <i class="fa fa-bars"></i>
+        </button>
     </div>
 @stop

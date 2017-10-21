@@ -16,6 +16,7 @@ class CreateAcessosTable extends Migration
         Schema::create('acessos', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_usuario');
+            $table->string('ip');
             $table->dateTime('timestamp')->default(new \Carbon\Carbon());
 
             $table->foreign('id_usuario', 'acessos_usuarios_fk')

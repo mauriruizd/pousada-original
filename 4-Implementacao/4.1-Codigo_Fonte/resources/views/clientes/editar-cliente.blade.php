@@ -8,7 +8,7 @@
 @stop
 @section('search-url', route('clientes.index'))
 @section('content')
-    {!! Form::open(['route' => ['clientes.update', $cliente->getId()], 'method' => 'PUT', 'class' => 'form-horizontal form-material']) !!}
+    {!! Form::model($cliente, ['route' => ['clientes.update', $cliente->getId()], 'method' => 'PUT', 'class' => 'form-horizontal form-material']) !!}
     @include('clientes.form-cliente')
     <div class="floating-menu">
         <button type="submit" class="btn btn-primary btn-rounded btn-lg menu-main">

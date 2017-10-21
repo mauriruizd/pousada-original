@@ -51,7 +51,8 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         Acesso::create([
-            'id_usuario' => $this->guard()->user()->id
+            'id_usuario' => $this->guard()->user()->id,
+            'ip' => $request->getClientIp()
         ]);
 
         return $this->authenticated($request, $this->guard()->user())

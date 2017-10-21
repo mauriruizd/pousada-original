@@ -3,19 +3,23 @@
 namespace App\Entities;
 
 use App\Entities\Cidade;
-use App\Entities\Enumeration\Genero;
+use App\Entities\Enumeration\Sexo;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Pais;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class Cliente extends Model implements SearchableEntity, EntityValidation
 {
     use DefaultSearchTrait;
+    use SoftDeletes;
 
     protected $dates = [
-        'data_nascimento'
+        'data_nascimento',
+        'deleted_at'
     ];
 
     protected $fillable = [
@@ -36,6 +40,266 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
         'id_usuario',
         'deleted_at'
     ];
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfissao()
+    {
+        return $this->profissao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdNacionalidade()
+    {
+        return $this->id_nacionalidade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataNascimento()
+    {
+        return $this->data_nascimento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRg()
+    {
+        return $this->rg;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdCidade()
+    {
+        return $this->id_cidade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObservacoes()
+    {
+        return $this->observacoes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
+
+    public function getNacionalidade()
+    {
+        return $this->nacionalidade;
+    }
+
+    public function getCidade()
+    {
+        return $this->cidade;
+    }
+
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $nome
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @param mixed $telefone
+     */
+    public function setTelefone($telefone)
+    {
+        $this->telefone = $telefone;
+    }
+
+    /**
+     * @param mixed $celular
+     */
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+    }
+
+    /**
+     * @param mixed $profissao
+     */
+    public function setProfissao($profissao)
+    {
+        $this->profissao = $profissao;
+    }
+
+    /**
+     * @param mixed $idNacionalidade
+     */
+    public function setIdNacionalidade($idNacionalidade)
+    {
+        $this->id_nacionalidade = $idNacionalidade;
+    }
+
+    /**
+     * @param mixed $dataNascimento
+     */
+    public function setDataNascimento($dataNascimento)
+    {
+        $this->data_nascimento = $dataNascimento;
+    }
+
+    /**
+     * @param mixed $rg
+     */
+    public function setRg($rg)
+    {
+        $this->rg = $rg;
+    }
+
+    /**
+     * @param mixed $cpf
+     */
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    /**
+     * @param mixed $sexo
+     */
+    public function setSexo($sexo)
+    {
+        $this->sexo = $sexo;
+    }
+
+    /**
+     * @param mixed $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    /**
+     * @param mixed $idCidade
+     */
+    public function setIdCidade($idCidade)
+    {
+        $this->id_cidade = $idCidade;
+    }
+
+    /**
+     * @param mixed $observacoes
+     */
+    public function setObservacoes($observacoes)
+    {
+        $this->observacoes = $observacoes;
+    }
+
+    /**
+     * @param mixed $idUsuario
+     */
+    public function setIdUsuario($idUsuario)
+    {
+        $this->id_usuario = $idUsuario;
+    }
+
+    public function getDataNascimentoAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y');
+    }
 
     public function setDataNascimentoAttribute($dateString)
     {
@@ -69,7 +333,7 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
             'data_nascimento' => 'required|date_format:"d/m/Y"',
             'rg' => 'required|max:254',
             'cpf' => 'required|size:11',
-            'sexo' => 'required|in:' . Genero::$MASCULINO, ',' . Genero::$FEMININO,
+            'sexo' => 'required|in:' . Sexo::$MASCULINO, ',' . Sexo::$FEMININO,
             'id_cidade' => 'required',
             'endereco' => 'required|max:254',
         ];

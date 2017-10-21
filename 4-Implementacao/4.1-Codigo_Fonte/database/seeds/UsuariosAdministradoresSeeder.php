@@ -15,7 +15,8 @@ class UsuariosAdministradoresSeeder extends Seeder
         Usuario::create([
             'nome' => 'Administrador',
             'email' => 'admin@admin.com',
-            'password' => 'admin123'
+            'password' => 'admin123',
+            'tipo' => \App\Entities\Enumeration\TipoUsuario::$ADMINISTRADOR
         ]);
     }
 }

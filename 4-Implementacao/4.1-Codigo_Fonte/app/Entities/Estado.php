@@ -12,6 +12,32 @@ class Estado extends Model
         'id_pais'
     ];
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function getPais()
+    {
+        return $this->pais;
+    }
+
+    public function getCidades()
+    {
+        return $this->cidades;
+    }
+
     public function pais()
     {
         return $this->belongsTo(Pais::class, 'id_pais', 'id');
