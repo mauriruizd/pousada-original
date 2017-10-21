@@ -32,21 +32,12 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Entity Manager instance
-     *
-     * @var \Doctrine\ORM\EntityManagerInterface
-     */
-    protected $em;
-
-    /**
      * Create a new controller instance.
      *
-     * @param \Doctrine\ORM\EntityManagerInterface
      * @return void
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct()
     {
-        $this->em = $em;
         $this->middleware('guest');
     }
 

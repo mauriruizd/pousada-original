@@ -15,9 +15,10 @@
             <thead>
             <tr>
                 <th>Tipo de Quarto</th>
-                <th>Tabela de preços</th>
-                <th>Iniciar/Alterar promoção</th>
-                <th>Finalizar promoção</th>
+                <th>Detalhes</th>
+                <th>Exceções de Preço</th>
+                <th>Editar</th>
+                <th>Arquivar</th>
             </tr>
             </thead>
             <tbody>
@@ -25,19 +26,24 @@
                 <tr>
                     <td>{{ $tipoQuarto->getNome() }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('tipos-quartos.tarifas.show', [$tipoQuarto->getId()]) }}">
-                            <i class="fa fa-table"></i>
+                        <a class="btn btn-primary" href="{{ route('tipos-quartos.show', [$tipoQuarto->getId()]) }}">
+                            <i class="fa fa-eye"></i>
                         </a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('tipos-quartos.promocao.' . ($tipoQuarto->getPrecoPromocional() === null ? 'create' : 'edit'), [$tipoQuarto->getId()]) }}">
-                            <i class="fa fa-thumbs-o-up"></i>
+                        <a class="btn btn-primary" href="{{ route('tipos-quartos.excecoes-precos.index', [$tipoQuarto->getId()]) }}">
+                            <i class="fa fa-money"></i>
                         </a>
                     </td>
                     <td>
-                        {!! Form::open(['route' => ['tipos-quartos.promocao.delete', $tipoQuarto->getId()], 'method' => 'delete']) !!}
-                            <button type="submit" class="btn btn-primary" {!! $tipoQuarto->getPrecoPromocional() === null ? 'disabled' : '' !!}>
-                                <i class="fa fa-thumbs-o-down"></i>
+                        <a class="btn btn-primary" href="{{ route('tipos-quartos.edit', [$tipoQuarto->getId()]) }}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                    </td>
+                    <td>
+                        {!! Form::open(['route' => ['tipos-quartos.destroy', $tipoQuarto->getId()], 'method' => 'delete']) !!}
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-archive"></i>
                             </button>
                         {!! Form::close() !!}
                     </td>
@@ -46,5 +52,18 @@
             </tbody>
         </table>
         {!! $tiposQuartos->render() !!}
+    </div>
+    <div class="floating-menu">
+        <div class="submenu">
+            <a href="{{ route('tipos-quartos.arquivados') }}" class="btn btn-primary btn-rounded" title="Listar tipos de quartos arquivados">
+                <i class="fa fa-archive"></i>
+            </a>
+            <a href="{{ route('tipos-quartos.create') }}" class="btn btn-rounded btn-primary" title="Criar novo registro de tipo de quarto">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <button class="btn btn-primary btn-rounded btn-lg menu-main">
+            <i class="fa fa-bars"></i>
+        </button>
     </div>
 @stop

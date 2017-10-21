@@ -47,7 +47,7 @@
         </td>
         <td colspan="1">Data de Nasc.:</td>
         <td colspan="3" class="underline">
-            {{ $cliente->getDataNascimento()->format('d/m/Y') }}
+            {{ $cliente->getDataNascimento() }}
         </td>
     </tr>
     <tr>

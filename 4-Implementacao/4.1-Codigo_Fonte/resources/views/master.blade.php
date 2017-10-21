@@ -83,16 +83,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="sidebar-nav navbar-collapse slimscrollsidebar">
             <ul class="nav" id="side-menu">
                 <li style="padding: 10px 0 0;">
-                    <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuários</span></a>
+                    <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-id-badge fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuários</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('clientes.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Clientes</span></a>
+                    <a href="{{ route('clientes.index') }}" class="waves-effect"><i class="fa fa-group fa-fw" aria-hidden="true"></i><span class="hide-menu">Clientes</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('tipos-quartos.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Tipos de Quartos</span></a>
+                    <a href="{{ route('tipos-quartos.index') }}" class="waves-effect"><i class="fa fa-folder-open fa-fw" aria-hidden="true"></i><span class="hide-menu">Tipos de Quartos</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('quartos.index') }}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Quartos</span></a>
+                    <a href="{{ route('quartos.index') }}" class="waves-effect"><i class="fa fa-hotel fa-fw" aria-hidden="true"></i><span class="hide-menu">Quartos</span></a>
                 </li>
             </ul>
         </div>

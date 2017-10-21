@@ -7,6 +7,8 @@ use App\Entities\Enumeration\Sexo;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Pais;
+use App\Entities\Traits\DefaultSearchTrait;
+use App\Entities\Traits\PrettyDateTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,8 +16,9 @@ use Illuminate\Http\Request;
 
 class Cliente extends Model implements SearchableEntity, EntityValidation
 {
-    use DefaultSearchTrait;
-    use SoftDeletes;
+    use DefaultSearchTrait,
+        SoftDeletes,
+        PrettyDateTrait;
 
     protected $dates = [
         'data_nascimento',
@@ -298,12 +301,12 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
 
     public function getDataNascimentoAttribute($date)
     {
-        return Carbon::parse($date)->format('d/m/Y');
+        return $this->getDate($date);
     }
 
     public function setDataNascimentoAttribute($dateString)
     {
-        $this->attributes['data_nascimento'] = implode('-', array_reverse(explode('/', $dateString))) . ' 00:00:00';
+        $this->setDate($dateString, 'data_nascimento');
     }
 
     public function nacionalidade()

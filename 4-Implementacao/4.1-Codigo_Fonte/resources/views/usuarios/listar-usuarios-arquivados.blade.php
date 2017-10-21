@@ -2,15 +2,16 @@
 @section('title', 'Listado de Usuarios Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
-    > Usuarios
+    > <a href="{{ route('usuarios.index') }}">Usuarios</a>
+    > Arquivados
 @stop
-@section('search-url', route('usuarios.index'))
+@section('search-url', route('usuarios.arquivados'))
 @section('content')
     <div class="row">
         @if(!is_null($search))
             <h4>Usuarios encontrados para "{{ $search }}".</h4>
         @endif
-        <h4>Total de {{ $usuarios->count() }} usuarios.</h4>
+        <h4>Total de {{ $usuarios->count() }} usuarios arquivados.</h4>
         <table class="table">
             <thead>
             <tr>

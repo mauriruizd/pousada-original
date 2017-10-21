@@ -5,6 +5,7 @@ namespace App\Entities;
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
+use App\Entities\Traits\DefaultSearchTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;

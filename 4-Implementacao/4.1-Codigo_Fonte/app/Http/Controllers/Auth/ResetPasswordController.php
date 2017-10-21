@@ -23,11 +23,6 @@ class ResetPasswordController extends Controller
     use ResetsPasswords;
 
     /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
-
-    /**
      * Where to redirect users after resetting their password.
      *
      * @var string
@@ -39,9 +34,8 @@ class ResetPasswordController extends Controller
      *
      * @return void
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct()
     {
-        $this->em = $em;
         $this->middleware('guest');
     }
 

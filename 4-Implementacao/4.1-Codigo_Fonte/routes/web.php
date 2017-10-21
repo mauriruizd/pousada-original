@@ -70,14 +70,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('clientes/{id}/recuperar', ['as' => 'clientes.recuperar', 'uses' => 'ClientesController@recuperar']);
     Route::get('clientes/select/{endpoint}/{id}', 'ClientesController@selectEndpoint');
 
-    Route::get('tipos-quartos', ['as' => 'tipos-quartos.index', 'uses' => 'TiposQuartosController@index']);
-    Route::get('tipos-quartos/{id}/tarifas', ['as' => 'tipos-quartos.tarifas.show', 'uses' => 'TiposQuartosController@showTarifas']);
-    Route::put('tipos-quartos/{id}/tarifas', ['as' => 'tipos-quartos.tarifas.update', 'uses' => 'TiposQuartosController@updateTarifas']);
-    Route::get('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.create', 'uses' => 'TiposQuartosController@createPromocao']);
-    Route::post('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.store', 'uses' => 'TiposQuartosController@storePromocao']);
-    Route::get('tipos-quartos/{id}/promocao/alterar', ['as' => 'tipos-quartos.promocao.edit', 'uses' => 'TiposQuartosController@editPromocao']);
-    Route::put('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.update', 'uses' => 'TiposQuartosController@updatePromocao']);
-    Route::delete('tipos-quartos/{id}/promocao', ['as' => 'tipos-quartos.promocao.delete', 'uses' => 'TiposQuartosController@deletePromocao']);
+    Route::get('tipos-quartos/arquivados', ['as' => 'tipos-quartos.arquivados', 'uses' => 'TiposQuartosController@arquivados']);
+    Route::resource('tipos-quartos', 'TiposQuartosController');
+    Route::resource('tipos-quartos.excecoes-precos', 'ExcecoesPrecoController', ['except' => 'show']);
+    Route::get('tipos-quartos/{id}/recuperar', ['as' => 'tipos-quartos.recuperar', 'uses' => 'TiposQuartosController@recuperar']);
 
     Route::resource('quartos', 'QuartosController', ['except' => ['destroy']]);
     Route::get('quartos/{id}/promocao', ['as' => 'quartos.promocao.create', 'uses' => 'QuartosController@createPromocao']);
