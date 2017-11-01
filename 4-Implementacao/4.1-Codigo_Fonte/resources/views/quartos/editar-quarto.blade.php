@@ -8,7 +8,7 @@
 @stop
 @section('search-url', route('quartos.index'))
 @section('content')
-    {!! Form::open(['route' => ['quartos.update', $quarto->getId()], 'method' => 'PUT', 'class' => 'form-horizontal form-material', 'files' => true]) !!}
+    {!! Form::model($quarto, ['route' => ['quartos.update', $quarto->getId()], 'method' => 'PUT', 'class' => 'form-horizontal form-material', 'files' => true]) !!}
     @include('quartos.form-quarto')
     <div class="floating-menu">
         <button type="submit" class="btn btn-primary btn-rounded btn-lg menu-main">

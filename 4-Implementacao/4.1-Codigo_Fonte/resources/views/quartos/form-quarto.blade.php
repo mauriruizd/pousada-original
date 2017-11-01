@@ -11,11 +11,7 @@
 <div class="form-group">
     <label class="col-md-12">Andar</label>
     <div class="col-md-12">
-        @if(isset($quarto))
-            <p>{{ $quarto->getAndar() }}</p>
-        @else
-            {!! Form::number('andar', isset($quarto) ? $quarto->getAndar() : null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira o andar do quarto', 'min' => 1, 'max' => 3]) !!}
-        @endif
+        {!! Form::number('andar', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira o andar do quarto', 'min' => 1, 'max' => 3]) !!}
     </div>
 </div>
 <div class="form-group">
@@ -35,7 +31,7 @@
     @foreach($quarto->getFotos() as $foto)
         <div class="col-md-3">
             <label>
-                <input type="checkbox" name="img" value="{{ $foto->getId() }}" checked>
+                <input type="checkbox" name="img[]" value="{{ $foto->getId() }}" checked>
                 <img src="{{ $foto->getUrl() }}" class="img-responsive">
             </label>
         </div>

@@ -5,7 +5,6 @@ namespace App\Entities;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Traits\DefaultSearchTrait;
 use App\Entities\Traits\PrettyDateTrait;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

@@ -17,41 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::group(['namespace' => 'Auth'], function() {
-//    /*
-//     * Login
-//     */
-//    Route::get('login', [
-//        'as' => 'login',
-//        'uses' => 'LoginController@showLoginForm'
-//    ]);
-//    Route::post('login', [
-//        'as' => 'login',
-//        'uses' => 'LoginController@login'
-//    ]);
-//
-//    Route::get('logout', [
-//        'as' => 'logout',
-//        'uses' => 'LoginController@logout'
-//    ]);
-//
-//    /*
-//     * Forgot password
-//     */
-//    Route::get('forgot/form', [
-//        'as' => 'forgot.form',
-//        'uses' => 'ForgotPasswordController@showLinkRequestForm'
-//    ]);
-//    Route::get('forgot/send', [
-//        'as' => 'forgot.send',
-//        'uses' => 'ForgotPasswordController@showLinkRequestForm'
-//    ]);
-//    Route::post('reset/email-step', [
-//        'as' => 'reset.email',
-//        'uses' => 'ForgotPasswordController@sendResetLinkEmail'
-//    ]);
-//});
-
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -71,20 +36,22 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('clientes/select/{endpoint}/{id}', 'ClientesController@selectEndpoint');
 
     Route::get('tipos-quartos/arquivados', ['as' => 'tipos-quartos.arquivados', 'uses' => 'TiposQuartosController@arquivados']);
+    Route::get('tipos-quartos/{id}/recuperar', ['as' => 'tipos-quartos.recuperar', 'uses' => 'TiposQuartosController@recuperar']);
     Route::resource('tipos-quartos', 'TiposQuartosController');
     Route::resource('tipos-quartos.excecoes-precos', 'ExcecoesPrecoController', ['except' => 'show']);
-    Route::get('tipos-quartos/{id}/recuperar', ['as' => 'tipos-quartos.recuperar', 'uses' => 'TiposQuartosController@recuperar']);
 
-    Route::resource('quartos', 'QuartosController', ['except' => ['destroy']]);
-    Route::get('quartos/{id}/promocao', ['as' => 'quartos.promocao.create', 'uses' => 'QuartosController@createPromocao']);
-    Route::post('quartos/{id}/promocao', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@storePromocao']);
-    Route::get('quartos/{id}/promocao/edit', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@editPromocao']);
-    Route::put('quartos/{id}/promocao', ['as' => 'quartos.promocao.store', 'uses' => 'QuartosController@updatePromocao']);
-    Route::delete('quartos/{id}/promocao', ['as' => 'quartos.promocao.destroy', 'uses' => 'QuartosController@deletePromocao']);
-
+    Route::get('quartos/arquivados', ['as' => 'quartos.arquivados', 'uses' => 'QuartosController@arquivados']);
+    Route::get('quartos/{id}/recuperar', ['as' => 'quartos.recuperar', 'uses' => 'QuartosController@recuperar']);
+    Route::resource('quartos', 'QuartosController');
     Route::get('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.create', 'uses' => 'QuartosController@createManutencao']);
     Route::post('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.store', 'uses' => 'QuartosController@storeManutencao']);
     Route::delete('quartos/{id}/manutencao', ['as' => 'quartos.manutencao.destroy', 'uses' => 'QuartosController@deleteManutencao']);
+
+    Route::get('fornecedores/relatorio-compras', ['as' => 'fornecedores.relatorio', 'uses' => 'FornecedoresController@relatorio']);
+    Route::get('fornecedores/arquivados', ['as' => 'fornecedores.arquivados', 'uses' => 'FornecedoresController@arquivados']);
+    Route::get('fornecedores/{id}/recuperar', ['as' => 'fornecedores.recuperar', 'uses' => 'FornecedoresController@recuperar']);
+    Route::resource('fornecedores', 'FornecedoresController');
+    Route::get('fornecedores/select/{endpoint}/{id}', 'FornecedoresController@selectEndpoint');
 });
 
 Route::get('/home', 'HomeController@index');

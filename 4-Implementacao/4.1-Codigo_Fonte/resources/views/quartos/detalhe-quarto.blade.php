@@ -26,6 +26,18 @@
         </p>
     </div>
     <div class="row">
+        <label>Em Manutenção</label>
+        <p class="col-md-12">
+            @if($quarto->getEmManutencao())
+                Sim. <br>
+                Motivo: <br>
+                <i>{!! nl2br($quarto->getManutencoes()[0]->getMotivo()) !!}</i>
+            @else
+                Não
+            @endif
+        </p>
+    </div>
+    <div class="row">
         <label class="col-md-12">Fotos</label>
         <div class="row">
             @foreach($quarto->getFotos() as $foto)
@@ -37,12 +49,17 @@
     </div>
     <div class="floating-menu">
         <div class="submenu">
-            <a href="{{ route('quartos.promocao.create', [$quarto->getId()]) }}" class="btn btn-primary btn-rounded">
-                <i class="fa fa-dollar"></i>
-            </a>
-            <a href="{{ route('quartos.manutencao.create', [$quarto->getId()]) }}" class="btn btn-primary btn-rounded">
-                <i class="fa fa-wrench"></i>
-            </a>
+            @if($quarto->getEmManutencao())
+                {!! Form::open(['route' => ['quartos.manutencao.destroy', $quarto->getId()], 'method' => 'delete']) !!}
+                <button type="submit" class="btn btn-primary btn-rounded">
+                    <i class="fa fa-wrench"></i>
+                </button>
+                {!! Form::close() !!}
+            @else
+                <a href="{{ route('quartos.manutencao.create', [$quarto->getId()]) }}" class="btn btn-primary btn-rounded">
+                    <i class="fa fa-wrench"></i>
+                </a>
+            @endif
             <a href="{{ route('quartos.edit', [$quarto->getId()]) }}" class="btn btn-primary btn-rounded" title="Editar">
                 <i class="fa fa-pencil"></i>
             </a>

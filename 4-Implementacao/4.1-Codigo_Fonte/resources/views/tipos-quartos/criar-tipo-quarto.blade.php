@@ -1,10 +1,6 @@
 @extends('master')
-@section('title', 'Criar Tipo de Quarto')
-@section('breadcrumb')
-    <a href="{{ route('dashboard') }}">Início</a>
-    > <a href="{{ route('tipos-quartos.index') }}">Tipos de Quarto</a>
-    > Novo
-@stop
+
+
 @section('search-url', route('tipos-quartos.index'))
 @section('content')
     <div class="loader"></div>

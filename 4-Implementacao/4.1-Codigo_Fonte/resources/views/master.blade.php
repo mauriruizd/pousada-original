@@ -94,6 +94,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <a href="{{ route('quartos.index') }}" class="waves-effect"><i class="fa fa-hotel fa-fw" aria-hidden="true"></i><span class="hide-menu">Quartos</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('fornecedores.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i><span class="hide-menu">Fornecedores</span></a>
+                </li>
             </ul>
         </div>
     </div>
