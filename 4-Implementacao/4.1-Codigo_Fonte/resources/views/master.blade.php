@@ -103,6 +103,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <a href="{{ route('produtos.index') }}" class="waves-effect"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i><span class="hide-menu">Produtos</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('souvenirs.index') }}" class="waves-effect"><i class="fa fa-gift fa-fw" aria-hidden="true"></i><span class="hide-menu">Souvenirs</span></a>
+                </li>
             </ul>
         </div>
     </div>

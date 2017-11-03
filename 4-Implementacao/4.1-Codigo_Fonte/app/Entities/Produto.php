@@ -9,6 +9,7 @@ use App\Entities\Traits\DefaultSearchTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class Produto extends Model implements EntityValidation, SearchableEntity
 {
@@ -172,6 +173,16 @@ class Produto extends Model implements EntityValidation, SearchableEntity
     public function setImagenUrl($imagenUrl)
     {
         $this->imagen_url = $imagenUrl;
+    }
+
+    public function setImagenUrlAttribute(UploadedFile $file)
+    {
+        $fileName = $file->getClientOriginalName();
+        $file->move(
+            public_path('/uploads/img/produtos'),
+            $fileName
+        );
+        $this->attributes['imagen_url'] = 'img/uploads/produtos/' . $fileName;
     }
 
     public function getFornecedor()

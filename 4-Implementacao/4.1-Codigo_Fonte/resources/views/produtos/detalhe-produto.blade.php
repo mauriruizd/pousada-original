@@ -53,7 +53,9 @@
         <label class="col-md-12">Foto</label>
         <div class="col-md-12">
             @if(!empty($produto->getImagenUrl()))
-                <img src="{{ $produto->getImagenUrl() }}" alt="{{ $produto->getNome() }}">
+                <div class="col-md-4">
+                    <img src="{{ $produto->getImagenUrl() }}" alt="{{ $produto->getNome() }}" class="img-responsive">
+                </div>
             @endif
         </div>
     </div>

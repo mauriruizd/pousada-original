@@ -63,7 +63,11 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('categorias/arquivados', ['as' => 'categorias.arquivados', 'uses' => 'CategoriasProdutosController@arquivados']);
     Route::get('categorias/{id}/recuperar', ['as' => 'categorias.recuperar', 'uses' => 'CategoriasProdutosController@recuperar']);
-    Route::resource('categorias', 'CategoriasProdutosController');
+    Route::resource('categorias', 'CategoriasProdutosController', ['except' => 'show']);
+
+    Route::get('souvenirs/arquivados', ['as' => 'souvenirs.arquivados', 'uses' => 'SouvenirsController@arquivados']);
+    Route::get('souvenirs/{id}/recuperar', ['as' => 'souvenirs.recuperar', 'uses' => 'SouvenirsController@recuperar']);
+    Route::resource('souvenirs', 'SouvenirsController');
 });
 
 Route::get('/home', 'HomeController@index');

@@ -1,6 +1,7 @@
 /node_modules
 /public/img/fotos-quartos
 /public/storage
+/public/uploads
 /storage/*.key
 /vendor
 /.idea

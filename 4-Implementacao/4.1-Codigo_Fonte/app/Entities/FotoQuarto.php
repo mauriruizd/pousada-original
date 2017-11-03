@@ -72,10 +72,10 @@ class FotoQuarto extends Model
     {
         $fileName = $file->getClientOriginalName();
         $file->move(
-            public_path('/img/fotos-quartos'),
+            public_path('/uploads/img/fotos-quartos'),
             $fileName
         );
-        $this->attributes['url'] = 'img/fotos-quartos/' . $fileName;
+        $this->attributes['url'] = 'img/uploads/fotos-quartos/' . $fileName;
     }
 
 }
