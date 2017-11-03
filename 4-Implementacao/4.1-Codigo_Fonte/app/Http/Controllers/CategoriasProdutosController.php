@@ -14,7 +14,7 @@ class CategoriasProdutosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(CategoriaProdutosRequest $request)
     {
         $search = $request->search;
         $categorias = Categoria::search($search)->paginate(10);
@@ -29,7 +29,7 @@ class CategoriasProdutosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function arquivados(Request $request)
+    public function arquivados(CategoriaProdutosRequest $request)
     {
         $search = $request->search;
         $categorias = Categoria::search($search)
@@ -110,7 +110,7 @@ class CategoriasProdutosController extends Controller
         return redirect()->route('categorias.index')->with(['msg' => 'Categoria arquivada com sucesso!']);
     }
 
-    public function recuperar($id)
+    public function recuperar($id, CategoriaProdutosRequest $request)
     {
         try {
             $categoria = Categoria::onlyTrashed()

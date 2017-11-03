@@ -94,7 +94,7 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, ProdutosRequest $request)
     {
         try {
             $produto = Produto::find($id);
@@ -113,7 +113,7 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, ProdutosRequest $request)
     {
         $produto = Produto::find($id);
         if (is_null($produto)) {
@@ -165,7 +165,7 @@ class ProdutosController extends Controller
         return redirect()->route('produtos.index')->with(['msg' => 'Produto arquivado com sucesso!']);
     }
 
-    public function recuperar($id)
+    public function recuperar($id, ProdutosRequest $request)
     {
         try {
             $produto = Produto::onlyTrashed()
@@ -178,7 +178,7 @@ class ProdutosController extends Controller
         return redirect()->back()->with(['msg' => 'Produto recuperado com sucesso!']);
     }
 
-    public function relatoriosEstoque()
+    public function relatoriosEstoque(ProdutosRequest $request)
     {
         $produtos = Produto::paginate(10);
         return view('produtos.relatorio-estoque-produtos', [

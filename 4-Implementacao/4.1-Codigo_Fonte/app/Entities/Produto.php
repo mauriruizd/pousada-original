@@ -220,8 +220,7 @@ class Produto extends Model implements EntityValidation, SearchableEntity
     public static function authorizationVerification(Request $request)
     {
         $paths = [
-            'listado-produtos',
-            'estoque/aumentar'
+            'produtos/listagem'
         ];
         if (str_contains($request->path(), $paths)) {
             return true;
