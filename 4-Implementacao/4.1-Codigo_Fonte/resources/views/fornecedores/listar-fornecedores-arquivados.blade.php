@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Listado de Fornecedores Arquivados')
+@section('title', 'Listagem de Fornecedores Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
     > <a href="{{ route('fornecedores.index') }}">Fornecedores</a>

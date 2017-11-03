@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Listado de Quartos Arquivados')
+@section('title', 'Listagem de Quartos Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
     > <a href="{{ route('quartos.index') }}">Quartos</a>

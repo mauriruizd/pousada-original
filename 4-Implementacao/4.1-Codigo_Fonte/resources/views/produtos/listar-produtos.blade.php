@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Listado de Produtos')
+@section('title', 'Listagem de Produtos')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
     > Produtos
