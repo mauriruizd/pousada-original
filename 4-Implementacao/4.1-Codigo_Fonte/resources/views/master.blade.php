@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top m-b-0">
+    <nav class="navbar navbar-default navbar-static-top m-b-0 no-print">
         <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
             <div class="top-left-part">
                 <a class="logo" href="{{ route('dashboard') }}">
@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.navbar-static-side -->
     </nav>
     <!-- Left navbar-header -->
-    <div class="navbar-default sidebar" role="navigation">
+    <div class="navbar-default sidebar no-print" role="navigation">
         <div class="sidebar-nav navbar-collapse slimscrollsidebar">
             <ul class="nav" id="side-menu">
                 <li style="padding: 10px 0 0;">
@@ -97,6 +97,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <a href="{{ route('fornecedores.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i><span class="hide-menu">Fornecedores</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('categorias.index') }}" class="waves-effect"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('produtos.index') }}" class="waves-effect"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i><span class="hide-menu">Produtos</span></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -104,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div class="row bg-title">
+            <div class="row bg-title no-print">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                     <h4 class="page-title">@yield('title') </h4> </div>
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">

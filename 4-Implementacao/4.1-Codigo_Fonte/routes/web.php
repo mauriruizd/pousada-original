@@ -52,6 +52,18 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('fornecedores/{id}/recuperar', ['as' => 'fornecedores.recuperar', 'uses' => 'FornecedoresController@recuperar']);
     Route::resource('fornecedores', 'FornecedoresController');
     Route::get('fornecedores/select/{endpoint}/{id}', 'FornecedoresController@selectEndpoint');
+
+    Route::get('produtos/listagem', ['as' => 'produtos.listagem', 'uses' => 'ProdutosController@listagem']);
+    Route::get('produtos/arquivados', ['as' => 'produtos.arquivados', 'uses' => 'ProdutosController@arquivados']);
+    Route::get('produtos/{id}/recuperar', ['as' => 'produtos.recuperar', 'uses' => 'ProdutosController@recuperar']);
+    Route::get('produtos/relatorios/estoque', ['as' => 'produtos.relatorios.estoque', 'uses' => 'ProdutosController@relatoriosEstoque']);
+    Route::get('produtos/relatorios/entrada', ['as' => 'produtos.relatorios.entrada', 'uses' => 'ProdutosController@relatoriosEntrada']);
+    Route::get('produtos/relatorios/saida', ['as' => 'produtos.relatorios.saida', 'ProdutosController@relatorioSaida']);
+    Route::resource('produtos', 'ProdutosController');
+
+    Route::get('categorias/arquivados', ['as' => 'categorias.arquivados', 'uses' => 'CategoriasProdutosController@arquivados']);
+    Route::get('categorias/{id}/recuperar', ['as' => 'categorias.recuperar', 'uses' => 'CategoriasProdutosController@recuperar']);
+    Route::resource('categorias', 'CategoriasProdutosController');
 });
 
 Route::get('/home', 'HomeController@index');

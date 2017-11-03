@@ -1,17 +1,17 @@
 @extends('master')
-@section('title', 'Listado de Fornecedores Arquivados')
+@section('title', 'Listado de Categorias Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
-    > <a href="{{ route('fornecedores.index') }}">Fornecedores</a>
-    > Arquivados
+    > <a href="{{ route('categorias.index') }}">Categorias</a>
+    > Arquivadas
 @stop
-@section('search-url', route('fornecedores.index'))
+@section('search-url', route('categorias.index'))
 @section('content')
     <div class="row">
         @if(!is_null($search))
-            <h4>Fornecedores encontrados para "{{ $search }}".</h4>
+            <h4>Categorias encontrados para "{{ $search }}".</h4>
         @endif
-        <h4>Total de {{ $fornecedores->count() }} fornecedores.</h4>
+        <h4>Total de {{ $categorias->count() }} categorias.</h4>
         <table class="table">
             <thead>
             <tr>
@@ -20,11 +20,11 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($fornecedores as $fornecedor)
+            @foreach($categorias as $categoria)
                 <tr>
-                    <td>{{ $fornecedor->getNome() }}</td>
+                    <td>{{ $categoria->getNome() }}</td>
                     <td>
-                        <a href="{{ route('fornecedores.recuperar', [$fornecedor->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('categorias.recuperar', [$categoria->getId()]) }}" class="btn btn-primary">
                             <i class="fa fa-mail-reply"></i>
                         </a>
                     </td>
@@ -32,10 +32,10 @@
             @endforeach
             </tbody>
         </table>
-        {!! $fornecedores->render() !!}
+        {!! $categorias->render() !!}
     </div>
     <div class="floating-menu">
-        <a href="{{ route('fornecedores.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
+        <a href="{{ route('categorias.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
             <i class="fa fa-arrow-circle-o-left"></i>
         </a>
     </div>

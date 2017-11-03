@@ -16,7 +16,6 @@ use Illuminate\Http\Response;
 
 class ClientesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *

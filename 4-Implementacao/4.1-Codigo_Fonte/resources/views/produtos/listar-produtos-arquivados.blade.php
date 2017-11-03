@@ -1,32 +1,30 @@
 @extends('master')
-@section('title', 'Listado de Clientes Arquivados')
+@section('title', 'Listado de Produtos Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
-    > <a href="{{ route('clientes.index') }}">Clientes</a>
+    > <a href="{{ route('produtos.index') }}">Produtos</a>
     > Arquivados
 @stop
-@section('search-url', route('clientes.index'))
+@section('search-url', route('produtos.index'))
 @section('content')
     <div class="row">
         @if(!is_null($search))
-            <h4>Clientes encontrados para "{{ $search }}".</h4>
+            <h4>Produtos encontrados para "{{ $search }}".</h4>
         @endif
-        <h4>Total de {{ $clientes->count() }} clientes.</h4>
+        <h4>Total de {{ $produtos->count() }} produtos.</h4>
         <table class="table">
             <thead>
             <tr>
                 <th>Nome</th>
-                <th>Documento de identidade</th>
                 <th>Recuperar</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($clientes as $cliente)
+            @foreach($produtos as $produto)
                 <tr>
-                    <td>{{ $cliente->getNome() }}</td>
-                    <td>{{ $cliente->getRg() }}</td>
+                    <td>{{ $produto->getNome() }}</td>
                     <td>
-                        <a href="{{ route('clientes.recuperar', [$cliente->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('produtos.recuperar', [$produto->getId()]) }}" class="btn btn-primary">
                             <i class="fa fa-mail-reply"></i>
                         </a>
                     </td>
@@ -34,10 +32,10 @@
             @endforeach
             </tbody>
         </table>
-        {!! $clientes->render() !!}
+        {!! $produtos->render() !!}
     </div>
     <div class="floating-menu">
-        <a href="{{ route('clientes.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
+        <a href="{{ route('produtos.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
             <i class="fa fa-arrow-circle-o-left"></i>
         </a>
     </div>
