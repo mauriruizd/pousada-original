@@ -61,13 +61,23 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('produtos/relatorios/saida', ['as' => 'produtos.relatorios.saida', 'ProdutosController@relatorioSaida']);
     Route::resource('produtos', 'ProdutosController');
 
-    Route::get('categorias/arquivados', ['as' => 'categorias.arquivados', 'uses' => 'CategoriasProdutosController@arquivados']);
-    Route::get('categorias/{id}/recuperar', ['as' => 'categorias.recuperar', 'uses' => 'CategoriasProdutosController@recuperar']);
-    Route::resource('categorias', 'CategoriasProdutosController', ['except' => 'show']);
+    Route::get('categorias-produtos/arquivados', ['as' => 'categorias-produtos.arquivados', 'uses' => 'CategoriasProdutosController@arquivados']);
+    Route::get('categorias-produtos/{id}/recuperar', ['as' => 'categorias-produtos.recuperar', 'uses' => 'CategoriasProdutosController@recuperar']);
+    Route::resource('categorias-produtos', 'CategoriasProdutosController', ['except' => 'show']);
+
+    Route::get('categorias-comissionistas/arquivados', ['as' => 'categorias-comissionistas.arquivados', 'uses' => 'CategoriasComissionistasController@arquivados']);
+    Route::get('categorias-comissionistas/{id}/recuperar', ['as' => 'categorias-comissionistas.recuperar', 'uses' => 'CategoriasComissionistasController@recuperar']);
+    Route::resource('categorias-comissionistas', 'CategoriasComissionistasController', ['except' => 'show']);
 
     Route::get('souvenirs/arquivados', ['as' => 'souvenirs.arquivados', 'uses' => 'SouvenirsController@arquivados']);
     Route::get('souvenirs/{id}/recuperar', ['as' => 'souvenirs.recuperar', 'uses' => 'SouvenirsController@recuperar']);
     Route::resource('souvenirs', 'SouvenirsController');
+
+    Route::get('comissionistas/arquivados', ['as' => 'comissionistas.arquivados', 'uses' => 'ComissionistasController@arquivados']);
+    Route::get('comissionistas/{id}/recuperar', ['as' => 'comissionistas.recuperar', 'uses' => 'ComissionistasController@recuperar']);
+    Route::get('comissionistas/{id}/modificar-percentagem-comissao', ['as' => 'comissionistas.form-percentagem', 'uses' => 'ComissionistasController@formModificarPercentagem']);
+    Route::put('comissionistas/{id}/modificar-percentagem-comissao', ['as' => 'comissionistas.modificar-percentagem', 'uses' => 'ComissionistasController@modificarPercentagem']);
+    Route::resource('comissionistas', 'ComissionistasController');
 });
 
 Route::get('/home', 'HomeController@index');

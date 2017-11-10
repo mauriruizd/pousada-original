@@ -207,7 +207,7 @@ class Produto extends Model implements EntityValidation, SearchableEntity
 
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'id_categoria', 'id');
+        return $this->belongsTo(CategoriaProduto::class, 'id_categoria', 'id');
     }
 
     public function precos()

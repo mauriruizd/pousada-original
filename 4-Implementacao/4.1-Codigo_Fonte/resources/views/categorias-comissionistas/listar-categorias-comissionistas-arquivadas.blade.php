@@ -2,10 +2,10 @@
 @section('title', 'Listagem de Categorias Arquivados')
 @section('breadcrumb')
     <a href="{{ route('dashboard') }}">Início</a>
-    > <a href="{{ route('categorias.index') }}">Categorias</a>
+    > <a href="{{ route('categorias-comissionistas.index') }}">Categorias</a>
     > Arquivadas
 @stop
-@section('search-url', route('categorias.index'))
+@section('search-url', route('categorias-comissionistas.index'))
 @section('content')
     <div class="row">
         @if(!is_null($search))
@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $categoria->getNome() }}</td>
                     <td>
-                        <a href="{{ route('categorias.recuperar', [$categoria->getId()]) }}" class="btn btn-primary">
+                        <a href="{{ route('categorias-comissionistas.recuperar', [$categoria->getId()]) }}" class="btn btn-primary">
                             <i class="fa fa-mail-reply"></i>
                         </a>
                     </td>
@@ -35,7 +35,7 @@
         {!! $categorias->render() !!}
     </div>
     <div class="floating-menu">
-        <a href="{{ route('categorias.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
+        <a href="{{ route('categorias-comissionistas.index') }}" class="btn btn-primary btn-rounded btn-lg menu-main">
             <i class="fa fa-arrow-circle-o-left"></i>
         </a>
     </div>

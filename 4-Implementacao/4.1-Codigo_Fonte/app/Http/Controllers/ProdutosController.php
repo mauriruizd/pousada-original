@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Entities\Categoria;
+use App\Entities\CategoriaProduto;
 use App\Entities\Fornecedor;
 use App\Entities\PrecoProduto;
 use App\Entities\Produto;
@@ -62,7 +62,7 @@ class ProdutosController extends Controller
     public function create()
     {
         return view('produtos.criar-produto', [
-            'categorias' => Categoria::pluck('nome', 'id'),
+            'categorias' => CategoriaProduto::pluck('nome', 'id'),
             'fornecedores' => Fornecedor::pluck('nome', 'id')
         ]);
     }
@@ -121,7 +121,7 @@ class ProdutosController extends Controller
         }
         return view('produtos.editar-produto', [
             'produto' => $produto,
-            'categorias' => Categoria::pluck('nome', 'id'),
+            'categorias' => CategoriaProduto::pluck('nome', 'id'),
             'fornecedores' => Fornecedor::pluck('nome', 'id')
         ]);
     }

@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Entities\CategoriaProduto;
-use App\Http\Requests\CategoriaProdutosRequest;
+use App\Entities\CategoriaComissionista;
+use App\Http\Requests\CategoriaComissionistasRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
-class CategoriasProdutosController extends Controller
+class CategoriasComissionistasController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoriaProdutosRequest $request)
+    public function index(CategoriaComissionistasRequest $request)
     {
         $search = $request->search;
-        $categorias = CategoriaProduto::search($search)->paginate(10);
-        return view('categorias-produtos.listar-categorias-produtos', [
+        $categorias = CategoriaComissionista::search($search)->paginate(10);
+        return view('categorias-comissionistas.listar-categorias-comissionistas', [
             'categorias' => $categorias,
             'search' => $search
         ]);
@@ -29,13 +29,13 @@ class CategoriasProdutosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function arquivados(CategoriaProdutosRequest $request)
+    public function arquivados(CategoriaComissionistasRequest $request)
     {
         $search = $request->search;
-        $categorias = CategoriaProduto::search($search)
+        $categorias = CategoriaComissionista::search($search)
             ->onlyTrashed()
             ->paginate(10);
-        return view('categorias-produtos.listar-categorias-produtos-arquivadas', [
+        return view('categorias-comissionistas.listar-categorias-comissionistas-arquivadas', [
             'categorias' => $categorias,
             'search' => $search
         ]);
@@ -48,7 +48,7 @@ class CategoriasProdutosController extends Controller
      */
     public function create()
     {
-        return view('categorias-produtos.criar-categoria-produtos');
+        return view('categorias-comissionistas.criar-categoria-comissionistas');
     }
 
     /**
@@ -57,10 +57,10 @@ class CategoriasProdutosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoriaProdutosRequest $request)
+    public function store(CategoriaComissionistasRequest $request)
     {
-        CategoriaProduto::create($request->all());
-        return redirect()->route('categorias-produtos.index')->with(['msg' => 'Categoria criad com sucesso!']);
+        CategoriaComissionista::create($request->all());
+        return redirect()->route('categorias-comissionistas.index')->with(['msg' => 'Categoria criad com sucesso!']);
     }
 
     /**
@@ -71,11 +71,11 @@ class CategoriasProdutosController extends Controller
      */
     public function edit($id)
     {
-        $categoria = CategoriaProduto::find($id);
+        $categoria = CategoriaComissionista::find($id);
         if (is_null($categoria)) {
             abort(404);
         }
-        return view('categorias-produtos.editar-categoria-produtos', [
+        return view('categorias-comissionistas.editar-categoria-comissionistas', [
             'categoria' => $categoria
         ]);
     }
@@ -87,9 +87,9 @@ class CategoriasProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriaProdutosRequest $request, $id)
+    public function update(CategoriaComissionistasRequest $request, $id)
     {
-        $categoria = CategoriaProduto::find($id);
+        $categoria = CategoriaComissionista::find($id);
         $categoria->fill($request->all())->save();
         return redirect()->back()->with(['msg' => 'Categoria atualizada com sucesso!']);
     }
@@ -100,20 +100,20 @@ class CategoriasProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, CategoriaProdutosRequest $request)
+    public function destroy($id, CategoriaComissionistasRequest $request)
     {
-        $categoria = CategoriaProduto::find($id);
+        $categoria = CategoriaComissionista::find($id);
         if (is_null($categoria)) {
             abort(404);
         }
         $categoria->delete();
-        return redirect()->route('categorias-produtos.index')->with(['msg' => 'Categoria arquivada com sucesso!']);
+        return redirect()->route('categorias-comissionistas.index')->with(['msg' => 'Categoria arquivada com sucesso!']);
     }
 
-    public function recuperar($id, CategoriaProdutosRequest $request)
+    public function recuperar($id, CategoriaComissionistasRequest $request)
     {
         try {
-            $categoria = CategoriaProduto::onlyTrashed()
+            $categoria = CategoriaComissionista::onlyTrashed()
                 ->where('id', $id)
                 ->firstOrFail();
             $categoria->restore();

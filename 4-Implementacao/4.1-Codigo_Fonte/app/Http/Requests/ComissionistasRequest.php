@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Entities\CategoriaProduto;
+use App\Entities\Comissionista;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriaProdutosRequest extends FormRequest
+class ComissionistasRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class CategoriaProdutosRequest extends FormRequest
      */
     public function authorize()
     {
-        return CategoriaProduto::authorizationVerification($this);
+        return Comissionista::authorizationVerification($this);
     }
 
     /**
@@ -24,6 +24,6 @@ class CategoriaProdutosRequest extends FormRequest
      */
     public function rules()
     {
-        return CategoriaProduto::validationRules($this);
+        return Comissionista::validationRules($this);
     }
 }

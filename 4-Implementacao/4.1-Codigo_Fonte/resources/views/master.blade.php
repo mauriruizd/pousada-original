@@ -98,10 +98,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="{{ route('fornecedores.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i><span class="hide-menu">Fornecedores</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('categorias.index') }}" class="waves-effect"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias</span></a>
+                    <a href="{{ route('categorias-produtos.index') }}" class="waves-effect"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias de Produtos</span></a>
                 </li>
                 <li>
                     <a href="{{ route('produtos.index') }}" class="waves-effect"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i><span class="hide-menu">Produtos</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('categorias-comissionistas.index') }}" class="waves-effect"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias de Comissionistas</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('comissionistas.index') }}" class="waves-effect"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i><span class="hide-menu">Comissionistas</span></a>
                 </li>
                 <li>
                     <a href="{{ route('souvenirs.index') }}" class="waves-effect"><i class="fa fa-gift fa-fw" aria-hidden="true"></i><span class="hide-menu">Souvenirs</span></a>

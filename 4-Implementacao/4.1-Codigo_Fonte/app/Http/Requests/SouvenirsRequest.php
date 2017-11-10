@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Souvenir;
+use App\Entities\Souvenir;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SouvenirsRequest extends FormRequest

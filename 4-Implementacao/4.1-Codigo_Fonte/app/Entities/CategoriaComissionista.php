@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
@@ -9,18 +9,17 @@ use App\Entities\Traits\DefaultSearchTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 
-class Souvenir extends Model implements EntityValidation, SearchableEntity
+class CategoriaComissionista extends Model implements EntityValidation, SearchableEntity
 {
-    use DefaultSearchTrait,
-        SoftDeletes;
+    use SoftDeletes,
+        DefaultSearchTrait;
+
+    protected $table = 'categorias_comissionistas';
 
     protected $fillable = [
         'id',
-        'nome',
-        'imagem_url',
-        'preco'
+        'nome'
     ];
 
     /**
@@ -55,47 +54,24 @@ class Souvenir extends Model implements EntityValidation, SearchableEntity
         $this->nome = $nome;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImagemUrl()
+    public function comissionistas()
     {
-        return url($this->imagem_url);
+        return $this->hasMany(Comissionista::class, 'id_categoria', 'id');
     }
 
-    /**
-     * @param mixed $imagemUrl
-     */
-    public function setImagemUrl($imagemUrl)
+    protected static function boot()
     {
-        $this->imagem_url = $imagemUrl;
+        parent::boot();
+
+        static::deleted(function($categoria) {
+            $categoria->comissionistas()->delete();
+        });
+
+        static::restored(function($categoria) {
+            $categoria->comissionistas()->restore();
+        });
     }
 
-    public function setImagemUrlAttribute(UploadedFile $file)
-    {
-        $fileName = $file->getClientOriginalName();
-        $file->move(
-            public_path('/uploads/img/souvenirs'),
-            $fileName
-        );
-        $this->attributes['imagem_url'] = 'uploads/img/souvenirs/' . $fileName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPreco()
-    {
-        return $this->preco;
-    }
-
-    /**
-     * @param mixed $preco
-     */
-    public function setPreco($preco)
-    {
-        $this->preco = $preco;
-    }
 
     public static function validationRules(Request $request)
     {
@@ -104,8 +80,7 @@ class Souvenir extends Model implements EntityValidation, SearchableEntity
             'put'
         ])) {
             return [
-                'nome' => 'required',
-                'preco' => 'required'
+                'nome' => 'required'
             ];
         }
         return [];
@@ -113,12 +88,16 @@ class Souvenir extends Model implements EntityValidation, SearchableEntity
 
     public static function authorizationVerification(Request $request)
     {
-        return $request->user()->getTipo() === TipoUsuario::$ADMINISTRADOR;
+        return (
+            strtolower($request->method() === 'get')
+            && !str_contains(strtolower($request->path()), 'edit')
+            ) || $request->user()->getTipo() === TipoUsuario::$ADMINISTRADOR;
     }
 
     public static function searchableFields()
     {
         return [
+            'id',
             'nome'
         ];
     }

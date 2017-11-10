@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
-class Categoria extends Model implements EntityValidation, SearchableEntity
+class CategoriaProduto extends Model implements EntityValidation, SearchableEntity
 {
     use DefaultSearchTrait,
         SoftDeletes;
+
+    protected $table = 'categorias_produtos';
 
     protected $fillable = [
         'id',

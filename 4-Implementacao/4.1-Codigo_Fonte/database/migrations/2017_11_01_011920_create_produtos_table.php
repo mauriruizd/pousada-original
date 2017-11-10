@@ -29,7 +29,7 @@ class CreateProdutosTable extends Migration
 
             $table->foreign('id_categoria', 'produtos_categorias_fk')
                 ->references('id')
-                ->on('categorias');
+                ->on('categorias_produtos');
             $table->foreign('id_fornecedor', 'produtos_fornecedores_fk')
                 ->references('id')
                 ->on('fornecedores');
