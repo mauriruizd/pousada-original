@@ -6,7 +6,7 @@
         </div>
     <form class="login-form" method="post" action="{{ url('login') }}">
         {{ csrf_field() }}
-        <input type="email" class="{{ $errors->has('email') ? 'has-error' : '' }}" placeholder="E-mail" name="email"/>
+        <input type="email" class="{{ $errors->has('email') ? 'has-error' : '' }}" placeholder="E-mail" name="email" autofocus/>
         @if ($errors->has('email'))
             <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
