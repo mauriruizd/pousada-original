@@ -5,8 +5,10 @@ namespace App\Entities;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Traits\DefaultSearchTrait;
 use App\Entities\Traits\PrettyDateTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tree\Fixture\Transport\Car;
 
 class ExcecaoPreco extends Model implements SearchableEntity
 {
@@ -142,6 +144,13 @@ class ExcecaoPreco extends Model implements SearchableEntity
     public function scopeDoTipo($q, $id)
     {
         return $q->where('id_tipo_quarto', '=', $id);
+    }
+
+    public function checarData($dataInicio, $dataFim)
+    {
+        $dataInicio = Carbon::createFromFormat('d/m/Y', $dataInicio);
+        $dataFim = Carbon::createFromFormat('d/m/Y', $dataFim);
+        $this->get
     }
 
     public static function searchableFields()

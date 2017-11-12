@@ -18,6 +18,6 @@ class FormSelectCreator {
         foreach ($entityCollection as $entity) {
             $select[$entity->$idField] = $entity->$valueField;
         }
-        return Form::select($fieldName, $select, $selectedValue, $params);
+        return Form::select($fieldName, $select, $selectedValue, array_merge($params, ['required']));
     }
 }

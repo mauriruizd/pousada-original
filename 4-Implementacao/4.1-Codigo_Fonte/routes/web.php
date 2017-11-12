@@ -78,6 +78,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('comissionistas/{id}/modificar-percentagem-comissao', ['as' => 'comissionistas.form-percentagem', 'uses' => 'ComissionistasController@formModificarPercentagem']);
     Route::put('comissionistas/{id}/modificar-percentagem-comissao', ['as' => 'comissionistas.modificar-percentagem', 'uses' => 'ComissionistasController@modificarPercentagem']);
     Route::resource('comissionistas', 'ComissionistasController');
+
+    Route::get('fontes-reservas/arquivados', ['as' => 'fontes-reservas.arquivados', 'uses' => 'FontesReservasController@arquivados']);
+    Route::get('fontes-reservas/{id}/recuperar', ['as' => 'fontes-reservas.recuperar', 'uses' => 'FontesReservasController@recuperar']);
+    Route::resource('fontes-reservas', 'FontesReservasController', ['except' => 'show']);
+
+    Route::get('reservas/consultar-disponibilidade', ['as' => 'reservas.consultar-disponibilidade', 'uses' => 'ReservasController@consultarDisponibilidade']);
+    Route::resource('reservas', 'ReservasController');
 });
 
 Route::get('/home', 'HomeController@index');

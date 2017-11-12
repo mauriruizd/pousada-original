@@ -95,6 +95,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="{{ route('quartos.index') }}" class="waves-effect"><i class="fa fa-hotel fa-fw" aria-hidden="true"></i><span class="hide-menu">Quartos</span></a>
                 </li>
                 <li>
+                    <a href="{{ route('fontes-reservas.index') }}" class="waves-effect"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i><span class="hide-menu">Fontes de Reservas</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('reservas.index') }}" class="waves-effect"><i class="fa fa-hotel fa-fw" aria-hidden="true"></i><span class="hide-menu">Reservas</span></a>
+                </li>
+                <li>
                     <a href="{{ route('fornecedores.index') }}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i><span class="hide-menu">Fornecedores</span></a>
                 </li>
                 <li>

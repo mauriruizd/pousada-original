@@ -133,9 +133,20 @@ class Quarto extends Model implements SearchableEntity, EntityValidation
         return $this->hasMany(Manutencao::class, 'id_quarto', 'id');
     }
 
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'id_quarto', 'id');
+    }
+
     public function scopeEmManutencao($q)
     {
         return $q->where('em_manutencao', '=', false);
+    }
+
+    public function scopeConsultarDisponibilidade($q, $dataInicio, $dataFim)
+    {
+        $reservas = Reserva::consultarIndisponibilidade($dataInicio, $dataFim)->pluck('id_quarto');
+        return $q->whereNotIn('id', $reservas);
     }
 
     public static function validationRules(Request $request)
