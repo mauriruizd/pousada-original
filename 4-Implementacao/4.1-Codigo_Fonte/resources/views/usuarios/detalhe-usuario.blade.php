@@ -31,7 +31,7 @@
     </div>
     <div class="floating-menu">
         <div class="submenu">
-            <a href="#" class="btn btn-primary btn-rounded">
+            <a href="{{ route('usuarios.historico', [$usuario->getId()]) }}" class="btn btn-primary btn-rounded">
                 <i class="fa fa-table"></i>
             </a>
             {!! Form::open(['route' => ['usuarios.destroy', $usuario->getId()], 'method' => 'delete']) !!}

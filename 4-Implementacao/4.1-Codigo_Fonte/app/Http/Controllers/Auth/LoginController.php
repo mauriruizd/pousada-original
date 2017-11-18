@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Entities\Acesso;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -52,7 +53,8 @@ class LoginController extends Controller
 
         Acesso::create([
             'id_usuario' => $this->guard()->user()->id,
-            'ip' => $request->getClientIp()
+            'ip' => $request->getClientIp(),
+            'timestamp' => new Carbon()
         ]);
 
         return $this->authenticated($request, $this->guard()->user())
