@@ -36,13 +36,15 @@ class ReservasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('reservas.gerar-reserva', [
-            'clientes' => Cliente::pluck('nome', 'id'),
+            'clientes' => Cliente::select(DB::raw('concat(nome, " - ", rg) as nome, id'))->pluck('nome', 'id'),
             'quartos' => Quarto::pluck('numero', 'id'),
             'fontes' => FonteReserva::pluck('nome', 'id'),
             'comissionistas' => Comissionista::pluck('nome', 'id')
+                ->prepend('Selecione comissionista (opcional)', ''),
+            'idCliente' => $request->idCliente
         ]);
     }
 
@@ -54,15 +56,12 @@ class ReservasController extends Controller
      */
     public function store(ReservasRequest $request)
     {
-        DB::transaction(function () use($request) {
-            $reserva = Reserva::create($request->all());
-            foreach ($request->clientes as $cliente) {
-                ClienteReserva::create([
-                    'id_cliente' => $cliente,
-                    'id_reserva' => $reserva->id
-                ]);
-            }
-        });
+        Reserva::create(array_merge(
+            $request->all(),
+            [
+                'id_usuario' => auth()->user()->id
+            ]
+        ));
         return redirect()->route('reservas.index')->with(['msg' => 'Reserva gerada com sucesso!']);
     }
 
@@ -155,8 +154,10 @@ class ReservasController extends Controller
     public function consultarDisponibilidade(Request $request)
     {
         $quartos = Quarto::consultarDisponibilidade($request->dataentrada, $request->datasaida)
-            ->pluck('numero', 'id');
-        return Form::select('id_quarto', $quartos, null);
+            ->select('id', 'numero', 'id_tipo_quarto')
+            ->with('tipoQuarto')
+            ->get();
+        return $quartos->groupBy('id_tipo_quarto');
     }
 
 }

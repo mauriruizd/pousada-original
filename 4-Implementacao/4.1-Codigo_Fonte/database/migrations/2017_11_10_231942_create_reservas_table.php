@@ -18,10 +18,12 @@ class CreateReservasTable extends Migration
             $table->date('data_entrada');
             $table->date('data_saida');
             $table->float('valor_total');
+            $table->float('total_comissao')->default(0);
             $table->boolean('comissao_paga')->default(false);
             $table->unsignedInteger('id_quarto');
             $table->unsignedInteger('id_comissionista')->nullable()->default(null);
             $table->unsignedInteger('id_usuario');
+            $table->unsignedInteger('id_cliente_reservante');
             $table->unsignedInteger('id_fonte');
             $table->timestamps();
             $table->softDeletes();
@@ -35,6 +37,9 @@ class CreateReservasTable extends Migration
             $table->foreign('id_usuario', 'reservas_usuarios_fk')
                 ->references('id')
                 ->on('usuarios');
+            $table->foreign('id_cliente_reservante', 'reservas_clientes_fk')
+                ->references('id')
+                ->on('clientes');
             $table->foreign('id_fonte', 'reservas_fontes_reservas_fk')
                 ->references('id')
                 ->on('fontes_reservas');
@@ -52,6 +57,7 @@ class CreateReservasTable extends Migration
             $table->dropForeign('reservas_quartos_fk');
             $table->dropForeign('reservas_comissionistas_fk');
             $table->dropForeign('reservas_usuarios_fk');
+            $table->dropForeign('reservas_clientes_fk');
             $table->dropForeign('reservas_fontes_reservas_fk');
         });
         Schema::dropIfExists('reservas');

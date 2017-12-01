@@ -324,6 +324,32 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
         return $this->belongsTo(Usuario::class, 'id_usuario', 'id');
     }
 
+    private static function validaCPF($cpf) {
+
+        // Extrai somente os números
+        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+
+        // Verifica se foi informado todos os digitos corretamente
+        if (strlen($cpf) != 11) {
+            return "@";
+        }
+        // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return "@";
+        }
+        // Faz o calculo para validar o CPF
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf{$c} * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf{$c} != $d) {
+                return "@";
+            }
+        }
+        return $cpf;
+    }
+
     public static function validationRules(Request $request)
     {
         return [
@@ -335,10 +361,17 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
             'id_nacionalidade' => 'required|exists:paises,id',
             'data_nascimento' => 'required|date_format:"d/m/Y"',
             'rg' => 'required|max:254',
-            'cpf' => 'required|size:11',
+            'cpf' => 'required|size:11|in:' . Cliente::validaCPF($request->cpf),
             'sexo' => 'required|in:' . Sexo::$MASCULINO, ',' . Sexo::$FEMININO,
             'id_cidade' => 'required',
             'endereco' => 'required|max:254',
+        ];
+    }
+
+    public static function messages()
+    {
+        return [
+            'cpf.in' => 'CPF não valido'
         ];
     }
 
@@ -359,6 +392,5 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
             'cpf',
         ];
     }
-
 
 }

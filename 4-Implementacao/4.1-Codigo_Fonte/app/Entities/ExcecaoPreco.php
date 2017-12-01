@@ -146,11 +146,12 @@ class ExcecaoPreco extends Model implements SearchableEntity
         return $q->where('id_tipo_quarto', '=', $id);
     }
 
-    public function checarData($dataInicio, $dataFim)
+    public function scopeChecarData($q, $dataInicio, $dataFim)
     {
         $dataInicio = Carbon::createFromFormat('d/m/Y', $dataInicio);
         $dataFim = Carbon::createFromFormat('d/m/Y', $dataFim);
-        $this->get
+        return $q->whereDate('data_inicio', '>=', $dataInicio)
+            ->whereDate('data_fim', '<=', $dataFim);
     }
 
     public static function searchableFields()

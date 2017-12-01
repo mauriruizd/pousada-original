@@ -53,7 +53,7 @@ class ClientesController extends Controller
          *
          * @return \Illuminate\Http\Response
          */
-        public function create()
+        public function create(Request $request)
         {
             $firstEstado = Estado::where([
                 'id_pais' => 1
@@ -62,7 +62,8 @@ class ClientesController extends Controller
                 'nacionalidade' => $this->getPaises(null, 'id_nacionalidade'),
                 'paises' => $this->getPaises(null, 'paises'),
                 'estados' => $this->getEstados(1, null),
-                'cidades' => $this->getCidades($firstEstado->id, null)
+                'cidades' => $this->getCidades($firstEstado->id, null),
+                'fromReserva' => $request->has('fromReserva')
             ]);
         }
 
@@ -74,7 +75,10 @@ class ClientesController extends Controller
          */
         public function store(ClientesRequest $request)
         {
-            Cliente::create(array_merge($request->all(), $this->getActiveUserArray()));
+            $cliente = Cliente::create(array_merge($request->all(), $this->getActiveUserArray()));
+            if ($request->has('from-reserva')) {
+                return redirect()->route('reservas.create', ['idCliente' => $cliente->id])->with(['msg' => 'Cliente criado com sucesso!']);
+            }
             return redirect()->route('clientes.index')->with(['msg' => 'Cliente criado com sucesso!']);
         }
 

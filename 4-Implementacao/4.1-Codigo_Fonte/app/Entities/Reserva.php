@@ -19,10 +19,16 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         PrettyDateTrait;
 
     protected $fillable = [
+        'id_quarto',
+        'id_usuario',
         'data_entrada',
         'data_saida',
         'valor_total',
-        'comissao_paga'
+        'id_fonte',
+        'id_comissionista',
+        'total_comissao',
+        'comissao_paga',
+        'id_cliente_reservante',
     ];
 
     /**
@@ -81,8 +87,8 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setDataEntradaAttribute($dateString)
     {
         $this->setDate($dateString, 'data_entrada');
-        if (!empty($this->getDataSaida())) {
-            //
+        if (!empty($this->attributes['data_saida']) && !empty($this->attributes['id_quarto'])) {
+            $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
         }
     }
 
@@ -94,21 +100,60 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setDataSaidaAttribute($dateString)
     {
         $this->setDate($dateString, 'data_saida');
+        if (!empty($this->attributes['data_entrada']) && !empty($this->attributes['id_quarto'])) {
+            $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
+        }
     }
 
     private function setValorTotalFromDias($dataEntrada, $dataSaida)
     {
-        $tipoQuarto = $this->getQuarto()->getTipoQuarto();
-        $precoDiaria = $tipoQuarto->getPreco();
+        $tipoQuarto = Quarto::find($this->attributes['id_quarto'])->getTipoQuarto();
         $excecoes = $tipoQuarto->excecoes()
-            ->where('data_inicio', '>', $dataEntrada)
+            ->where(function($q) use($dataEntrada) {
+                $q->whereDate('data_inicio', '<=', $dataEntrada)
+                    ->whereDate('data_fim', '>=', $dataEntrada);
+            })
+            ->orWhere(function($q) use($dataSaida) {
+                $q->whereDate('data_inicio', '<=', $dataSaida)
+                    ->whereDate('data_fim', '>=', $dataSaida);
+            })
+            ->orWhere(function($q) use($dataEntrada, $dataSaida) {
+                $q->whereDate('data_inicio', '>=', $dataEntrada)
+                    ->whereDate('data_fim', '<=', $dataSaida);
+            })
+            ->get();
+        $total = 0;
+        $carbonData = Carbon::createFromFormat('Y-m-d H:i:s', $dataEntrada);
+        $carbonSaida = Carbon::createFromFormat('Y-m-d H:i:s', $dataSaida);
+        do {
+            $isBetween = false;
+            foreach ($excecoes as $excecao) {
+                if (
+                    $carbonData->between(
+                        Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataInicio())),
+                        Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataFim()))
+                    )
+                ) {
+                    $total += $excecao->getPreco();
+                    $isBetween = true;
+                    break 1;
+                }
+            }
+            if (!$isBetween) {
+                $total += $tipoQuarto->getPreco();
+            }
+            $carbonData->addDay();
+        } while (!$carbonData->isSameDay($carbonSaida));
+        $this->attributes['valor_total'] = $total;
+        if (!empty($this->attributes['id_comissionista'])) {
+            $this->calcularComissao($total, $this->attributes['id_comissionista']);
+        }
     }
 
-    private function calcularDiferenciaDias($dataEntrada, $dataSaida)
+    private function calcularComissao($valorTotal, $idComissionista)
     {
-        $dataEntrada = Carbon::createFromFormat('d/m/Y', $dataEntrada);
-        $dataSaida = Carbon::createFromFormat('d/m/Y', $dataSaida);
-        return $dataEntrada->diffInDays($dataSaida);
+        $this->attributes['total_comissao'] = Comissionista::find($idComissionista)
+            ->calcularComissao($valorTotal);
     }
 
     /**
@@ -143,6 +188,22 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         $this->comissao_paga = $comissao_paga;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdClienteReservante()
+    {
+        return $this->id_cliente_reservante;
+    }
+
+    /**
+     * @param mixed $id_cliente_reservante
+     */
+    public function setIdClienteReservante($id_cliente_reservante)
+    {
+        $this->id_cliente_reservante = $id_cliente_reservante;
+    }
+
     public function getSaldoPagar()
     {
         return $this->getValorTotal() - $this->getTotalPago();
@@ -151,6 +212,24 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function getTotalPago()
     {
         return $this->pagamentos()->sum('quantia');
+    }
+
+    public function getClienteReservante()
+    {
+        return $this->clienteReservante;
+    }
+
+    public function clienteReservante()
+    {
+        return $this->belongsTo(Cliente::class, 'id_cliente_reservante', 'id');
+    }
+
+    public function setIdQuartoAttribute($id)
+    {
+        $this->attributes['id_quarto'] = $id;
+        if (!empty($this->attributes['data_entrada']) && !empty($this->attributes['data_saida'])) {
+            $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
+        }
     }
 
     public function getQuarto()
@@ -193,6 +272,14 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         return $this->belongsTo(Comissionista::class, 'id_comisionista', 'id');
     }
 
+    public function setIdComissionistaAttribute($id)
+    {
+        $this->attributes['id_comissionista'] = $id;
+        if (!empty($this->attributes['valor_total'])) {
+            $this->calcularComissao($this->attributes['valor_total'], $id);
+        }
+    }
+
     public function getCliente()
     {
         return $this->cliente;
@@ -215,8 +302,20 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
 
     public function scopeConsultarIndisponibilidade($q, $dataInicio, $dataFim)
     {
-        return $q->where('data_entrada', '<=', $dataInicio)
-            ->where('data_saida', '>=', $dataFim);
+        $dataEntrada = $this->prettyDateToDBDate($dataInicio);
+        $dataSaida = $this->prettyDateToDBDate($dataFim);
+        return $q->where(function($q) use($dataEntrada) {
+            $q->whereDate('data_entrada', '<=', $dataEntrada)
+                ->whereDate('data_saida', '>', $dataEntrada);
+            })
+            ->orWhere(function($q) use($dataSaida) {
+                $q->whereDate('data_entrada', '<', $dataSaida)
+                    ->whereDate('data_saida', '>=', $dataSaida);
+            })
+            ->orWhere(function($q) use($dataEntrada, $dataSaida) {
+                $q->whereDate('data_entrada', '>=', $dataEntrada)
+                    ->whereDate('data_saida', '<=', $dataSaida);
+            });
     }
 
     public static function validationRules(Request $request)
@@ -226,7 +325,7 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
             switch (strtolower($request->method())) {
                 case 'post':
                     return [
-                        'clientes' => 'required',
+                        'id_cliente_reservante' => 'required',
                         'data_entrada' => 'required',
                         'data_saida' => 'required',
                         'id_quarto' => 'required',
@@ -235,7 +334,7 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
                     break;
                 case 'put':
                     return [
-                        'clientes' => 'required',
+                        'id_cliente_reservante' => 'required',
                         'data_entrada' => 'required|date|after:' . Carbon::createFromFormat('Y-m-d', Reserva::find($request->route('reserva'))->getDataEntrada())->subDay(1),
                         'data_saida' => 'required|date|after:' . Carbon::createFromFormat('Y-m-d', Reserva::find($request->route('reserva'))->getDataEntrada()),
                         'id_quarto' => 'required',
@@ -274,5 +373,12 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         ];
     }
 
+    public static function messages()
+    {
+        return [
+            'id_cliente_reservante.required' => 'A seleção de um cliente é obrigatória',
+            'id_quarto.required' => 'A seleção de um quarto é obrigatória'
+        ];
+    }
 
 }

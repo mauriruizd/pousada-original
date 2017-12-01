@@ -28,7 +28,7 @@
     <div class="row">
         <label class="col-md-12">Percentagem</label>
         <div class="col-md-12">
-            R$ {{ $comissionista->getPercentagem() }}
+            {{ $comissionista->getPercentagem() }}%
         </div>
     </div>
 @stop

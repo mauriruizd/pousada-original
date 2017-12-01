@@ -1,6 +1,8 @@
 {!! Form::hidden('estados-endpoint', url('clientes/select/estados'), ['id' => 'estados-endpoint']) !!}
 {!! Form::hidden('cidades-endpoint', url('clientes/select/cidades'), ['id' => 'cidades-endpoint']) !!}
-
+@if($fromReserva)
+    {!! Form::hidden('from-reserva', true) !!}
+@endif
 <div class="form-group">
     <label class="col-md-12">Nome</label>
     <div class="col-md-12">
@@ -40,7 +42,7 @@
 <div class="form-group">
     <label class="col-md-12">Data de Nascimento</label>
     <div class="col-md-12">
-        {!! Form::text('data_nascimento', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua data de Nascimento', 'id' => 'data-nascimento', 'required']) !!}
+        {!! Form::text('data_nascimento', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira sua data de Nascimento', 'id' => 'data-nascimento', 'required', 'readonly']) !!}
     </div>
 </div>
 <div class="form-group">

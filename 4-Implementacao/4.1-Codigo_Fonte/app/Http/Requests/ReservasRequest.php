@@ -26,4 +26,14 @@ class ReservasRequest extends FormRequest
     {
         return Reserva::validationRules($this);
     }
+
+    public function messages()
+    {
+        return array_merge(
+            parent::messages(),
+            Reserva::messages($this)
+        );
+    }
+
+
 }

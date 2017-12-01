@@ -113,6 +113,11 @@ class Comissionista extends Model implements EntityValidation, SearchableEntity
         return $this->belongsTo(CategoriaComissionista::class, 'id_categoria', 'id');
     }
 
+    public function calcularComissao($total)
+    {
+        return $total * ($this->getPercentagem() / 100);
+    }
+
     public static function validationRules(Request $request)
     {
         if (str_contains(strtolower($request->method()), [

@@ -19,7 +19,10 @@
 @stop
 @section('js')
     <script src="{{ url('js/reservas.js') }}"></script>
+    <script src="{{ url('js/bootstrap-select.min.js') }}"></script>
+    {{--<script src="{{ url('js/defaults-pt_BR.min.js') }}"></script>--}}
 @stop
 @section('css')
     <link rel="stylesheet" href="{{ url('css/datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url('css/bootstrap-select.min.css') }}">
 @stop

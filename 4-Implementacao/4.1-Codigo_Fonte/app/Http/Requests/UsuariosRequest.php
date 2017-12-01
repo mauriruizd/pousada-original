@@ -26,4 +26,9 @@ class UsuariosRequest extends FormRequest
     {
         return Usuario::validationRules($this);
     }
+
+    public function messages()
+    {
+        return array_merge(parent::messages(), Usuario::messages());
+    }
 }
