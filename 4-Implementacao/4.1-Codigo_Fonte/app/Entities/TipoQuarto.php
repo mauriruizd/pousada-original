@@ -6,6 +6,7 @@ use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Traits\DefaultSearchTrait;
+use App\Entities\Traits\PrettyDateTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,8 +14,9 @@ use Illuminate\Http\Request;
 
 class TipoQuarto extends Model implements EntityValidation, SearchableEntity
 {
-    use DefaultSearchTrait;
-    use SoftDeletes;
+    use DefaultSearchTrait,
+        SoftDeletes,
+        PrettyDateTrait;
 
     protected $table = 'tipos_quartos';
 
@@ -106,14 +108,38 @@ class TipoQuarto extends Model implements EntityValidation, SearchableEntity
 
     public static function validationRules(Request $request)
     {
-        if (!strtolower($request->method()) === 'delete') {
+        if (strtolower($request->method()) !== 'delete') {
             switch (true) {
                 case str_contains($request->path(), 'excecoes') : {
                     $tipoQuarto = TipoQuarto::find($request->route('tipos_quarto'));
+                    $dataEntrada = implode('-', array_reverse(explode('/', $request->data_inicio))) . ' 00:00:00';
+                    $dataSaida = implode('-', array_reverse(explode('/', $request->data_fim))) . ' 00:00:00';
+                    $excecoes = ExcecaoPreco::where('id_tipo_quarto', $tipoQuarto->getId())
+                        ->where(function($q) use ($dataEntrada, $dataSaida) {
+                            $q
+                                ->where(function($q) use($dataEntrada) {
+                                    $q->whereDate('data_inicio', '<=', $dataEntrada)
+                                        ->whereDate('data_fim', '>=', $dataEntrada);
+                                })
+                                ->orWhere(function($q) use($dataSaida) {
+                                    $q->whereDate('data_inicio', '<=', $dataSaida)
+                                        ->whereDate('data_fim', '>=', $dataSaida);
+                                })
+                                ->orWhere(function($q) use($dataEntrada, $dataSaida) {
+                                    $q->whereDate('data_inicio', '>=', $dataEntrada)
+                                        ->whereDate('data_fim', '<=', $dataSaida);
+                                });
+                        })
+                        ->get();
+                    if (count($excecoes) === 0) {
+                        return [
+                            'preco' => 'required|max:' . $tipoQuarto->getPreco()
+                        ];
+                    }
                     return [
                         'preco' => 'required|max:' . $tipoQuarto->getPreco(),
-                        'data_inicio' => 'after:' . Carbon::yesterday(),
-                        'data_fim' => 'after:' . $request->data_inicio
+                        'data_inicio' => 'same:false',
+                        'data_fim' => 'same:false'
                     ];
                 }
                 default: {
@@ -136,10 +162,10 @@ class TipoQuarto extends Model implements EntityValidation, SearchableEntity
     public static function validationMessages(Request $request)
     {
         switch (true) {
-            case str_contains($request->path(), 'tarifas') : {
+            case str_contains($request->path(), 'excecoes') : {
                 return [
-                    'precos.*.numeric' => 'O preço deve ter valor númerico',
-                    'precos.*.min' => 'O preço deve ser um valor positivo',
+                    'data_inicio.same' => 'A data de inicio interfere com outra exceção',
+                    'data_fim.same' => 'A data de fim interfere com outra exceção',
                 ];
             }
             case str_contains($request->path(), 'promocao') : {

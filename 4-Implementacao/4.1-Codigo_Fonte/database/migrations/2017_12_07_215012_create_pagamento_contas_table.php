@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriaComissionistasTable extends Migration
+class CreatePagamentoContasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateCategoriaComissionistasTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorias_comissionistas', function (Blueprint $table) {
+        Schema::create('pagamento_contas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->unsignedInteger('id_estada');
+            $table->unsignedInteger('id_usuario');
+            $table->float('valor');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateCategoriaComissionistasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias_comissionistas');
+        Schema::dropIfExists('pagamento_contas');
     }
 }

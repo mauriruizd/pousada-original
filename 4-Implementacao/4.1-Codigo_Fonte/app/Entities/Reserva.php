@@ -2,6 +2,8 @@
 
 namespace App\Entities;
 
+use App\Entities\Enumeration\EstadoReserva;
+use App\Entities\Enumeration\MetodoPagamento;
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
@@ -27,10 +29,15 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         'id_fonte',
         'id_comissionista',
         'total_comissao',
+        'total_comissao_fonte',
+        'total_devolvido_cancelamento',
         'comissao_paga',
         'id_cliente_reservante',
+        'tipo_pagamento',
+        'estado'
     ];
 
+    public $total_devolvido_cancelamento;
     /**
      * @return mixed
      */
@@ -87,7 +94,10 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setDataEntradaAttribute($dateString)
     {
         $this->setDate($dateString, 'data_entrada');
-        if (!empty($this->attributes['data_saida']) && !empty($this->attributes['id_quarto'])) {
+        if (
+            !empty($this->attributes['data_saida']) && strlen($this->attributes['data_saida']) !== 10
+            &&
+            !empty($this->attributes['id_quarto'])) {
             $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
         }
     }
@@ -100,26 +110,33 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setDataSaidaAttribute($dateString)
     {
         $this->setDate($dateString, 'data_saida');
-        if (!empty($this->attributes['data_entrada']) && !empty($this->attributes['id_quarto'])) {
+        if (
+            !empty($this->attributes['data_entrada']) && strlen($this->attributes['data_entrada']) !== 10
+            &&
+            !empty($this->attributes['id_quarto'])) {
             $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
         }
     }
 
     private function setValorTotalFromDias($dataEntrada, $dataSaida)
     {
+
         $tipoQuarto = Quarto::find($this->attributes['id_quarto'])->getTipoQuarto();
-        $excecoes = $tipoQuarto->excecoes()
-            ->where(function($q) use($dataEntrada) {
-                $q->whereDate('data_inicio', '<=', $dataEntrada)
-                    ->whereDate('data_fim', '>=', $dataEntrada);
-            })
-            ->orWhere(function($q) use($dataSaida) {
-                $q->whereDate('data_inicio', '<=', $dataSaida)
-                    ->whereDate('data_fim', '>=', $dataSaida);
-            })
-            ->orWhere(function($q) use($dataEntrada, $dataSaida) {
-                $q->whereDate('data_inicio', '>=', $dataEntrada)
-                    ->whereDate('data_fim', '<=', $dataSaida);
+        $excecoes = ExcecaoPreco::where('id_tipo_quarto', $tipoQuarto->getId())
+            ->where(function ($q) use ($dataEntrada, $dataSaida) {
+                $q
+                    ->where(function ($q) use ($dataEntrada) {
+                        $q->whereDate('data_inicio', '<=', $dataEntrada)
+                            ->whereDate('data_fim', '>=', $dataEntrada);
+                    })
+                    ->orWhere(function ($q) use ($dataSaida) {
+                        $q->whereDate('data_inicio', '<=', $dataSaida)
+                            ->whereDate('data_fim', '>=', $dataSaida);
+                    })
+                    ->orWhere(function ($q) use ($dataEntrada, $dataSaida) {
+                        $q->whereDate('data_inicio', '>=', $dataEntrada)
+                            ->whereDate('data_fim', '<=', $dataSaida);
+                    });
             })
             ->get();
         $total = 0;
@@ -129,10 +146,10 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
             $isBetween = false;
             foreach ($excecoes as $excecao) {
                 if (
-                    $carbonData->between(
-                        Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataInicio())),
-                        Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataFim()))
-                    )
+                $carbonData->between(
+                    Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataInicio())),
+                    Carbon::createFromFormat('Y-m-d H:i:s', $this->prettyDateToDBDate($excecao->getDataFim()))
+                )
                 ) {
                     $total += $excecao->getPreco();
                     $isBetween = true;
@@ -145,9 +162,11 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
             $carbonData->addDay();
         } while (!$carbonData->isSameDay($carbonSaida));
         $this->attributes['valor_total'] = $total;
+        $this->checkEstadoReserva(0);
         if (!empty($this->attributes['id_comissionista'])) {
             $this->calcularComissao($total, $this->attributes['id_comissionista']);
         }
+        $this->setTotalComissaoFonte($this->getIdFonte(), $this->getTipoPagamento(), $this->getValorTotal());
     }
 
     private function calcularComissao($valorTotal, $idComissionista)
@@ -170,6 +189,60 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setValorTotal($valor_total)
     {
         $this->valor_total = $valor_total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalComissao()
+    {
+        return $this->total_comissao;
+    }
+
+    /**
+     * @param mixed $total_comissao
+     */
+    public function setTotalComissao($total_comissao)
+    {
+        $this->total_comissao = $total_comissao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalDevolvidoCancelamento()
+    {
+        return $this->total_devolvido_cancelamento;
+    }
+
+    /**
+     * @param mixed $total_devolvido_cancelamento
+     */
+    public function setTotalDevolvidoCancelamento($total_devolvido_cancelamento)
+    {
+        $this->attributes['total_devolvido_cancelamento'] = $total_devolvido_cancelamento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdFonte()
+    {
+        return $this->id_fonte;
+    }
+
+    /**
+     * @param mixed $id_fonte
+     */
+    public function setIdFonte($id_fonte)
+    {
+        $this->id_fonte = $id_fonte;
+    }
+
+    public function setIdFonteAttribute($idFonte)
+    {
+        $this->attributes['id_fonte'] = $idFonte;
+        $this->setTotalComissaoFonte($this->getIdFonte(), $this->getTipoPagamento(), $this->getValorTotal());
     }
 
     /**
@@ -204,10 +277,102 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         $this->id_cliente_reservante = $id_cliente_reservante;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->attributes['estado'] = $estado;
+        if ($this->estado == EstadoReserva::$CANCELADA) {
+            $dataEntrada = Carbon::createFromFormat('d/m/Y', $this->getDataEntrada());
+            $now = Carbon::now()->setTime(0,0,0);
+            if ($dataEntrada->greaterThan($now)) {
+                // dataEntrada > now, ainda nao e o dia de entrada
+                $difDias = $dataEntrada->diffInDays($now);
+                if ($difDias >= 7) {
+                    // antes dos 7 dias da entrada
+                    // Cancelamento gratis
+                    $this->setTotalDevolvidoCancelamento($this->getValorTotal());
+                } else {
+                    // Dentro dos 7 dias
+                    if (Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->setTime(0,0,0)->diffInDays($dataEntrada) < 3) {
+                        // Cancelamento dentro das 48 hs. Cancelamento gratis
+                        $this->setTotalDevolvidoCancelamento($this->getValorTotal());
+                    } else {
+                        // Cobrado 50%
+                        $this->setTotalDevolvidoCancelamento($this->getValorTotal() / 2);
+                    }
+                }
+            } elseif ($dataEntrada->isSameDay($now)) {
+                // Mesmo dia. Cobrado 100%
+                $this->setTotalDevolvidoCancelamento(0);
+            }
+            $this->setTotalComissaoFonte($this->getIdFonte(), $this->getTipoPagamento(), 0);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoPagamento()
+    {
+        return $this->tipo_pagamento;
+    }
+
+    /**
+     * @param mixed $tipo_pagamento
+     */
+    public function setTipoPagamento($tipo_pagamento)
+    {
+        $this->tipo_pagamento = $tipo_pagamento;
+    }
+
+    public function setTipoPagamentoAttribute($tipoPagamento)
+    {
+        $this->attributes['tipo_pagamento'] = $tipoPagamento;
+        $this->setTotalComissaoFonte($this->getIdFonte(), $this->getTipoPagamento(), $this->getValorTotal());
+    }
+
     public function getSaldoPagar()
     {
         return $this->getValorTotal() - $this->getTotalPago();
     }
+
+    private function setTotalComissaoFonte($idFonte, $metodoPagamento, $total)
+    {
+        if (!empty($idFonte) && !empty($metodoPagamento) && !empty($total)) {
+            $fonte = FonteReserva::find($idFonte);
+            switch ($metodoPagamento) {
+                case MetodoPagamento::$AVISTA:
+                    $percentagem = $fonte->getPercentagemVista();
+                    break;
+                case MetodoPagamento::$PARCELADO:
+                    $percentagem = $fonte->getPercentagemParcelado();
+                    break;
+                default:
+                    $percentagem = 0;
+                    break;
+            }
+            $this->attributes['total_comissao_fonte'] = $total * ( $percentagem / 100 );
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalComissaoFonte()
+    {
+        return $this->total_comissao_fonte;
+    }
+
 
     public function getTotalPago()
     {
@@ -227,9 +392,14 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setIdQuartoAttribute($id)
     {
         $this->attributes['id_quarto'] = $id;
-        if (!empty($this->attributes['data_entrada']) && !empty($this->attributes['data_saida'])) {
+        if (!empty($this->attributes['data_saida']) && !empty($this->attributes['data_entrada'])) {
             $this->setValorTotalFromDias($this->attributes['data_entrada'], $this->attributes['data_saida']);
         }
+    }
+
+    public function checkCheckinDisponivel()
+    {
+        return Carbon::createFromFormat('d/m/Y', $this->getDataEntrada())->isSameDay(Carbon::now());
     }
 
     public function getQuarto()
@@ -269,13 +439,13 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
 
     public function comissionista()
     {
-        return $this->belongsTo(Comissionista::class, 'id_comisionista', 'id');
+        return $this->belongsTo(Comissionista::class, 'id_comissionista', 'id');
     }
 
     public function setIdComissionistaAttribute($id)
     {
-        $this->attributes['id_comissionista'] = $id;
-        if (!empty($this->attributes['valor_total'])) {
+        $this->attributes['id_comissionista'] = empty($id) ? null : $id;
+        if (!empty($id) && !empty($this->attributes['valor_total'])) {
             $this->calcularComissao($this->attributes['valor_total'], $id);
         }
     }
@@ -300,28 +470,50 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         return $this->belongsTo(Usuario::class, 'id_usuario', 'id');
     }
 
-    public function scopeConsultarIndisponibilidade($q, $dataInicio, $dataFim)
+    public function checkEstadoReserva($quantia)
+    {
+        if ($this->getEstado() !== EstadoReserva::$CANCELADA) {
+            $saldoAtualizado = $this->getTotalPago() + $quantia;
+            if ($saldoAtualizado >= ($this->getValorTotal() / 2)) {
+                $this->setEstado((string) EstadoReserva::$CONFIRMADA);
+            } else {
+                $this->setEstado((string) EstadoReserva::$ABERTA);
+            }
+        }
+    }
+
+    public function scopeConsultarIndisponibilidade($q, $dataInicio, $dataFim, $idReservaAtual = null)
     {
         $dataEntrada = $this->prettyDateToDBDate($dataInicio);
         $dataSaida = $this->prettyDateToDBDate($dataFim);
-        return $q->where(function($q) use($dataEntrada) {
-            $q->whereDate('data_entrada', '<=', $dataEntrada)
-                ->whereDate('data_saida', '>', $dataEntrada);
+        $q = $q->where(function ($q) use($dataEntrada, $dataSaida) {
+            $q->where(function($q) use($dataEntrada) {
+                $q->whereDate('data_entrada', '<=', $dataEntrada)
+                    ->whereDate('data_saida', '>', $dataEntrada);
             })
-            ->orWhere(function($q) use($dataSaida) {
-                $q->whereDate('data_entrada', '<', $dataSaida)
-                    ->whereDate('data_saida', '>=', $dataSaida);
-            })
-            ->orWhere(function($q) use($dataEntrada, $dataSaida) {
-                $q->whereDate('data_entrada', '>=', $dataEntrada)
-                    ->whereDate('data_saida', '<=', $dataSaida);
-            });
+                ->orWhere(function($q) use($dataSaida) {
+                    $q->whereDate('data_entrada', '<', $dataSaida)
+                        ->whereDate('data_saida', '>=', $dataSaida);
+                })
+                ->orWhere(function($q) use($dataEntrada, $dataSaida) {
+                    $q->whereDate('data_entrada', '>=', $dataEntrada)
+                        ->whereDate('data_saida', '<=', $dataSaida);
+                });
+        });
+        if (!is_null($idReservaAtual)) {
+            $q = $q->where('id', '<>', $idReservaAtual);
+        }
+        return $q;
     }
 
     public static function validationRules(Request $request)
     {
         $path = strtolower($request->path());
-        if (!str_contains($path, 'fontes-reservas') && str_contains($path, 'reserva')) {
+        if (!str_contains($path, [
+                'fontes-reservas',
+                'registrar-pagamento',
+                'estado-comissao'
+            ]) && str_contains($path, 'reserva')) {
             switch (strtolower($request->method())) {
                 case 'post':
                     return [
@@ -334,9 +526,8 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
                     break;
                 case 'put':
                     return [
-                        'id_cliente_reservante' => 'required',
-                        'data_entrada' => 'required|date|after:' . Carbon::createFromFormat('Y-m-d', Reserva::find($request->route('reserva'))->getDataEntrada())->subDay(1),
-                        'data_saida' => 'required|date|after:' . Carbon::createFromFormat('Y-m-d', Reserva::find($request->route('reserva'))->getDataEntrada()),
+                        'data_entrada' => 'required',
+                        'data_saida' => 'required',
                         'id_quarto' => 'required',
                     ];
                     break;
@@ -355,7 +546,10 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     {
         return $request->user()->getTipo() === TipoUsuario::$ADMINISTRADOR
             ||
-            !str_contains(strtolower($request->path()), 'fontes-reservas')
+            !str_contains(strtolower($request->path()), [
+                'fontes-reservas',
+                'comissao-reserva'
+            ])
             ||
             str_contains(strtolower($request->path()), [
                 'registrar-pagamento',

@@ -185,6 +185,11 @@ class Produto extends Model implements EntityValidation, SearchableEntity
         $this->attributes['imagen_url'] = 'img/uploads/produtos/' . $fileName;
     }
 
+    public function scopeComEstoque($q)
+    {
+        return $q->where('estoque', '>', 0);
+    }
+
     public function getFornecedor()
     {
         return $this->fornecedor;

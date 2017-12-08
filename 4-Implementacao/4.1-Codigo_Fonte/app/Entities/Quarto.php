@@ -143,9 +143,9 @@ class Quarto extends Model implements SearchableEntity, EntityValidation
         return $q->where('em_manutencao', '=', false);
     }
 
-    public function scopeConsultarDisponibilidade($q, $dataInicio, $dataFim)
+    public function scopeConsultarDisponibilidade($q, $dataInicio, $dataFim, $idAtual = null)
     {
-        $reservas = Reserva::consultarIndisponibilidade($dataInicio, $dataFim)->pluck('id_quarto');
+        $reservas = Reserva::consultarIndisponibilidade($dataInicio, $dataFim, $idAtual)->pluck('id_quarto');
         return $q->whereNotIn('id', $reservas);
     }
 

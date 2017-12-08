@@ -19,7 +19,11 @@ class FonteReserva extends Model implements EntityValidation, SearchableEntity
 
     protected $fillable = [
         'id',
-        'nome'
+        'nome',
+        'pagamento_vista',
+        'pagamento_parcelado',
+        'percentagem_vista',
+        'percentagem_parcelado'
     ];
 
     /**
@@ -52,6 +56,70 @@ class FonteReserva extends Model implements EntityValidation, SearchableEntity
     public function setNome($nome)
     {
         $this->nome = $nome;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPagamentoVista()
+    {
+        return $this->pagamento_vista;
+    }
+
+    /**
+     * @param mixed $pagamento_vista
+     */
+    public function setPagamentoVista($pagamento_vista)
+    {
+        $this->pagamento_vista = $pagamento_vista;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPagamentoParcelado()
+    {
+        return $this->pagamento_parcelado;
+    }
+
+    /**
+     * @param mixed $pagamento_parcelado
+     */
+    public function setPagamentoParcelado($pagamento_parcelado)
+    {
+        $this->pagamento_parcelado = $pagamento_parcelado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentagemVista()
+    {
+        return $this->percentagem_vista;
+    }
+
+    /**
+     * @param mixed $percentagem_vista
+     */
+    public function setPercentagemVista($percentagem_vista)
+    {
+        $this->percentagem_vista = $percentagem_vista;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentagemParcelado()
+    {
+        return $this->percentagem_parcelado;
+    }
+
+    /**
+     * @param mixed $percentagem_parcelado
+     */
+    public function setPercentagemParcelado($percentagem_parcelado)
+    {
+        $this->percentagem_parcelado = $percentagem_parcelado;
     }
 
     public static function validationRules(Request $request)

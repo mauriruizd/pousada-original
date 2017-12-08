@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('fornecedores', 'FornecedoresController');
     Route::get('fornecedores/select/{endpoint}/{id}', 'FornecedoresController@selectEndpoint');
 
+    Route::get('produtos/consultar-estoque', ['as' => 'produtos.consultar-estoque', 'uses' => 'ProdutosController@consultarEstoque']);
     Route::get('produtos/listagem', ['as' => 'produtos.listagem', 'uses' => 'ProdutosController@listagem']);
     Route::get('produtos/arquivados', ['as' => 'produtos.arquivados', 'uses' => 'ProdutosController@arquivados']);
     Route::get('produtos/{id}/recuperar', ['as' => 'produtos.recuperar', 'uses' => 'ProdutosController@recuperar']);
@@ -83,8 +84,30 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('fontes-reservas/{id}/recuperar', ['as' => 'fontes-reservas.recuperar', 'uses' => 'FontesReservasController@recuperar']);
     Route::resource('fontes-reservas', 'FontesReservasController', ['except' => 'show']);
 
+    Route::get('reservas/relatorio', ['as' => 'reservas.relatorio', 'uses' => 'ReservasController@relatorio']);
+    Route::post('reservas/{reserva}/estado-comissao', ['as' => 'reservas.confirmar-comissao', 'uses' => 'ReservasController@confirmarComissao']);
+    Route::get('reservas/{reserva}/estado-comissao', ['as' => 'reservas.estado-comissao', 'uses' => 'ReservasController@estadoComissaoReserva']);
+    Route::get('reservas/{reserva}/saldo', ['as' => 'reservas.saldo', 'uses' => 'ReservasController@saldoReserva']);
     Route::get('reservas/consultar-disponibilidade', ['as' => 'reservas.consultar-disponibilidade', 'uses' => 'ReservasController@consultarDisponibilidade']);
+    Route::get('reservas/consultar-tipos-pagamento', ['as' => 'reservas.consultar-tipos-pagamentos', 'uses' => 'ReservasController@consultarTiposPagamento']);
+    Route::get('reservas/{reserva}/registrar-pagamento', ['as' => 'reservas.pagamento-form', 'uses' => 'ReservasController@pagamentoForm']);
+    Route::post('reservas/{reserva}/registrar-pagamento', ['as' => 'reservas.pagamento', 'uses' => 'ReservasController@pagamento']);
     Route::resource('reservas', 'ReservasController');
+
+    Route::get('estadas', ['as' => 'estadas.index', 'uses' => 'EstadasController@index']);
+    Route::get('estadas/{reserva}/checkin', ['as' => 'estadas.checkin-form', 'uses' => 'EstadasController@checkinForm']);
+    Route::post('estadas/{reserva}/checkin', ['as' => 'estadas.checkin', 'uses' => 'EstadasController@checkin']);
+    Route::post('estadas/{reserva}/checkout', ['as' => 'estadas.checkout', 'uses' => 'EstadasController@checkout']);
+    Route::get('estadas/{estada}/hospedes', ['as' => 'estadas.edit-hospedes', 'uses' => 'EstadasController@editHospedes']);
+    Route::put('estadas/{estada}/hospedes', ['as' => 'estadas.update-hospedes', 'uses' => 'EstadasController@updateHospedes']);
+    Route::get('estadas/{estada}/quarto', ['as' => 'estadas.edit-quarto', 'uses' => 'EstadasController@editQuarto']);
+    Route::put('estadas/{estada}/quarto', ['as' => 'estadas.update-quarto', 'uses' => 'EstadasController@updateQuarto']);
+    Route::get('estadas/{estada}/frigobar', ['as' => 'estadas.create-frigobar', 'uses' => 'EstadasController@createFrigobar']);
+    Route::post('estadas/{estada}/frigobar', ['as' => 'estadas.store-frigobar', 'uses' => 'EstadasController@storeFrigobar']);
+    Route::get('estadas/{estada}/estado-conta', ['as' => 'estadas.estado-conta', 'uses' => 'EstadasController@estadoConta']);
+    Route::get('estadas/{estada}/pagamento', ['as' => 'estadas.create-pagamento', 'uses' => 'EstadasController@createPagamento']);
+    Route::post('estadas/{estada}/pagamento', ['as' => 'estadas.store-pagamento', 'uses' => 'EstadasController@storePagamento']);
+    Route::get('estadas/{estada}', ['as' => 'estadas.show', 'uses' => 'EstadasController@show']);
 });
 
 Route::get('/home', 'HomeController@index');

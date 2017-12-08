@@ -195,4 +195,9 @@ class ProdutosController extends Controller
     {
         // TODO: continuar apos finalização da parte de vendas
     }
+
+    public function consultarEstoque(Request $request)
+    {
+        return Produto::find($request->id)->estoque;
+    }
 }

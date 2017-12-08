@@ -126,7 +126,7 @@ class Comissionista extends Model implements EntityValidation, SearchableEntity
         ])) {
             if (str_contains(strtolower($request->path()), ['modificar-percentagem-comissao'])) {
                 return [
-                    'percentagem' => 'required|numeric|min:' . Comissionista::find($request->route('id'))->getPercentagem()
+                    'percentagem' => 'required|numeric|min:0'
                 ];
             }
             return [

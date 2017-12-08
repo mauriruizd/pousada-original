@@ -59,8 +59,15 @@ class FontesReservasController extends Controller
      */
     public function store(FonteReservasRequest $request)
     {
-        FonteReserva::create($request->all());
-        return redirect()->route('fontes-reservas.index')->with(['msg' => 'Fonte criad com sucesso!']);
+        $data = $request->all();
+        if (!$request->has('pagamento_parcelado') && !$request->has('pagamento_vista')) {
+            $data['pagamento_parcelado'] = 1;
+        } else {
+            $data['pagamento_parcelado'] = $request->has('pagamento_parcelado') ? 1 : 0;
+            $data['pagamento_vista'] = $request->has('pagamento_vista') ? 1 : 0;
+        }
+        FonteReserva::create($data);
+        return redirect()->route('fontes-reservas.index')->with(['msg' => 'Fonte criada com sucesso!']);
     }
 
     /**
@@ -90,7 +97,15 @@ class FontesReservasController extends Controller
     public function update(FonteReservasRequest $request, $id)
     {
         $fonte = FonteReserva::find($id);
-        $fonte->fill($request->all())->save();
+        $data = $request->all();
+        if (!$request->has('pagamento_parcelado') && !$request->has('pagamento_vista')) {
+            $data['pagamento_vista'] = 1;
+            $data['pagamento_parcelado'] = 0;
+        } else {
+            $data['pagamento_parcelado'] = $request->has('pagamento_parcelado') ? 1 : 0;
+            $data['pagamento_vista'] = $request->has('pagamento_vista') ? 1 : 0;
+        }
+        $fonte->fill($data)->save();
         return redirect()->back()->with(['msg' => 'Fonte atualizada com sucesso!']);
     }
 

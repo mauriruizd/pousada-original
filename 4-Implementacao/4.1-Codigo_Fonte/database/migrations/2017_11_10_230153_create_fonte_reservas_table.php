@@ -16,6 +16,10 @@ class CreateFonteReservasTable extends Migration
         Schema::create('fontes_reservas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
+            $table->boolean('pagamento_vista')->default(false);
+            $table->boolean('pagamento_parcelado')->default(false);
+            $table->float('percentagem_vista')->default(0);
+            $table->float('percentagem_parcelado')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +32,6 @@ class CreateFonteReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fonte_reservas');
+        Schema::dropIfExists('fontes_reservas');
     }
 }

@@ -40,6 +40,9 @@
     color: white;
 }
 
+a[disabled] {
+    pointer-events: none;
+}
 @media print {
     .no-print {
         display: none;

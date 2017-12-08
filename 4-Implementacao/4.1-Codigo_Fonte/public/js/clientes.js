@@ -20,10 +20,16 @@ $(document).ready(function() {
 
     // Set estados change listener
     estadosFormElement.on('change', function() {
+        console.log(this.value);
+        localStorage.setItem('lastEstado', this.value);
         showPreloader();
         getSelect($(this), cidadesEndpoint, cidadesFormElement, function () {
             hidePreloader();
         });
+    });
+
+    cidadesFormElement.on('change', function() {
+        localStorage.setItem('lastCidade', this.value);
     });
 
     function getSelect(changedElement, endpoint, affectedElement, callback) {
@@ -67,4 +73,24 @@ $(document).ready(function() {
     function hidePreloader() {
         $('.preloader').hide();
     }
+
+    function boot() {
+        const lastEstado = localStorage.getItem('lastEstado');
+        const lastCidade = localStorage.getItem('lastCidade');
+        if (lastEstado) {
+            getSelect(paisesFormElement, estadosEndpoint, estadosFormElement, function () {
+                estadosFormElement.val(lastEstado);
+                getSelect(estadosFormElement, cidadesEndpoint, cidadesFormElement, function () {
+                    cidadesFormElement.val(lastCidade);
+                    hidePreloader();
+                    localStorage.removeItem('lastEstado');
+                    localStorage.removeItem('lastCidade');
+                });
+            });
+        }
+        localStorage.removeItem('lastEstado');
+        localStorage.removeItem('lastCidade');
+    }
+
+    boot();
 });

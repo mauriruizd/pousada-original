@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Entities\Enumeration\EstadoReserva;
+use App\Entities\Enumeration\MetodoPagamento;
 
 class CreateReservasTable extends Migration
 {
@@ -19,12 +21,23 @@ class CreateReservasTable extends Migration
             $table->date('data_saida');
             $table->float('valor_total');
             $table->float('total_comissao')->default(0);
+            $table->float('total_comissao_fonte')->default(0);
+            $table->float('total_devolvido_cancelamento')->default(0);
             $table->boolean('comissao_paga')->default(false);
+            $table->enum('estado', [
+                EstadoReserva::$ABERTA,
+                EstadoReserva::$CONFIRMADA,
+                EstadoReserva::$CANCELADA
+            ])->default(EstadoReserva::$ABERTA);
             $table->unsignedInteger('id_quarto');
             $table->unsignedInteger('id_comissionista')->nullable()->default(null);
             $table->unsignedInteger('id_usuario');
             $table->unsignedInteger('id_cliente_reservante');
             $table->unsignedInteger('id_fonte');
+            $table->enum('tipo_pagamento', [
+                MetodoPagamento::$PARCELADO,
+                MetodoPagamento::$AVISTA
+            ]);
             $table->timestamps();
             $table->softDeletes();
 
