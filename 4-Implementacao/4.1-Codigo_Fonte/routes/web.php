@@ -107,6 +107,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('estadas/{estada}/estado-conta', ['as' => 'estadas.estado-conta', 'uses' => 'EstadasController@estadoConta']);
     Route::get('estadas/{estada}/pagamento', ['as' => 'estadas.create-pagamento', 'uses' => 'EstadasController@createPagamento']);
     Route::post('estadas/{estada}/pagamento', ['as' => 'estadas.store-pagamento', 'uses' => 'EstadasController@storePagamento']);
+    Route::get('estadas/{estada}/dano', ['as' => 'estadas.create-dano', 'uses' => 'EstadasController@createDano']);
+    Route::post('estadas/{estada}/dano', ['as' => 'estadas.store-dano', 'uses' => 'EstadasController@storeDano']);
+    Route::get('estadas/{estada}/extender', ['as' => 'estadas.create-extender', 'uses' => 'EstadasController@createExtender']);
+    Route::post('estadas/{estada}/extender', ['as' => 'estadas.store-extender', 'uses' => 'EstadasController@storeExtender']);
     Route::get('estadas/{estada}', ['as' => 'estadas.show', 'uses' => 'EstadasController@show']);
 });
 

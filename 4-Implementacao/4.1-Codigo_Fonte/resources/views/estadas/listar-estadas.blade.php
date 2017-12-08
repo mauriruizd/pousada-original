@@ -19,7 +19,9 @@
                 <th>Editar Lista de Hospedes</th>
                 <th>Alterar Quarto</th>
                 <th>Registrar Consumo do Frigobar</th>
+                <th>Registrar Dano do Quarto</th>
                 <th>Consultar Estado da Conta</th>
+                <th>Extender Estada</th>
             </tr>
             </thead>
             <tbody>
@@ -45,9 +47,22 @@
                             <i class="fa fa-cutlery"></i>
                         </a>
                     </td>
+
+                    <td>
+                        <a href="{{ route('estadas.create-dano', [$estada->getId()]) }}" class="btn btn-primary">
+                            <i class="fa fa-gavel"></i>
+                        </a>
+                    </td>
+
                     <td>
                         <a href="{{ route('estadas.estado-conta', [$estada->getId()]) }}" class="btn btn-primary">
                             <i class="fa fa-credit-card"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="{{ route('estadas.create-extender', [$estada->getId()]) }}" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
                         </a>
                     </td>
                 </tr>

@@ -31,6 +31,13 @@ class EstadasController extends Controller
         ]);
     }
 
+    public function show($id, Request $request)
+    {
+        return view('estadas.show', [
+            'estada' => Estada::find($id)
+        ]);
+    }
+
     public function checkinForm($id)
     {
         return view('estadas.checkin', [
@@ -186,6 +193,43 @@ class EstadasController extends Controller
         ]);
         return redirect()->route('estadas.index')->with([
             'msg' => 'Pagamento efeituado com sucesso!'
+        ]);
+    }
+
+    public function createExtender($id)
+    {
+        return view('estadas.extender', [
+            'estada' => Estada::find($id)
+        ]);
+    }
+
+    public function storeExtender($id, EstadasRequest $request)
+    {
+        $estada = Estada::find($id);
+        $estada->extenderEstada($request->diarias);
+        $estada->save();
+        return redirect()->route('estadas.index')->with([
+            'msg' => 'Estada extendida com sucesso!'
+        ]);
+    }
+
+    public function createDano($id)
+    {
+        return view('estadas.dano', [
+            'estada' => Estada::find($id)
+        ]);
+    }
+
+    public function storeDano($id, EstadasRequest $request)
+    {
+        CargoConta::create([
+            'id_estada' => $id,
+            'id_usuario' => auth()->user()->getId(),
+            'valor' => $request->valor,
+            'motivo' => $request->descricao
+        ]);
+        return redirect()->route('estadas.index')->with([
+            'msg' => 'Dano registrado com sucesso!'
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
 use App\Entities\Traits\DefaultSearchTrait;
 use App\Entities\Traits\PrettyDateTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Sabberworm\CSS\Rule\Rule;
@@ -231,6 +232,27 @@ class Estada extends Model implements SearchableEntity, EntityValidation
     public function getQuarto()
     {
         return $this->quarto;
+    }
+
+    public function extenderEstada($diarias)
+    {
+        $this->setNroDias($this->getNroDias() + $diarias);
+        $reserva = $this->getReserva();
+        $reserva->setDataSaida(Carbon::createFromFormat('d/m/Y', $reserva->getDataSaida())->addDay($diarias)->format('Y-m-d'));
+        $reserva->save();
+    }
+
+    public function getReservaProxima()
+    {
+        return Reserva::where('data_entrada', '>', Carbon::createFromFormat('d/m/Y', $this->getReserva()->getDataSaida()))
+            ->where('id_quarto', '=', $this->getIdQuarto())
+            ->orderBy('data_entrada', 'asc')
+            ->first();
+    }
+
+    public function getReservaProximaDias()
+    {
+        return Carbon::createFromFormat('d/m/Y', $this->getReserva()->getDataSaida())->diffInDays($this->getReservaProxima());
     }
 
     public static function validationRules(Request $request)

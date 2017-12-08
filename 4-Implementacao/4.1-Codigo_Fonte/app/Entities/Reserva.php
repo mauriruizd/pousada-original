@@ -402,6 +402,11 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         return Carbon::createFromFormat('d/m/Y', $this->getDataEntrada())->isSameDay(Carbon::now());
     }
 
+    public function estada()
+    {
+        return $this->hasOne(Estada::class, 'id_reserva', 'id');
+    }
+
     public function getQuarto()
     {
         return $this->quarto;
