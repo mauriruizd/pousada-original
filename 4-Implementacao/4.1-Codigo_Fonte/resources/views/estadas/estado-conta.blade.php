@@ -29,7 +29,11 @@
     @if($estada->getSaldo() > 0)
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('estadas.create-pagamento', [$estada->getId()]) }}" class="btn btn-primary">Efeituar Pagamento</a>
+                @if(auth()->user()->caixaAberto() == null)
+                    <i class="text-danger">Não existe caixa aberto.</i>
+                @else
+                    <a href="{{ route('estadas.create-pagamento', [$estada->getId()]) }}" class="btn btn-primary">Efeituar Pagamento</a>
+                @endif
             </div>
         </div>
     @endif

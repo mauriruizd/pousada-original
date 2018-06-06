@@ -361,7 +361,7 @@ class Cliente extends Model implements SearchableEntity, EntityValidation
             'id_nacionalidade' => 'required|exists:paises,id',
             'data_nascimento' => 'required|date_format:"d/m/Y"',
             'rg' => 'required|max:254',
-            'cpf' => 'required|size:11|in:' . Cliente::validaCPF($request->cpf),
+            'cpf' => 'size:11|in:' . Cliente::validaCPF($request->cpf),
             'sexo' => 'required|in:' . Sexo::$MASCULINO, ',' . Sexo::$FEMININO,
             'id_cidade' => 'required',
             'endereco' => 'required|max:254',

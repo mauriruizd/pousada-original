@@ -112,6 +112,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('estadas/{estada}/extender', ['as' => 'estadas.create-extender', 'uses' => 'EstadasController@createExtender']);
     Route::post('estadas/{estada}/extender', ['as' => 'estadas.store-extender', 'uses' => 'EstadasController@storeExtender']);
     Route::get('estadas/{estada}', ['as' => 'estadas.show', 'uses' => 'EstadasController@show']);
+
+    Route::get('caixa/historico', ['as' => 'caixas.index', 'uses' => 'CaixasController@index']);
+    Route::get('caixa', ['as' => 'caixas.aberto', 'uses' => 'CaixasController@aberto']);
+    Route::get('caixa/abrir', ['as' => 'caixas.create-abrir', 'uses' => 'CaixasController@createAbrir']);
+    Route::post('caixa/abrir', ['as' => 'caixas.abrir', 'uses' => 'CaixasController@abrir']);
+    Route::delete('caixa', ['as' => 'caixas.fechar', 'uses' => 'CaixasController@fechar']);
+    Route::get('caixa/deposito', ['as' => 'caixas.create-deposito', 'uses' => 'CaixasController@createDeposito']);
+    Route::post('caixa/deposito', ['as' => 'caixas.deposito', 'uses' => 'CaixasController@deposito']);
+    Route::get('caixa/saque', ['as' => 'caixas.create-saque', 'uses' => 'CaixasController@createSaque']);
+    Route::post('caixa/saque', ['as' => 'caixas.saque', 'uses' => 'CaixasController@saque']);
 });
 
 Route::get('/home', 'HomeController@index');

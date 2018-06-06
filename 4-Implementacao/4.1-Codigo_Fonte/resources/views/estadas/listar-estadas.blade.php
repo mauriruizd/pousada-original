@@ -29,8 +29,13 @@
                 <tr>
                     <td>{{ $estada->getQuarto()->getNumero() }}</td>
                     <td>
-                        {!! Form::open(['route' => ['estadas.checkout', $estada->getId()], 'method' => 'POST']) !!}
-                        <button type="submit" class="btn btn-primary">Realizar checkout</button>
+                        @if($estada->getSaldo() == 0)
+                            {!! Form::open(['route' => ['estadas.checkout', $estada->getId()], 'method' => 'POST']) !!}
+                                <button type="submit" class="btn btn-primary">Realizar checkout</button>
+                            {!! Form::close() !!}
+                        @else
+                            <i class="text-danger">Pagamento pendente</i>
+                        @endif
                     </td>
                     <td>
                         <a href="{{ route('estadas.edit-hospedes', [$estada->getId()]) }}" class="btn btn-primary">
@@ -71,14 +76,14 @@
         </table>
         {!! $estadas->render() !!}
     </div>
-    <div class="floating-menu">
-        <div class="submenu">
+    {{--<div class="floating-menu">--}}
+        {{--<div class="submenu">--}}
             {{--<a href="{{ route('estadas.checkin-form') }}" class="btn btn-primary btn-rounded" title="Realizar checkin">--}}
                 {{--<i class="fa fa-plus"></i>--}}
             {{--</a>--}}
-        </div>
-        <button class="btn btn-primary btn-rounded btn-lg menu-main">
-            <i class="fa fa-bars"></i>
-        </button>
-    </div>
+        {{--</div>--}}
+        {{--<button class="btn btn-primary btn-rounded btn-lg menu-main">--}}
+            {{--<i class="fa fa-bars"></i>--}}
+        {{--</button>--}}
+    {{--</div>--}}
 @stop

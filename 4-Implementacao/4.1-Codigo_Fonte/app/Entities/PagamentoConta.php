@@ -22,4 +22,12 @@ class PagamentoConta extends Model
     {
         return $this->belongsTo(Usuario::class, 'id_usuario', 'id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function (PagamentoConta $model) {
+            auth()->user()->caixaAberto()->registrarPagamento($model->valor, 'PAGAMENTO DE CONTA DE RESERVA #' . $model->estada()->getIdReserva());
+        });
+    }
 }

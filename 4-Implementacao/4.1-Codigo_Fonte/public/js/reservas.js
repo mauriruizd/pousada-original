@@ -15,6 +15,7 @@ $(document).ready(function() {
         maxDate: '+18m',
         changeMonth: true,
         changeYear: true,
+        yearRange: "-100:+0",
         dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
         dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
         dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PagamentoReserva extends Model
 {
     protected $table = 'pagamentos_reservas';
+
     protected $fillable = [
         'quantia',
         'datahora',
@@ -21,6 +22,11 @@ class PagamentoReserva extends Model
         return $this->quantia;
     }
 
+    public function atualizarCaixa($idReserva, $quantia)
+    {
+        auth()->user()->caixaAberto()->registrarPagamento($quantia, 'PAGAMENTO DE RESERVA #' . $idReserva);
+    }
+
     /**
      * @param mixed $quantia
      */
@@ -32,7 +38,9 @@ class PagamentoReserva extends Model
     public function setQuantiaAttribute($quantia)
     {
         $this->attributes['quantia'] = $quantia;
-        $this->checkEstadoReserva($this->attributes['id_reserva'], $quantia);
+        if (!empty($this->attributes['id_reserva'])) {
+            $this->checkEstadoReserva($this->attributes['id_reserva'], $quantia);
+        }
     }
 
     /**
@@ -81,6 +89,7 @@ class PagamentoReserva extends Model
             $reserva = Reserva::find($idReserva);
             $reserva->checkEstadoReserva($quantiaPaga);
             $reserva->save();
+            $this->atualizarCaixa($idReserva, $quantiaPaga);
         }
     }
 

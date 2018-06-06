@@ -47,9 +47,13 @@
         {!! Form::open(['route' => ['reservas.confirmar-comissao', $reserva->getId()], 'method' => 'POST', 'onsubmit' => 'Confirma pagamento da comissão?']) !!}
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary" {{ $reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA ? '' : 'disabled' }}>
-                    Confirmar Pagamento
-                </button>
+                @if(auth()->user()->caixaAberto() == null)
+                    <i class="text-danger">Não existe caixa aberto.</i>
+                @else
+                    <button type="submit" class="btn btn-primary" {{ $reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA ? '' : 'disabled' }}>
+                        Confirmar Pagamento
+                    </button>
+                @endif
             </div>
         </div>
         {!! Form::close() !!}

@@ -23,9 +23,13 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('reservas.pagamento-form', [$reserva->getId()]) }}" class="btn btn-primary" {{ $reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA ? '' : 'disabled' }}>
-                Registrar Pagamento
-            </a>
+            @if(auth()->user()->caixaAberto() == null)
+                <i class="text-danger">Não existe caixa aberto.</i>
+            @else
+                <a href="{{ route('reservas.pagamento-form', [$reserva->getId()]) }}" class="btn btn-primary" {{ $reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA ? '' : 'disabled' }}>
+                    Registrar Pagamento
+                </a>
+            @endif
         </div>
     </div>
 @stop

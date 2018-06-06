@@ -54,7 +54,7 @@
 <div class="form-group">
     <label class="col-md-12">CPF</label>
     <div class="col-md-12">
-        {!! Form::text('cpf', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu CPF', 'maxlength' => 12, 'required']) !!}
+        {!! Form::text('cpf', null, ['class' => 'form-control form-control-line', 'placeholder' => 'Insira seu CPF', 'maxlength' => 11]) !!}
     </div>
 </div>
 <div class="form-group">

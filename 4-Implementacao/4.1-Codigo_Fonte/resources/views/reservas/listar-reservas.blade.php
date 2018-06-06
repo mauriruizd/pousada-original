@@ -72,22 +72,30 @@
                         @endif
                     </td>
                     <td>
-                        {!! Form::open(['route' => ['reservas.destroy', $reserva->getId()], 'method' => 'delete', 'onsubmit' => 'return confirm("Confirma a cancelação?")']) !!}
-                        <button type="submit" class="btn btn-primary" {{ ($reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA && is_null($reserva->estada)) ? '' : 'disabled' }}>
-                            <i class="fa fa-times"></i>
-                        </button>
-                        {!! Form::close() !!}
+                        @if(auth()->user()->caixaAberto() == null)
+                            <i class="text-danger">Não existe caixa aberto.</i>
+                        @else
+                            {!! Form::open(['route' => ['reservas.destroy', $reserva->getId()], 'method' => 'delete', 'onsubmit' => 'return confirm("Confirma a cancelação?")']) !!}
+                            <button type="submit" class="btn btn-primary" {{ ($reserva->getEstado() != \App\Entities\Enumeration\EstadoReserva::$CANCELADA && is_null($reserva->estada)) ? '' : 'disabled' }}>
+                                <i class="fa fa-times"></i>
+                            </button>
+                            {!! Form::close() !!}
+                        @endif
                     </td>
                     <td>
-                        @if(!is_null($reserva->estada))
-                            <i>Checkin realizado</i>
-                        @elseif($reserva->getEstado() == \App\Entities\Enumeration\EstadoReserva::$CANCELADA)
-                            <i>Reserva cancelada</i>
+                        @if(auth()->user()->caixaAberto() == null)
+                            <i class="text-danger">Não existe caixa aberto.</i>
                         @else
-                            @if($reserva->checkCheckinDisponivel())
-                                <a href="{{ route('estadas.checkin-form', [$reserva->getId()]) }}" class="btn btn-primary">Realizar Checkin</a>
+                            @if(!is_null($reserva->estada))
+                                <i>Checkin realizado</i>
+                            @elseif($reserva->getEstado() == \App\Entities\Enumeration\EstadoReserva::$CANCELADA)
+                                <i>Reserva cancelada</i>
                             @else
-                                <i>Checkin ficará disponível no día {{ $reserva->getDataEntrada() }}</i>
+                                @if($reserva->checkCheckinDisponivel())
+                                    <a href="{{ route('estadas.checkin-form', [$reserva->getId()]) }}" class="btn btn-primary">Realizar Checkin</a>
+                                @else
+                                    <i>Checkin ficará disponível no día {{ $reserva->getDataEntrada() }}</i>
+                                @endif
                             @endif
                         @endif
                     </td>

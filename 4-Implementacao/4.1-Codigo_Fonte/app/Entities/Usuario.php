@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Entities\Caixa;
 use App\Entities\Enumeration\TipoUsuario;
 use App\Entities\Interfaces\EntityValidation;
 use App\Entities\Interfaces\SearchableEntity;
@@ -129,6 +130,18 @@ class Usuario extends Authenticatable implements EntityValidation, SearchableEnt
     public function acessos()
     {
         return $this->hasMany(Acesso::class, 'id_usuario', 'id');
+    }
+
+    public function caixa()
+    {
+        return $this->hasMany(Caixa::class, 'id_usuario', 'id');
+    }
+
+    public function caixaAberto()
+    {
+        return $this->caixa()->where(function ($q) {
+            $q->aberto();
+        })->first();
     }
 
     public function getAuthIdentifierName()

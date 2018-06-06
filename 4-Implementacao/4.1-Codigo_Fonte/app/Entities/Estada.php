@@ -252,7 +252,8 @@ class Estada extends Model implements SearchableEntity, EntityValidation
 
     public function getReservaProximaDias()
     {
-        return Carbon::createFromFormat('d/m/Y', $this->getReserva()->getDataSaida())->diffInDays($this->getReservaProxima());
+        $proxima = $this->getReservaProxima();
+        return Carbon::createFromFormat('d/m/Y', $this->getReserva()->getDataSaida())->diffInDays(is_null($proxima) ? Carbon::now() : Carbon::createFromFormat('d/m/Y', $proxima->getDataEntrada()));
     }
 
     public static function validationRules(Request $request)
@@ -270,12 +271,12 @@ class Estada extends Model implements SearchableEntity, EntityValidation
             case str_contains($request, 'registrar-pagamento'):
                 return [
                     'id_quarto' => 'required',
-                    'quantia' => 'required'
+                    'quantia' => 'required|max:' . Estada::find($request->route('estada'))->getSaldo()
                 ];
             case strtolower($request->method()) === 'post' && str_contains($request, 'frigobar'):
                 return [
                     'id_produto' => 'required|exists:produtos,id',
-                    'quantidade' => 'required|numeric'
+                    'quantidade' => 'required|numeric|max:' . Produto::find($request->id_produto)->getEstoque()
                 ];
             case str_contains($request, 'hospedes'):
                 return [
@@ -286,6 +287,16 @@ class Estada extends Model implements SearchableEntity, EntityValidation
             default:
                 return [];
         }
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function (Estada $model) {
+            if (!empty($model->getReserva()->getTotalComissaoFonte())) {
+                auth()->user()->caixaAberto()->registrarSaque($model->getReserva()->getTotalComissaoFonte(), 'PAGAMENTO DE COMISSÃO ' . strtoupper($model->getReserva()->fonte->getNome()) . ' POR RESERVA #' . $model->getIdReserva());
+            }
+        });
     }
 
     public static function authorizationVerification(Request $request)

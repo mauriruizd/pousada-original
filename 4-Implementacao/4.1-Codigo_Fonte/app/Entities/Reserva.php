@@ -37,7 +37,6 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
         'estado'
     ];
 
-    public $total_devolvido_cancelamento;
     /**
      * @return mixed
      */
@@ -221,6 +220,9 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setTotalDevolvidoCancelamento($total_devolvido_cancelamento)
     {
         $this->attributes['total_devolvido_cancelamento'] = $total_devolvido_cancelamento;
+        if ($this->attributes['total_devolvido_cancelamento'] > 0) {
+            auth()->user()->caixaAberto()->registrarSaque($this->attributes['total_devolvido_cancelamento'], 'CANCELAMENTO DE RESERVA #' . $this->id);
+        }
     }
 
     /**
@@ -259,6 +261,7 @@ class Reserva extends Model implements EntityValidation, SearchableEntity
     public function setComissaoPaga($comissao_paga)
     {
         $this->comissao_paga = $comissao_paga;
+        auth()->user()->caixaAberto()->registrarSaque($this->getTotalComissao(), 'PAGAMENTO DE COMISSÃO A COMISSIONISTAS POR RESERVA #' . $this->getId());
     }
 
     /**
